@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@layer base {
+  button {
+    @apply rounded-md border border-current px-3 py-1 text-sm;
+  }
+}
