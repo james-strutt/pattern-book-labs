@@ -5,7 +5,7 @@ import { PATTERN_BOOK_SHORT_LIST } from "@/apps/patternBook/constants/patternBoo
 import { PATTERN_BOOK_PROJECT_ID, INSTANT_POINT_LAYER_NAME } from "@/apps/patternBook/constants/placementLayers";
 import { getPatternStats } from "@/apps/patternBook/utils/patternStats";
 import { getBlockInherentBearingDegrees } from "@/apps/patternBook/utils/frontageDetection";
-import { buildBlockCatalogue, type BlockCatalogueEntry } from "@/apps/patternBook/utils/blockCatalogue";
+import { buildBlockCatalogue, type BlockCatalogueEntry, type BlockInput } from "@/apps/patternBook/utils/blockCatalogue";
 import { ensureClipperLoaded } from "@/utils/geometry/clipperLoader";
 import type { PatternStats, ProjectedFeature } from "@/apps/patternBook/types/projectedGeometry";
 import logger from "@/lib/logger";
@@ -76,6 +76,7 @@ export interface BlockDefinition {
   id: string;
   name?: string;
   description?: string;
+  properties?: Record<string, unknown>;
   features: BlockFeatureDef[];
 }
 
@@ -390,8 +391,17 @@ async function doBootstrap(): Promise<BootstrapResult> {
 
   await ensureInstantPointRawSection(projectOrigin);
 
+  const rawSectionPropsByBlockId = new Map<string, Record<string, unknown>>();
+  for (const section of Object.values(bundle.rawSections)) {
+    const blockId = section.properties.blockId;
+    if (typeof blockId === "string" && !rawSectionPropsByBlockId.has(blockId)) {
+      rawSectionPropsByBlockId.set(blockId, section.properties);
+    }
+  }
+
   const blockCatalogue = buildBlockCatalogue(
-    bundle.blocks as Record<string, { id: string; name?: string; description?: string }>,
+    bundle.blocks as Record<string, BlockInput>,
+    rawSectionPropsByBlockId,
   );
   const parseableCount = blockCatalogue.filter(
     (entry) => entry.spec.storeys !== null && entry.spec.width !== null,

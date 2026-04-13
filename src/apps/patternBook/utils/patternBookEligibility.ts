@@ -496,13 +496,18 @@ function policyAreaToMatch(v: PolicyAreaVariant, score: number): VariantMatch {
 }
 
 /**
- * Find all variants that physically fit and rank them by fit score (then GFA).
+ * Find all variants that physically fit and rank them.
  * Patterns use either lot-size variants or policy-area variants, never both.
+ *
+ * For policy-area variants the site's actual policy area is used to rank
+ * matching-policy variants above non-matching ones so the placement button
+ * (which takes filteredVariants[0]) picks the right variant for the site.
  */
 function findMatchingVariants(
   pattern: PatternBookSchema,
   siteWidth: number | null,
-  siteLength: number | null
+  siteLength: number | null,
+  isInLMRArea?: boolean,
 ): VariantMatch[] {
   if (siteWidth === null || siteLength === null) return [];
 
@@ -519,10 +524,22 @@ function findMatchingVariants(
       .sort(byFitThenGfa);
   }
   if (policyAreaVariants?.length) {
-    return policyAreaVariants
+    const sitePolicy = isInLMRArea === true ? "lmr" : isInLMRArea === false ? "non_lmr" : null;
+
+    const matches = policyAreaVariants
       .filter(fits)
-      .map((v) => policyAreaToMatch(v, fitScore(v.lotWidth, v.lotLength, siteWidth, siteLength)))
-      .sort(byFitThenGfa);
+      .map((v) => policyAreaToMatch(v, fitScore(v.lotWidth, v.lotLength, siteWidth, siteLength)));
+
+    if (sitePolicy) {
+      // Sort: matching-policy first, then by fitScore/GFA within each group
+      return matches.sort((a, b) => {
+        const aMatch = a.category === sitePolicy || a.category.startsWith(sitePolicy) ? 1 : 0;
+        const bMatch = b.category === sitePolicy || b.category.startsWith(sitePolicy) ? 1 : 0;
+        return bMatch - aMatch || byFitThenGfa(a, b);
+      });
+    }
+
+    return matches.sort(byFitThenGfa);
   }
   return [];
 }
@@ -624,7 +641,7 @@ function checkPatternEligibility(
   }
 
   const matchingVariants = isEligible
-    ? findMatchingVariants(pattern, site.siteWidth, site.siteLength)
+    ? findMatchingVariants(pattern, site.siteWidth, site.siteLength, site.isInLMRArea)
     : [];
 
   logger.debug("Pattern eligibility checked", {

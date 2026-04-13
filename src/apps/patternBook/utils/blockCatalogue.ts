@@ -4,8 +4,6 @@ export interface BlockSpec {
   /**
    * The landiq_labs pattern code (e.g. "SLA02") this block belongs to, or
    * null if the block is "generic" (matches any pattern dimensionally).
-   * Extracted from anywhere in the block name — supports formats like
-   * "SLA02 - 4 storey - 16x40", "4 storey - 16x40 (SLA02)", "SLA02_16x40".
    */
   patternId: string | null;
   storeys: number | null;
@@ -14,6 +12,21 @@ export interface BlockSpec {
   setback: number | null;
   colourVariant: string | null;
   rawName: string;
+}
+
+/**
+ * Structured properties that can be set on a Giraffe block (or its
+ * rawSection origin point) to avoid fragile name-parsing.  When present
+ * these take priority; any field left undefined falls back to the name
+ * parser so existing blocks keep working during the migration.
+ */
+export interface BlockProperties {
+  patternId?: string;
+  storeys?: number;
+  width?: number;
+  depth?: number;
+  setback?: number;
+  colourVariant?: string;
 }
 
 /** Pattern codes the parser recognises as block tags. */
@@ -48,21 +61,38 @@ export interface BlockCatalogueEntry {
 }
 
 /**
- * Parses a Giraffe block name into its dimensional spec. The naming
- * conventions observed in project 70951 include:
+ * Builds a BlockSpec from explicit block properties, falling back to
+ * name-parsing for any field not set.  Once all blocks in the master
+ * project carry structured properties the name parser can be removed.
+ */
+export function resolveBlockSpec(rawName: string, props?: BlockProperties): BlockSpec {
+  const parsed = parseBlockName(rawName);
+  if (!props) return parsed;
+
+  return {
+    patternId: props.patternId?.toUpperCase() ?? parsed.patternId,
+    storeys: props.storeys ?? parsed.storeys,
+    width: props.width ?? parsed.width,
+    depth: props.depth ?? parsed.depth,
+    setback: props.setback ?? parsed.setback,
+    colourVariant: props.colourVariant ?? parsed.colourVariant,
+    rawName,
+  };
+}
+
+/**
+ * Legacy name parser — extracts dimensional spec from Giraffe block names.
+ * Naming conventions observed in project 70951:
  *
  *   "4 storey - 3m - 16.6x40"
  *   "3 storey - 1.5 setback - 13.6x40"
- *   "3 storey - 0m setback - 13x40 Copy"
  *   "3s - 16 x 40m site"
  *   "5s - 19.8 x 65m site - Beige"
  *   "42m long site - 4 storey"
  *
- * Returns nulls for any field that can't be extracted. Blocks with unparseable
- * names (e.g. "Breezy Base") will have all fields null and be excluded from
- * variant matching.
+ * Prefer setting structured BlockProperties on the block instead.
  */
-export function parseBlockName(rawName: string): BlockSpec {
+function parseBlockName(rawName: string): BlockSpec {
   const name = rawName.toLowerCase();
 
   const patternTagMatch = rawName.match(PATTERN_TAG_REGEX);
@@ -349,7 +379,7 @@ function buildDiagnosisSummary(args: DiagnosisSummaryArgs): string {
     .filter((s): s is number => s !== null);
 
   if (parseableStoreys.length === 0) {
-    return `${targetPattern} has ${taggedForPattern.length} block(s) but none have a parseable storey count. Rename them to include e.g. "5 storey" or "5s" in the name.`;
+    return `${targetPattern} has ${taggedForPattern.length} block(s) but none have a parseable storey count. Set the "storeys" property on each block.`;
   }
 
   if (taggedWithinStoreyCap.length === 0) {
@@ -385,18 +415,56 @@ function buildDiagnosisSummary(args: DiagnosisSummaryArgs): string {
   return `${targetPattern} has ${taggedWithinStoreyCap.length} candidate block(s) within the storey cap but none fit for an unknown reason — inspect the candidates list.`;
 }
 
+export interface BlockInput {
+  id: string;
+  name?: string;
+  description?: string;
+  properties?: Record<string, unknown>;
+}
+
+/** Pick recognised BlockProperties from an untyped properties bag. */
+function extractBlockProperties(props: Record<string, unknown> | undefined): BlockProperties | undefined {
+  if (!props) return undefined;
+
+  const out: BlockProperties = {};
+  if (typeof props.patternId === "string") out.patternId = props.patternId;
+  if (typeof props.storeys === "number" && Number.isFinite(props.storeys)) out.storeys = props.storeys;
+  if (typeof props.width === "number" && Number.isFinite(props.width)) out.width = props.width;
+  if (typeof props.depth === "number" && Number.isFinite(props.depth)) out.depth = props.depth;
+  if (typeof props.setback === "number" && Number.isFinite(props.setback)) out.setback = props.setback;
+  if (typeof props.colourVariant === "string") out.colourVariant = props.colourVariant;
+
+  return Object.keys(out).length > 0 ? out : undefined;
+}
+
 /**
  * Builds a catalogue entry list from a raw bundle blocks record.
+ * Properties are read from two sources (both optional, merged together):
+ *   1. `block.properties` — on the block definition itself
+ *   2. `rawSectionPropsByBlockId` — from the rawSection origin point
+ *      whose `blockId` matches the block's `id`
+ *
+ * rawSection properties win when both sources provide the same field,
+ * since those are the values the user edits in the Giraffe project UI.
+ * Any field still missing falls back to name-parsing.
  */
 export function buildBlockCatalogue(
-  blocks: Record<string, { id: string; name?: string; description?: string }>,
+  blocks: Record<string, BlockInput>,
+  rawSectionPropsByBlockId?: Map<string, Record<string, unknown>>,
 ): BlockCatalogueEntry[] {
-  return Object.values(blocks).map((block) => ({
-    id: block.id,
-    name: block.name ?? "(unnamed)",
-    description: block.description ?? "",
-    spec: parseBlockName(block.name ?? ""),
-  }));
+  return Object.values(blocks).map((block) => {
+    const blockProps = extractBlockProperties(block.properties);
+    const sectionProps = extractBlockProperties(rawSectionPropsByBlockId?.get(block.id));
+    const merged: BlockProperties | undefined =
+      blockProps || sectionProps ? { ...blockProps, ...sectionProps } : undefined;
+
+    return {
+      id: block.id,
+      name: block.name ?? "(unnamed)",
+      description: block.description ?? "",
+      spec: resolveBlockSpec(block.name ?? "", merged),
+    };
+  });
 }
 
 /**
