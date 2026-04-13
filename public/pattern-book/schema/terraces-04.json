@@ -1,0 +1,503 @@
+{
+  "$schema": "./pattern-book-schema.json",
+  "metadata": {
+    "id": "TH04",
+    "name": "Terraces 04",
+    "architect": "Other Architects x NMBW",
+    "version": "1.0",
+    "releaseDate": "2025-07-01",
+    "developmentType": "multi_dwelling_housing_terraces",
+    "buildingClass": "1a",
+    "description": "A smart, flexible design with multi-use spaces, gardens and modular room layouts so your home can grow with you. Private courtyard gardens divide each terrace into 3 separate building volumes.",
+    "designConcepts": [
+      "Range of different home sizes for different household types",
+      "Connection from each room to surrounding landscape and open space",
+      "Maximum flexibility with multiple options for kitchens, bathrooms, laundries",
+      "Generous carport that could also be home office or workshop",
+      "Series of different outdoor spaces for different uses",
+      "Private courtyard gardens dividing each terrace into 3 building volumes",
+      "Homes can grow with you - rear and front buildings have versatile uses"
+    ],
+    "ownershipTypes": ["torrens_title"],
+    "applicablePolicies": [
+      {
+        "name": "Pattern Book Development Code 2025",
+        "description": "Pattern book development under State Environmental Planning Policy (Exempt and Complying Development Codes) 2008"
+      },
+      {
+        "name": "Low and Mid-Rise Housing Areas",
+        "reference": "Section 163 Housing SEPP"
+      },
+      {
+        "name": "Non-LMR Housing Areas",
+        "reference": "Local Environmental Plan provisions"
+      }
+    ]
+  },
+
+  "siteEligibility": {
+    "siteTypes": {
+      "allowed": ["mid_block", "corner", "rear_laneway"],
+      "excluded": ["battle_axe", "irregular"]
+    },
+
+    "lotDimensions": {
+      "lmr": {
+        "absoluteMinimums": {
+          "width": 18.0,
+          "length": 33.1,
+          "area": 595
+        },
+        "absoluteMaximums": {
+          "width": null,
+          "length": null,
+          "area": null
+        }
+      },
+      "nonLmr": {
+        "absoluteMinimums": {
+          "width": 21.0,
+          "length": 33.1,
+          "area": 695
+        },
+        "absoluteMaximums": {
+          "width": null,
+          "length": null,
+          "area": null
+        }
+      }
+    },
+
+    "excludedLand": [
+      {
+        "type": "bushfire_prone",
+        "description": "Land identified as bushfire-prone"
+      },
+      {
+        "type": "flood_prone_high_risk",
+        "description": "Certain flood-prone land in high risk locations"
+      },
+      {
+        "type": "state_heritage_item",
+        "description": "State heritage items"
+      },
+      {
+        "type": "local_heritage_item",
+        "description": "Local heritage items"
+      },
+      {
+        "type": "heritage_conservation_area",
+        "description": "Heritage conservation areas"
+      }
+    ],
+
+    "slopeConstraints": {
+      "notes": "Pattern accommodates internal stairs and adjustments"
+    },
+
+    "solarOrientation": {
+      "allOrientationsSupported": true,
+      "bestSuited": "east_west_frontages",
+      "orientationGuidance": [
+        {
+          "frontageDirection": "east",
+          "notes": "Best suited to east-west frontages"
+        },
+        {
+          "frontageDirection": "west",
+          "notes": "Best suited to east-west frontages"
+        },
+        {
+          "frontageDirection": "north",
+          "notes": "Designs optimise solar access through courtyards, skylights and flexible spaces"
+        },
+        {
+          "frontageDirection": "south",
+          "notes": "Designs optimise solar access through courtyards, skylights and flexible spaces"
+        }
+      ]
+    }
+  },
+
+  "developmentStandards": {
+    "height": {
+      "lmr": {
+        "maxMetres": 9.5,
+        "maxStoreys": 2,
+        "minStoreys": 2
+      },
+      "nonLmr": {
+        "maxMetres": 9.0,
+        "maxStoreys": 2,
+        "minStoreys": 2
+      },
+      "exclusionsFromMaxHeight": [
+        "chimneys",
+        "flues",
+        "domestic_aerials"
+      ]
+    },
+
+    "setbacks": {
+      "front": {
+        "lmr": {
+          "min": 3.5,
+          "notes": "Primary street frontage setback"
+        },
+        "nonLmr": {
+          "min": 3.5,
+          "alternativeRule": "Not less than average setback from primary road of nearest 2 dwelling houses within 40m on same side, whichever is greater"
+        }
+      },
+      "rear": {
+        "lmr": {
+          "min": 0.9
+        },
+        "nonLmr": {
+          "min": 0.9
+        }
+      },
+      "side": {
+        "lmr": {
+          "min": 1.5
+        },
+        "nonLmr": {
+          "min": 1.5
+        }
+      }
+    },
+
+    "fsr": {
+      "lmr": {
+        "max": 0.8,
+        "notes": "Maximum 0.8:1"
+      },
+      "nonLmr": {
+        "max": 0.7,
+        "notes": "Maximum 0.7:1"
+      }
+    },
+
+    "dwellings": {
+      "min": 3,
+      "max": 3,
+      "configuration": "terraces",
+      "bedroomOptions": [2, 3, 4]
+    },
+
+    "landscapeRequirements": {
+      "guideReference": "NSW Housing Pattern Book Landscape design guide"
+    },
+
+    "parking": {
+      "lmr": {
+        "spacesPerDwelling": 0.5,
+        "notes": "As defined by LMR reforms"
+      },
+      "nonLmr": {
+        "spacesPerDwelling": 1,
+        "notes": "Minimum 1 car parking space per dwelling"
+      },
+      "carportOption": true,
+      "notes": "Generous carport can also be home office or workshop; can be at rear for laneway access"
+    }
+  },
+
+  "adaptations": {
+    "policyAreaVariants": [
+      {
+        "id": "lmr_base",
+        "policyArea": "lmr",
+        "lotWidth": 18.0,
+        "lotLength": 33.1,
+        "siteArea": 595,
+        "storeys": 2,
+        "maxHeight": 9.5,
+        "maxFsr": 0.8,
+        "gfa": 476,
+        "dwellingYield": {
+          "twoBed": 0,
+          "threeBed": 3,
+          "fourBed": 0,
+          "total": 3
+        },
+        "isBasePattern": true
+      },
+      {
+        "id": "non_lmr_base",
+        "policyArea": "non_lmr",
+        "lotWidth": 21.0,
+        "lotLength": 33.1,
+        "siteArea": 695,
+        "storeys": 2,
+        "maxHeight": 9.0,
+        "maxFsr": 0.7,
+        "gfa": 487,
+        "dwellingYield": {
+          "twoBed": 0,
+          "threeBed": 3,
+          "fourBed": 0,
+          "total": 3
+        },
+        "isBasePattern": true
+      }
+    ],
+
+    "buildingModules": {
+      "frontBuilding": {
+        "options": [1, 2, 3],
+        "uses": ["entry", "carport", "room_with_ensuite", "half_outbuilding"]
+      },
+      "middleBuilding": {
+        "options": [4, 5, 6, 7, 8],
+        "coreTypes": ["type_a_base", "type_b_xl_kitchen"],
+        "stairOptions": ["switchback_stair_linear_kitchen", "linear_stair_linear_kitchen", "linear_stair_xl_kitchen"]
+      },
+      "rearBuilding": {
+        "options": [11, 12, 13, 14, 15],
+        "uses": ["kitchenette_bathroom", "rooms", "double_outbuilding", "double_storey_rooms"]
+      }
+    },
+
+    "roomOptions": [
+      {
+        "id": "room_type_1",
+        "name": "Room Type 1",
+        "description": "Standard room configuration"
+      },
+      {
+        "id": "room_type_2",
+        "name": "Room Type 2",
+        "description": "Alternative room configuration with alcove, kitchenette, bathroom, WC"
+      },
+      {
+        "id": "double_storey_rooms",
+        "name": "Double Storey Rooms",
+        "description": "Two-storey room module with stair"
+      },
+      {
+        "id": "half_outbuilding",
+        "name": "Half Outbuilding",
+        "description": "Smaller outbuilding module"
+      },
+      {
+        "id": "double_outbuilding",
+        "name": "Double Outbuilding",
+        "description": "Larger outbuilding with bathroom and kitchenette"
+      },
+      {
+        "id": "double_outbuilding_stair",
+        "name": "Double Outbuilding with Stair",
+        "description": "Two-storey outbuilding"
+      }
+    ],
+
+    "kitchenVariants": [
+      {
+        "id": "standard_kitchen",
+        "name": "Standard Kitchen"
+      },
+      {
+        "id": "xl_kitchen",
+        "name": "XL Kitchen",
+        "description": "Larger kitchen with pantry and wet room"
+      },
+      {
+        "id": "linear_kitchen",
+        "name": "Linear Kitchen"
+      }
+    ],
+
+    "atticAdaptation": {
+      "available": true,
+      "description": "Additional bedroom and loft storage with full stair access as 3rd-storey dormer",
+      "notes": "Can be incorporated depending on site conditions"
+    },
+
+    "rearBuildingOptions": [
+      {
+        "id": "partial_2nd_storey",
+        "description": "Partial 2nd-storey can be added to rear building depending on site conditions"
+      }
+    ],
+
+    "materialPalettes": [
+      {
+        "id": "palette_01",
+        "name": "Material Palette 1",
+        "characterContext": "Lightweight contemporary",
+        "materials": {
+          "constructionSystem": {
+            "type": "Standardised grid and lightweight construction",
+            "notes": "Using off-the-shelf components and panel sizing, easy to build and maintain"
+          }
+        }
+      }
+    ]
+  },
+
+  "dwellingTypes": [
+    {
+      "id": "TERRACE_MODULAR_2BED",
+      "category": "2bed",
+      "name": "2 Bedroom Modular Terrace",
+      "rooms": {
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "livingAreas": 1
+      },
+      "features": [
+        "private_courtyard_gardens",
+        "flexible_spaces"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver"
+      }
+    },
+    {
+      "id": "TERRACE_MODULAR_3BED",
+      "category": "3bed",
+      "name": "3 Bedroom Modular Terrace",
+      "rooms": {
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "livingAreas": 1
+      },
+      "features": [
+        "private_courtyard_gardens",
+        "flexible_spaces",
+        "carport_multi_use"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver"
+      }
+    },
+    {
+      "id": "TERRACE_MODULAR_4BED",
+      "category": "4bed",
+      "name": "4 Bedroom Modular Terrace",
+      "rooms": {
+        "bedrooms": 4,
+        "bathrooms": 2,
+        "livingAreas": 1
+      },
+      "features": [
+        "private_courtyard_gardens",
+        "flexible_spaces",
+        "rear_studio_option"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver",
+        "canAdaptToBeyondMinimum": true
+      }
+    }
+  ],
+
+  "designFeatures": {
+    "fixed": [
+      {
+        "id": "three_volume_layout",
+        "category": "planning",
+        "name": "Three Building Volume Layout",
+        "description": "Front, middle, and rear building volumes separated by courtyard gardens"
+      },
+      {
+        "id": "courtyard_gardens",
+        "category": "landscape",
+        "name": "Private Courtyard Gardens",
+        "description": "Gardens provide connection to landscape, sunlight, ventilation, outdoor living"
+      }
+    ],
+    "flexible": [
+      {
+        "id": "front_building_config",
+        "category": "internal_planning",
+        "name": "Front Building Configuration",
+        "description": "Multiple options for front building layout"
+      },
+      {
+        "id": "middle_building_config",
+        "category": "internal_planning",
+        "name": "Middle Building Configuration",
+        "description": "Multiple core types and stair options"
+      },
+      {
+        "id": "rear_building_config",
+        "category": "internal_planning",
+        "name": "Rear Building Configuration",
+        "description": "From studio to double-storey outbuilding options"
+      },
+      {
+        "id": "carport_use",
+        "category": "parking",
+        "name": "Carport Multi-use",
+        "description": "Generous carport can be home office or workshop"
+      },
+      {
+        "id": "room_modules",
+        "category": "internal_planning",
+        "name": "Room Modules",
+        "description": "Kit of parts components for different plan options"
+      }
+    ]
+  },
+
+  "services": {
+    "waste": {
+      "collectionMethod": "kerbside",
+      "binsPerDwelling": {
+        "general": 1,
+        "recycling": 1,
+        "organics": 1
+      }
+    },
+
+    "electrical": {
+      "supplyType": "fully_electric",
+      "photovoltaics": {
+        "roofAreaAvailable": true
+      }
+    },
+
+    "hydraulic": {
+      "rainwaterTanks": {
+        "included": true
+      },
+      "hotWater": {
+        "options": ["heat_pump"]
+      }
+    }
+  },
+
+  "householdSuitability": [
+    {
+      "type": "Young families",
+      "description": "Private garden visible from living area"
+    },
+    {
+      "type": "Grown-up families",
+      "description": "Living areas separated from bedrooms with space for home office"
+    },
+    {
+      "type": "Extended families",
+      "description": "Studio spaces on ground floor for multi-generational living"
+    },
+    {
+      "type": "Ageing in place",
+      "description": "Designed to meet ABCB standard; can adapt to Beyond Minimum"
+    },
+    {
+      "type": "Co-living or share houses",
+      "description": "Separation between bedrooms and living areas; self-contained studio spaces"
+    }
+  ],
+
+  "nccCompliance": {
+    "buildingClass": "1a",
+    "nccVersion": "2022",
+    "livableHousingStandard": {
+      "minimum": "silver",
+      "canAdaptTo": "gold"
+    }
+  }
+}

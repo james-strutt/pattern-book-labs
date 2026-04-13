@@ -1,0 +1,289 @@
+{
+  "$schema": "./pattern-book-schema.json",
+  "metadata": {
+    "id": "SLA04",
+    "name": "Small Lot Apartments 04",
+    "architect": "Neeson Murcutt Neille",
+    "version": "1.0",
+    "releaseDate": "2025-11-01",
+    "developmentType": "residential_flat_building",
+    "description": "A refined, efficiently planned apartment building with a 'breezy core' and common space that fits harmoniously into existing residential neighbourhoods.",
+    "designConcepts": [
+      "Neighbourly 4-5 storey building designed to sensitively fit 5 storeys into a typical 4-storey envelope",
+      "Refined and durable material palettes with bright awnings and pops of colour",
+      "Mix of studio to 3-bedroom dwellings with interchangeable floor plates",
+      "Breezy shared circulation spaces that are covered but open to outdoors",
+      "Communal and private gardens with generous deep soil provisions",
+      "Competition-winning design reflecting the NSW Apartment Design Guide"
+    ],
+    "ownershipTypes": ["strata", "company_title", "build_to_rent"],
+    "applicablePolicies": [
+      {
+        "name": "Housing SEPP Chapter 7",
+        "description": "Pattern book development under State Environmental Planning Policy (Housing) 2021"
+      },
+      {
+        "name": "Low and Mid-Rise Housing Areas",
+        "reference": "Section 163 Housing SEPP"
+      },
+      {
+        "name": "Transport Oriented Development Areas",
+        "reference": "Chapter 5 Housing SEPP"
+      }
+    ]
+  },
+
+  "siteEligibility": {
+    "siteTypes": {
+      "allowed": ["mid_block", "mid_block_laneway"],
+      "excluded": ["corner", "battle_axe"]
+    },
+
+    "lotDimensions": {
+      "absoluteMinimums": {
+        "width": 16.5,
+        "length": 36.4,
+        "area": 600
+      },
+      "absoluteMaximums": {
+        "width": 20.4,
+        "length": 53.0,
+        "area": 1028
+      }
+    },
+
+    "excludedLand": [
+      {
+        "type": "bushfire_prone",
+        "description": "Land identified as bushfire-prone"
+      },
+      {
+        "type": "flood_prone_high_risk",
+        "description": "Certain flood-prone land in high risk locations"
+      },
+      {
+        "type": "state_heritage_item",
+        "description": "State heritage items"
+      },
+      {
+        "type": "local_heritage_item",
+        "description": "Local heritage items"
+      },
+      {
+        "type": "heritage_conservation_area",
+        "description": "Heritage conservation areas"
+      }
+    ]
+  },
+
+  "developmentStandards": {
+    "height": {
+      "maxMetres": 17.5,
+      "maxStoreys": 5,
+      "minStoreys": 4,
+      "notes": "5 storeys within the height of 4 storeys",
+      "exclusionsFromMaxHeight": [
+        "lift_overruns",
+        "plant_and_services_equipment"
+      ]
+    },
+
+    "setbacks": {
+      "front": {
+        "primary": {
+          "min": 4.0
+        }
+      },
+      "rear": {
+        "standard": {
+          "min": 6.0
+        }
+      },
+      "side": {
+        "rules": [
+          {
+            "id": "3m_setback",
+            "conditions": {
+              "lotWidthMin": 16.5,
+              "lotWidthMax": null
+            },
+            "setback": 3.0,
+            "maxStoreys": 5
+          }
+        ]
+      }
+    },
+
+    "dwellings": {
+      "max": 21,
+      "min": 13,
+      "maxSingleTypePercentage": 75,
+      "mixRequirement": "No more than 75% of dwellings to be a single type"
+    },
+
+    "floorToCeiling": {
+      "habitable": {
+        "min": 2.7,
+        "unit": "metres"
+      },
+      "nonHabitable": {
+        "min": 2.4,
+        "unit": "metres"
+      }
+    },
+
+    "deepSoil": {
+      "rules": [
+        {
+          "siteAreaMax": 650,
+          "percentage": 7
+        },
+        {
+          "siteAreaMin": 650,
+          "siteAreaMax": 1500,
+          "percentage": 10
+        },
+        {
+          "siteAreaMin": 1500,
+          "percentage": 15
+        }
+      ],
+      "unit": "percentage_of_site_area"
+    },
+
+    "communalOpenSpace": {
+      "locations": ["ground_floor_garden", "rooftop", "breezy_core"],
+      "features": [
+        "communal_rooms_on_each_level",
+        "secure_bike_storage",
+        "garden_views"
+      ]
+    }
+  },
+
+  "adaptations": {
+    "lotSizeVariants": [
+      {
+        "id": "breezy_thin_16.5x36.4",
+        "category": "breezy_thin",
+        "lotWidth": 16.5,
+        "lotLength": 36.4,
+        "siteArea": 600,
+        "sideSetback": 3.0,
+        "storeys": 5,
+        "gfa": 850,
+        "fsr": 1.42,
+        "dwellingYield": {
+          "studio": 2,
+          "oneBed": 4,
+          "twoBed": 3,
+          "threeBed": 4,
+          "fourBed": 0,
+          "total": 13
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 5,
+          "accessible": 1,
+          "bikes": 16
+        }
+      },
+      {
+        "id": "breezy_base_18x42",
+        "category": "breezy_base",
+        "lotWidth": 18.0,
+        "lotLength": 42.0,
+        "siteArea": 756,
+        "sideSetback": 3.0,
+        "storeys": 5,
+        "gfa": 1100,
+        "fsr": 1.46,
+        "dwellingYield": {
+          "studio": 3,
+          "oneBed": 5,
+          "twoBed": 4,
+          "threeBed": 4,
+          "fourBed": 0,
+          "total": 16
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 6,
+          "accessible": 1,
+          "bikes": 18
+        },
+        "isBasePattern": true
+      },
+      {
+        "id": "breezy_long_20.4x53",
+        "category": "breezy_long",
+        "lotWidth": 20.4,
+        "lotLength": 53.0,
+        "siteArea": 1028,
+        "sideSetback": 3.0,
+        "storeys": 5,
+        "gfa": 1500,
+        "fsr": 1.46,
+        "dwellingYield": {
+          "studio": 4,
+          "oneBed": 6,
+          "twoBed": 5,
+          "threeBed": 6,
+          "fourBed": 0,
+          "total": 21
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 8,
+          "accessible": 2,
+          "bikes": 24
+        }
+      }
+    ],
+
+    "parkingVariants": [
+      {
+        "id": "basement",
+        "name": "Basement Parking",
+        "description": "Parking located in basement level",
+        "preferred": true
+      },
+      {
+        "id": "on_grade",
+        "name": "On-Grade Parking",
+        "description": "Parking at ground level",
+        "preferred": false
+      }
+    ],
+
+    "materialPalettes": [
+      {
+        "id": "white_lightweight",
+        "name": "White Lightweight Cladding",
+        "characterContext": "Contemporary suburban settings",
+        "materials": {
+          "primaryCladding": {
+            "type": "Magnesium oxide or pre-grooved vertical boards",
+            "colour": "White"
+          },
+          "accents": {
+            "colour": "Yellow"
+          }
+        }
+      },
+      {
+        "id": "red_brick",
+        "name": "Red Brick",
+        "characterContext": "Heritage or established areas",
+        "materials": {
+          "primaryBrick": {
+            "type": "Red brick"
+          },
+          "accents": {
+            "colour": "Pink"
+          }
+        }
+      }
+    ]
+  }
+}

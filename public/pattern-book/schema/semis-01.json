@@ -1,0 +1,913 @@
+{
+  "$schema": "./pattern-book-schema.json",
+  "metadata": {
+    "id": "SD01",
+    "name": "Semis 01",
+    "architect": "Anthony Gill Architects",
+    "version": "1.0",
+    "releaseDate": "2025-11-01",
+    "developmentType": "dual_occupancy",
+    "buildingClass": "1a",
+    "description": "A pair of semi-detached dwellings designed to seamlessly integrate into established suburban streetscapes. The design balances private outdoor spaces with efficient internal layouts, suitable for both LMR and non-LMR areas.",
+    "designConcepts": [
+      "Two attached dwellings sharing a common party wall",
+      "3-4 bedroom configurations with flexible living spaces",
+      "Private rear gardens for each dwelling",
+      "Integrated car accommodation with garage or carport options",
+      "Adaptable floor plans for slope conditions up to 1.35m",
+      "Material palettes suited to diverse neighbourhood contexts"
+    ],
+    "ownershipTypes": ["torrens_title", "strata"],
+    "applicablePolicies": [
+      {
+        "name": "Housing SEPP Chapter 7",
+        "description": "Pattern book development under State Environmental Planning Policy (Housing) 2021"
+      },
+      {
+        "name": "Low and Mid-Rise Housing Areas",
+        "reference": "Section 163 Housing SEPP"
+      },
+      {
+        "name": "Non-LMR Housing Areas",
+        "reference": "Local Environmental Plan provisions"
+      }
+    ]
+  },
+
+  "siteEligibility": {
+    "siteTypes": {
+      "allowed": ["mid_block", "corner"],
+      "excluded": ["battle_axe", "irregular"]
+    },
+
+    "lotDimensions": {
+      "lmr": {
+        "absoluteMinimums": {
+          "width": 12.0,
+          "length": 37.5,
+          "area": 450
+        },
+        "absoluteMaximums": {
+          "width": null,
+          "length": null,
+          "area": null
+        }
+      },
+      "nonLmr": {
+        "absoluteMinimums": {
+          "width": 15.0,
+          "length": 37.7,
+          "area": 565
+        },
+        "absoluteMaximums": {
+          "width": null,
+          "length": null,
+          "area": null
+        }
+      }
+    },
+
+    "excludedLand": [
+      {
+        "type": "bushfire_prone",
+        "description": "Land identified as bushfire-prone"
+      },
+      {
+        "type": "flood_prone_high_risk",
+        "description": "Certain flood-prone land in high risk locations"
+      },
+      {
+        "type": "state_heritage_item",
+        "description": "State heritage items"
+      },
+      {
+        "type": "local_heritage_item",
+        "description": "Local heritage items"
+      },
+      {
+        "type": "heritage_conservation_area",
+        "description": "Heritage conservation areas"
+      }
+    ],
+
+    "slopeConstraints": {
+      "maxFrontToBackMetres": 1.35,
+      "maxSideToSideMetres": 1.2,
+      "allowedDirections": ["upslope_to_rear", "downslope_to_rear", "crossfall"],
+      "notes": "Pattern provides adaptations for sites with slopes up to 1.35m front-to-back and 1.2m side-to-side"
+    },
+
+    "solarOrientation": {
+      "allOrientationsSupported": true,
+      "orientationGuidance": [
+        {
+          "frontageDirection": "north",
+          "mirroring": "none",
+          "notes": "Optimal orientation for rear garden solar access"
+        },
+        {
+          "frontageDirection": "south",
+          "mirroring": "none",
+          "notes": "Front living areas receive northern light"
+        },
+        {
+          "frontageDirection": "east",
+          "mirroring": "horizontal",
+          "notes": "Mirror plan to optimise morning light to living areas"
+        },
+        {
+          "frontageDirection": "west",
+          "mirroring": "horizontal",
+          "notes": "Mirror plan to optimise afternoon light to living areas"
+        }
+      ]
+    }
+  },
+
+  "developmentStandards": {
+    "height": {
+      "lmr": {
+        "maxMetres": 9.5,
+        "maxStoreys": 2,
+        "minStoreys": 2
+      },
+      "nonLmr": {
+        "maxMetres": 8.5,
+        "maxStoreys": 2,
+        "minStoreys": 2
+      },
+      "exclusionsFromMaxHeight": [
+        "chimneys",
+        "flues",
+        "domestic_aerials"
+      ],
+      "notes": "Maximum building height measured from existing ground level to highest point of building"
+    },
+
+    "setbacks": {
+      "front": {
+        "primary": {
+          "min": 6.0,
+          "notes": "Primary street frontage setback"
+        },
+        "articulation": {
+          "min": 4.5,
+          "maxWidth": 1.5,
+          "notes": "Articulation zone allows elements to project forward"
+        }
+      },
+      "rear": {
+        "standard": {
+          "min": 8.4,
+          "notes": "Rear boundary setback"
+        }
+      },
+      "side": {
+        "lmr": {
+          "min": 1.2,
+          "notes": "Side boundary setback in LMR areas"
+        },
+        "nonLmr": {
+          "min": 1.5,
+          "notes": "Side boundary setback in non-LMR areas"
+        }
+      }
+    },
+
+    "fsr": {
+      "lmr": {
+        "max": 0.75,
+        "notes": "Maximum floor space ratio in LMR areas"
+      },
+      "nonLmr": {
+        "max": 0.65,
+        "notes": "Maximum floor space ratio in non-LMR areas"
+      }
+    },
+
+    "dwellings": {
+      "total": 2,
+      "configuration": "semi_detached",
+      "bedroomOptions": [3, 4]
+    },
+
+    "floorToCeiling": {
+      "habitable": {
+        "min": 2.7,
+        "unit": "metres"
+      },
+      "nonHabitable": {
+        "min": 2.4,
+        "unit": "metres"
+      }
+    },
+
+    "privateOpenSpace": {
+      "rearGarden": {
+        "minArea": 24,
+        "minDimension": 4.0,
+        "unit": "metres"
+      },
+      "notes": "Each dwelling must have private rear garden with minimum 24m2 and 4m minimum dimension"
+    },
+
+    "solarAccess": {
+      "rearGarden": {
+        "minHours": 3,
+        "timeWindow": {
+          "start": "09:00",
+          "end": "15:00"
+        },
+        "referenceDate": "21 June",
+        "minPercentage": 50
+      },
+      "notes": "At least 50% of required private open space must receive minimum 3 hours direct sunlight on 21 June"
+    },
+
+    "overshadowing": {
+      "neighbouringProperties": {
+        "minSunlightHours": 3,
+        "minPrivateOpenSpacePercentage": 50,
+        "timeWindow": {
+          "start": "09:00",
+          "end": "15:00"
+        },
+        "referenceDate": "21 June"
+      },
+      "notes": "Must not increase overshadowing to neighbouring properties beyond compliant levels"
+    },
+
+    "landscapeRequirements": {
+      "guideReference": "NSW Housing Pattern Book Landscape design guide",
+      "frontGardenPlanting": true,
+      "rearGardenPlanting": true,
+      "notes": "Landscaping to complement streetscape character"
+    },
+
+    "privacyRequirements": {
+      "addressedInPattern": true,
+      "solutions": [
+        "window_placement_to_avoid_direct_views",
+        "highlight_windows_at_upper_level",
+        "privacy_screening_where_required",
+        "setback_compliance"
+      ]
+    }
+  },
+
+  "adaptations": {
+    "policyAreaVariants": [
+      {
+        "id": "lmr_base",
+        "policyArea": "lmr",
+        "lotWidth": 12.0,
+        "lotLength": 37.5,
+        "siteArea": 450,
+        "sideSetback": 1.2,
+        "storeys": 2,
+        "maxHeight": 9.5,
+        "maxFsr": 0.75,
+        "gfa": 337.5,
+        "dwellingYield": {
+          "threeBed": 2,
+          "fourBed": 0,
+          "total": 2
+        },
+        "parking": {
+          "type": "garage",
+          "carsPerDwelling": 1,
+          "totalCars": 2
+        },
+        "isBasePattern": true
+      },
+      {
+        "id": "lmr_wider",
+        "policyArea": "lmr",
+        "lotWidth": 15.0,
+        "lotLength": 37.5,
+        "siteArea": 562.5,
+        "sideSetback": 1.2,
+        "storeys": 2,
+        "maxHeight": 9.5,
+        "maxFsr": 0.75,
+        "gfa": 421.9,
+        "dwellingYield": {
+          "threeBed": 0,
+          "fourBed": 2,
+          "total": 2
+        },
+        "parking": {
+          "type": "garage",
+          "carsPerDwelling": 1,
+          "totalCars": 2
+        }
+      },
+      {
+        "id": "non_lmr_base",
+        "policyArea": "non_lmr",
+        "lotWidth": 15.0,
+        "lotLength": 37.7,
+        "siteArea": 565,
+        "sideSetback": 1.5,
+        "storeys": 2,
+        "maxHeight": 8.5,
+        "maxFsr": 0.65,
+        "gfa": 367.3,
+        "dwellingYield": {
+          "threeBed": 2,
+          "fourBed": 0,
+          "total": 2
+        },
+        "parking": {
+          "type": "garage",
+          "carsPerDwelling": 1,
+          "totalCars": 2
+        }
+      },
+      {
+        "id": "non_lmr_wider",
+        "policyArea": "non_lmr",
+        "lotWidth": 18.0,
+        "lotLength": 37.7,
+        "siteArea": 678.6,
+        "sideSetback": 1.5,
+        "storeys": 2,
+        "maxHeight": 8.5,
+        "maxFsr": 0.65,
+        "gfa": 441.1,
+        "dwellingYield": {
+          "threeBed": 0,
+          "fourBed": 2,
+          "total": 2
+        },
+        "parking": {
+          "type": "garage",
+          "carsPerDwelling": 1,
+          "totalCars": 2
+        }
+      }
+    ],
+
+    "parkingVariants": [
+      {
+        "id": "garage",
+        "name": "Single Garage",
+        "description": "Integrated single garage per dwelling with internal access",
+        "preferred": true,
+        "specifications": {
+          "carsPerDwelling": 1,
+          "internalAccess": true,
+          "minWidth": 3.0,
+          "minLength": 6.0
+        },
+        "notes": "Garage integrated into building footprint with internal access to dwelling"
+      },
+      {
+        "id": "carport",
+        "name": "Carport",
+        "description": "Open carport structure per dwelling",
+        "preferred": false,
+        "specifications": {
+          "carsPerDwelling": 1,
+          "covered": true,
+          "minWidth": 3.0,
+          "minLength": 5.5
+        },
+        "notes": "Carport option available for sites where garage may impact street presentation"
+      }
+    ],
+
+    "floorPlanVariants": [
+      {
+        "id": "3bed_standard",
+        "name": "3 Bedroom Standard",
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "configuration": {
+          "ground": ["living", "dining", "kitchen", "garage", "laundry", "wc"],
+          "upper": ["bedroom_1_ensuite", "bedroom_2", "bedroom_3", "bathroom"]
+        },
+        "gfa": 168,
+        "notes": "Standard 3-bedroom layout with master ensuite"
+      },
+      {
+        "id": "3bed_study",
+        "name": "3 Bedroom with Study",
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "hasStudy": true,
+        "configuration": {
+          "ground": ["living", "dining", "kitchen", "study", "garage", "laundry", "wc"],
+          "upper": ["bedroom_1_ensuite", "bedroom_2", "bedroom_3", "bathroom"]
+        },
+        "gfa": 175,
+        "notes": "3-bedroom layout with dedicated ground floor study"
+      },
+      {
+        "id": "4bed_standard",
+        "name": "4 Bedroom Standard",
+        "bedrooms": 4,
+        "bathrooms": 2,
+        "configuration": {
+          "ground": ["living", "dining", "kitchen", "bedroom_4", "garage", "laundry", "wc"],
+          "upper": ["bedroom_1_ensuite", "bedroom_2", "bedroom_3", "bathroom"]
+        },
+        "gfa": 195,
+        "notes": "4-bedroom layout with ground floor bedroom option"
+      },
+      {
+        "id": "4bed_rumpus",
+        "name": "4 Bedroom with Rumpus",
+        "bedrooms": 4,
+        "bathrooms": 2.5,
+        "hasRumpus": true,
+        "configuration": {
+          "ground": ["living", "dining", "kitchen", "garage", "laundry", "wc"],
+          "upper": ["bedroom_1_ensuite", "bedroom_2", "bedroom_3", "bedroom_4", "bathroom", "rumpus"]
+        },
+        "gfa": 210,
+        "notes": "4-bedroom layout with upper floor rumpus room"
+      }
+    ],
+
+    "slopeVariants": [
+      {
+        "id": "flat",
+        "name": "Flat Site",
+        "slopeFrontToBack": 0,
+        "slopeSideToSide": 0,
+        "foundationType": "slab_on_ground",
+        "notes": "Base pattern for flat sites"
+      },
+      {
+        "id": "gentle_fall_rear",
+        "name": "Gentle Fall to Rear",
+        "slopeFrontToBack": 0.6,
+        "slopeSideToSide": 0,
+        "foundationType": "stepped_slab",
+        "notes": "Stepped floor levels to follow site slope"
+      },
+      {
+        "id": "moderate_fall_rear",
+        "name": "Moderate Fall to Rear",
+        "slopeFrontToBack": 1.35,
+        "slopeSideToSide": 0,
+        "foundationType": "split_level",
+        "notes": "Split-level design for steeper sites"
+      },
+      {
+        "id": "crossfall",
+        "name": "Crossfall Site",
+        "slopeFrontToBack": 0,
+        "slopeSideToSide": 1.2,
+        "foundationType": "stepped_slab",
+        "notes": "Dwellings at different levels to accommodate crossfall"
+      }
+    ],
+
+    "materialPalettes": [
+      {
+        "id": "palette_01",
+        "name": "Contemporary Light",
+        "characterContext": "New suburban areas",
+        "materials": {
+          "primaryCladding": {
+            "type": "Face brick",
+            "colour": "Light grey/white",
+            "mortar": "Colour matched"
+          },
+          "secondaryCladding": {
+            "type": "Weatherboard or fibre cement",
+            "colour": "White",
+            "finish": "Smooth"
+          },
+          "roofing": {
+            "type": "Colorbond",
+            "colour": "Surfmist or similar light tone",
+            "pitch": "25 degrees"
+          },
+          "windows": {
+            "frame": "Aluminium",
+            "colour": "Black or charcoal",
+            "glazing": "Clear"
+          },
+          "garage": {
+            "door": "Sectional",
+            "colour": "White or light grey"
+          }
+        }
+      },
+      {
+        "id": "palette_02",
+        "name": "Federation Inspired",
+        "characterContext": "Established suburban areas",
+        "materials": {
+          "primaryCladding": {
+            "type": "Face brick",
+            "colour": "Red/brown blend",
+            "mortar": "Cream"
+          },
+          "secondaryCladding": {
+            "type": "Weatherboard",
+            "colour": "Cream or heritage green",
+            "finish": "Painted timber or fibre cement"
+          },
+          "roofing": {
+            "type": "Concrete tile",
+            "colour": "Terracotta or slate grey",
+            "pitch": "25 degrees"
+          },
+          "windows": {
+            "frame": "Timber or aluminium",
+            "colour": "Cream or heritage green",
+            "glazing": "Clear"
+          },
+          "garage": {
+            "door": "Sectional",
+            "colour": "Heritage green or cream"
+          }
+        }
+      },
+      {
+        "id": "palette_03a",
+        "name": "Coastal Modern",
+        "characterContext": "Coastal and beach areas",
+        "materials": {
+          "primaryCladding": {
+            "type": "Rendered masonry",
+            "colour": "White or off-white",
+            "finish": "Smooth render"
+          },
+          "secondaryCladding": {
+            "type": "Timber battens",
+            "colour": "Natural or greywash",
+            "finish": "Hardwood"
+          },
+          "roofing": {
+            "type": "Colorbond",
+            "colour": "Dune or paperbark",
+            "pitch": "15-25 degrees"
+          },
+          "windows": {
+            "frame": "Aluminium",
+            "colour": "White",
+            "glazing": "Clear"
+          },
+          "garage": {
+            "door": "Sectional or timber look",
+            "colour": "White or timber"
+          }
+        }
+      },
+      {
+        "id": "palette_03b",
+        "name": "Bush Contemporary",
+        "characterContext": "Semi-rural and bushland edge areas",
+        "materials": {
+          "primaryCladding": {
+            "type": "Face brick or masonry",
+            "colour": "Earth tones - brown/charcoal",
+            "mortar": "Colour matched"
+          },
+          "secondaryCladding": {
+            "type": "Timber cladding",
+            "colour": "Natural timber or charcoal stain",
+            "finish": "Hardwood boards"
+          },
+          "roofing": {
+            "type": "Colorbond",
+            "colour": "Monument or basalt",
+            "pitch": "25-35 degrees"
+          },
+          "windows": {
+            "frame": "Aluminium",
+            "colour": "Charcoal or black",
+            "glazing": "Clear or tinted"
+          },
+          "garage": {
+            "door": "Sectional",
+            "colour": "Charcoal or timber look"
+          }
+        }
+      }
+    ],
+
+    "bathroomVariants": [
+      {
+        "id": "ensuite_standard",
+        "name": "Standard Ensuite",
+        "fixtures": ["shower", "toilet", "vanity"],
+        "area": 4.5,
+        "notes": "Compact ensuite to master bedroom"
+      },
+      {
+        "id": "ensuite_bath",
+        "name": "Ensuite with Bath",
+        "fixtures": ["shower", "bath", "toilet", "vanity"],
+        "area": 6.0,
+        "notes": "Larger ensuite option including freestanding bath"
+      },
+      {
+        "id": "main_bathroom",
+        "name": "Main Bathroom",
+        "fixtures": ["shower", "bath", "toilet", "vanity"],
+        "area": 5.5,
+        "notes": "Family bathroom serving secondary bedrooms"
+      }
+    ]
+  },
+
+  "dwellingTypes": [
+    {
+      "id": "3B_SEMI",
+      "category": "3bed",
+      "name": "3 Bedroom Semi",
+      "areas": {
+        "internal": 168,
+        "garage": 18,
+        "alfresco": 12,
+        "privateOpenSpace": 45
+      },
+      "storage": {
+        "garageStorage": 4,
+        "linen": 2
+      },
+      "rooms": {
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "livingAreas": 1,
+        "hasStudy": false
+      },
+      "features": [
+        "master_ensuite",
+        "open_plan_living",
+        "private_rear_garden",
+        "single_garage"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver",
+        "stepFreeEntry": true
+      }
+    },
+    {
+      "id": "3B_SEMI_STUDY",
+      "category": "3bed",
+      "name": "3 Bedroom Semi with Study",
+      "areas": {
+        "internal": 175,
+        "garage": 18,
+        "alfresco": 12,
+        "privateOpenSpace": 40
+      },
+      "storage": {
+        "garageStorage": 4,
+        "linen": 2
+      },
+      "rooms": {
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "livingAreas": 1,
+        "hasStudy": true
+      },
+      "features": [
+        "master_ensuite",
+        "open_plan_living",
+        "dedicated_study",
+        "private_rear_garden",
+        "single_garage"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver",
+        "stepFreeEntry": true
+      }
+    },
+    {
+      "id": "4B_SEMI",
+      "category": "4bed",
+      "name": "4 Bedroom Semi",
+      "areas": {
+        "internal": 195,
+        "garage": 18,
+        "alfresco": 15,
+        "privateOpenSpace": 50
+      },
+      "storage": {
+        "garageStorage": 4,
+        "linen": 3
+      },
+      "rooms": {
+        "bedrooms": 4,
+        "bathrooms": 2,
+        "livingAreas": 1,
+        "hasStudy": false
+      },
+      "features": [
+        "master_ensuite",
+        "open_plan_living",
+        "ground_floor_bedroom",
+        "private_rear_garden",
+        "single_garage"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver",
+        "stepFreeEntry": true,
+        "groundFloorBedroom": true
+      }
+    },
+    {
+      "id": "4B_SEMI_RUMPUS",
+      "category": "4bed",
+      "name": "4 Bedroom Semi with Rumpus",
+      "areas": {
+        "internal": 210,
+        "garage": 18,
+        "alfresco": 15,
+        "privateOpenSpace": 50
+      },
+      "storage": {
+        "garageStorage": 4,
+        "linen": 3
+      },
+      "rooms": {
+        "bedrooms": 4,
+        "bathrooms": 2.5,
+        "livingAreas": 2,
+        "hasStudy": false,
+        "hasRumpus": true
+      },
+      "features": [
+        "master_ensuite",
+        "open_plan_living",
+        "upstairs_rumpus",
+        "powder_room",
+        "private_rear_garden",
+        "single_garage"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver",
+        "stepFreeEntry": true
+      }
+    }
+  ],
+
+  "designFeatures": {
+    "fixed": [
+      {
+        "id": "party_wall",
+        "category": "structure",
+        "name": "Party Wall Location",
+        "description": "Central party wall between dwellings is fixed",
+        "reason": "Structural efficiency and acoustic separation"
+      },
+      {
+        "id": "dwelling_footprint",
+        "category": "planning",
+        "name": "Dwelling Footprint",
+        "description": "Overall building footprint and setbacks are fixed",
+        "reason": "Compliance with development standards"
+      },
+      {
+        "id": "roof_form",
+        "category": "appearance",
+        "name": "Roof Form",
+        "description": "Primary roof pitch and form are fixed",
+        "reason": "Street presentation and character consistency"
+      },
+      {
+        "id": "entry_location",
+        "category": "access",
+        "name": "Entry Locations",
+        "description": "Front entry and garage locations are fixed",
+        "reason": "Street address and vehicle access"
+      },
+      {
+        "id": "wet_area_locations",
+        "category": "internal_planning",
+        "name": "Wet Area Locations",
+        "description": "Kitchen and bathroom locations are fixed",
+        "reason": "Plumbing efficiency and stacking"
+      },
+      {
+        "id": "stair_location",
+        "category": "circulation",
+        "name": "Internal Stair Location",
+        "description": "Position of internal staircase is fixed",
+        "reason": "Structural efficiency and circulation"
+      }
+    ],
+    "flexible": [
+      {
+        "id": "material_palette",
+        "category": "appearance",
+        "name": "Material Palette",
+        "description": "Choice of four material palette options",
+        "options": ["palette_01", "palette_02", "palette_03a", "palette_03b"],
+        "constraints": ["Must select complete palette, not mix materials"]
+      },
+      {
+        "id": "bedroom_configuration",
+        "category": "internal_planning",
+        "name": "Bedroom Configuration",
+        "description": "Choice between 3 and 4 bedroom layouts",
+        "options": ["3bed_standard", "3bed_study", "4bed_standard", "4bed_rumpus"],
+        "constraints": ["Must suit lot size and policy area requirements"]
+      },
+      {
+        "id": "parking_type",
+        "category": "services",
+        "name": "Parking Configuration",
+        "description": "Choice of garage or carport",
+        "options": ["garage", "carport"],
+        "constraints": ["Garage preferred for internal access"]
+      },
+      {
+        "id": "bathroom_options",
+        "category": "internal_planning",
+        "name": "Bathroom Configuration",
+        "description": "Ensuite and main bathroom options",
+        "options": ["ensuite_standard", "ensuite_bath", "main_bathroom"],
+        "constraints": ["Must meet minimum requirements"]
+      },
+      {
+        "id": "fixture_fittings",
+        "category": "internal_planning",
+        "name": "Fixtures and Fittings",
+        "description": "Selection of fixtures and fittings within rooms",
+        "constraints": [
+          "No reduction in clearances",
+          "Must maintain accessibility requirements"
+        ]
+      },
+      {
+        "id": "mirrored_layouts",
+        "category": "internal_planning",
+        "name": "Mirrored Dwelling Layouts",
+        "description": "Dwellings can be mirrored to optimise solar access",
+        "constraints": ["Only where shown in pattern drawings"]
+      }
+    ]
+  },
+
+  "services": {
+    "waste": {
+      "collectionMethod": "kerbside",
+      "frequency": "weekly",
+      "binsPerDwelling": {
+        "general": 1,
+        "recycling": 1,
+        "organics": 1
+      },
+      "binSize": 240,
+      "unit": "litres",
+      "storageLocation": "garage_or_side_access"
+    },
+
+    "parking": {
+      "residentialClass": "1A",
+      "spaceDimensions": {
+        "garage": {
+          "minWidth": 3.0,
+          "minLength": 6.0,
+          "minHeight": 2.4
+        },
+        "carport": {
+          "minWidth": 3.0,
+          "minLength": 5.5,
+          "minHeight": 2.4
+        }
+      },
+      "drivewayAccess": {
+        "maxGrade": "1:5",
+        "minWidth": 3.0,
+        "sharedDriveway": false
+      },
+      "notes": "Each dwelling has separate driveway and parking"
+    },
+
+    "electrical": {
+      "supplyType": "individual_metered",
+      "photovoltaics": {
+        "roofAreaAvailable": 80,
+        "unit": "m2",
+        "optionalInstallation": true
+      },
+      "evCharging": {
+        "provisionRequired": true,
+        "type": "conduit_to_garage"
+      }
+    },
+
+    "hydraulic": {
+      "waterSupply": "individual_metered",
+      "sewerage": "separate_connections",
+      "stormwater": {
+        "onSiteDetention": "as_required",
+        "rainwaterTanks": "optional"
+      },
+      "hotWater": {
+        "options": ["solar", "heat_pump", "gas_instantaneous", "electric_storage"],
+        "location": "external_or_garage"
+      }
+    }
+  }
+}

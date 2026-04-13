@@ -1,0 +1,771 @@
+{
+  "$schema": "./pattern-book-schema.json",
+  "metadata": {
+    "id": "MH01",
+    "name": "Row Homes 01",
+    "architect": "SAHA",
+    "version": "1.0",
+    "releaseDate": "2025-07-01",
+    "developmentType": "multi_dwelling_housing",
+    "buildingClass": "1a",
+    "description": "Modern and relaxed homes with a garden outlook and light, airy interiors efficiently planned over 2 levels. Each home has its own separate ground floor entrance and courtyard garden.",
+    "designConcepts": [
+      "Generous living areas directly connected to wide private garden courtyards",
+      "Each home 2 storeys with separate ground floor entrance",
+      "Efficiently planned interiors to maximise use of space",
+      "Living room downstairs and bedrooms upstairs for good separation",
+      "Slender street frontage and wrap-around balconies",
+      "Ground floor brickwork and lightweight first floor balconies",
+      "Modern and relaxed character with elegant vertical elements"
+    ],
+    "ownershipTypes": ["strata"],
+    "applicablePolicies": [
+      {
+        "name": "Pattern Book Development Code 2025",
+        "description": "Pattern book development under State Environmental Planning Policy (Exempt and Complying Development Codes) 2008"
+      },
+      {
+        "name": "Low and Mid-Rise Housing Areas",
+        "reference": "Section 163 Housing SEPP"
+      },
+      {
+        "name": "Non-LMR Housing Areas",
+        "reference": "Local Environmental Plan provisions"
+      }
+    ]
+  },
+
+  "siteEligibility": {
+    "siteTypes": {
+      "allowed": ["mid_block", "corner", "rear_laneway"],
+      "excluded": ["battle_axe", "irregular"]
+    },
+
+    "lotDimensions": {
+      "lmr": {
+        "absoluteMinimums": {
+          "width": 13.0,
+          "length": 38.5,
+          "area": 500
+        },
+        "absoluteMaximums": {
+          "width": null,
+          "length": null,
+          "area": null
+        }
+      },
+      "nonLmr": {
+        "absoluteMinimums": {
+          "width": 15.5,
+          "length": 38.7,
+          "area": 600
+        },
+        "cornerAndLaneway": {
+          "width": 13.0,
+          "notes": "13m min for corner or rear-lane sites"
+        },
+        "absoluteMaximums": {
+          "width": null,
+          "length": null,
+          "area": null
+        }
+      }
+    },
+
+    "excludedLand": [
+      {
+        "type": "bushfire_prone",
+        "description": "Land identified as bushfire-prone"
+      },
+      {
+        "type": "flood_prone_high_risk",
+        "description": "Certain flood-prone land in high risk locations"
+      },
+      {
+        "type": "state_heritage_item",
+        "description": "State heritage items"
+      },
+      {
+        "type": "local_heritage_item",
+        "description": "Local heritage items"
+      },
+      {
+        "type": "heritage_conservation_area",
+        "description": "Heritage conservation areas"
+      }
+    ],
+
+    "slopeConstraints": {
+      "maxFrontToBackMetres": 3.6,
+      "maxSideToSideMetres": 1.1,
+      "notes": "Slope tolerance varies by module selection: 2.7-3.6m front to back or 1.1m side to side depending on pattern modules selected"
+    },
+
+    "solarOrientation": {
+      "allOrientationsSupported": true,
+      "orientationGuidance": [
+        {
+          "frontageDirection": "north",
+          "notes": "Design configurable for north-facing"
+        },
+        {
+          "frontageDirection": "south",
+          "notes": "Design configurable for south-facing"
+        },
+        {
+          "frontageDirection": "east",
+          "notes": "Design configurable for east-facing"
+        },
+        {
+          "frontageDirection": "west",
+          "notes": "Design configurable for west-facing"
+        }
+      ]
+    }
+  },
+
+  "developmentStandards": {
+    "height": {
+      "lmr": {
+        "maxMetres": 9.5,
+        "maxStoreys": 2,
+        "minStoreys": 2,
+        "basePatternHeight": 7.8
+      },
+      "nonLmr": {
+        "maxMetres": 8.5,
+        "maxStoreys": 2,
+        "minStoreys": 2,
+        "basePatternHeight": 7.8
+      },
+      "exclusionsFromMaxHeight": [
+        "chimneys",
+        "flues",
+        "domestic_aerials"
+      ]
+    },
+
+    "setbacks": {
+      "front": {
+        "lmr": {
+          "min": 6.0,
+          "notes": "Primary street frontage setback"
+        },
+        "nonLmr": {
+          "min": 6.0,
+          "alternativeRule": "Not less than average setback from primary road of nearest 2 dwelling houses within 40m on same side, whichever is greater"
+        }
+      },
+      "rear": {
+        "lmr": {
+          "min": 7.1
+        },
+        "nonLmr": {
+          "min": 11.5
+        }
+      },
+      "side": {
+        "lmr": {
+          "min": 2.5
+        },
+        "nonLmr": {
+          "min": 4.0,
+          "cornerAndLaneway": 2.5,
+          "notes": "2.5m min for corner or rear-lane sites"
+        }
+      },
+      "secondary": {
+        "min": 3.0,
+        "notes": "Secondary street setback for corner lots"
+      }
+    },
+
+    "fsr": {
+      "lmr": {
+        "max": 0.8,
+        "basePattern": 0.6,
+        "notes": "As defined by LMR reforms; base pattern is 0.6:1"
+      },
+      "nonLmr": {
+        "max": 0.5,
+        "basePattern": 0.44,
+        "notes": "Maximum 0.5:1; base pattern is 0.44:1"
+      }
+    },
+
+    "dwellings": {
+      "min": 3,
+      "max": 4,
+      "configuration": "row_homes",
+      "bedroomOptions": [1, 2, 3]
+    },
+
+    "landscapeRequirements": {
+      "minPercentage": 15,
+      "guideReference": "NSW Housing Pattern Book Landscape design guide"
+    },
+
+    "parking": {
+      "lmr": {
+        "spacesPerDwelling": 0.5,
+        "location": "front_hardstand",
+        "notes": "Parking typically at front for LMR areas"
+      },
+      "nonLmr": {
+        "spacesPerDwelling": 1,
+        "location": "rear_car_parks",
+        "notes": "Parking typically at rear for non-LMR areas"
+      }
+    }
+  },
+
+  "adaptations": {
+    "policyAreaVariants": [
+      {
+        "id": "lmr_f1m1m1f1_4bed",
+        "policyArea": "lmr",
+        "modules": "F1/M1/M1/F1",
+        "lotWidth": 13.0,
+        "lotLength": 33.4,
+        "storeys": 2,
+        "maxHeight": 9.5,
+        "gfa": 206,
+        "dwellingYield": {
+          "oneBed": 4,
+          "twoBed": 0,
+          "threeBed": 0,
+          "total": 4
+        },
+        "isBasePattern": true
+      },
+      {
+        "id": "non_lmr_f1m1m1f1_4bed",
+        "policyArea": "non_lmr",
+        "modules": "F1/M1/M1/F1",
+        "lotWidth": 15.5,
+        "lotLength": 38.0,
+        "storeys": 2,
+        "maxHeight": 8.5,
+        "gfa": 206,
+        "dwellingYield": {
+          "oneBed": 4,
+          "twoBed": 0,
+          "threeBed": 0,
+          "total": 4
+        }
+      },
+      {
+        "id": "lmr_f2m1m1f2_6bed",
+        "policyArea": "lmr",
+        "modules": "F2/M1/M1/F2",
+        "lotWidth": 13.0,
+        "lotLength": 38.1,
+        "storeys": 2,
+        "maxHeight": 9.5,
+        "gfa": 270,
+        "dwellingYield": {
+          "oneBed": 2,
+          "twoBed": 2,
+          "threeBed": 0,
+          "total": 4
+        }
+      },
+      {
+        "id": "non_lmr_f2m1m1f2_6bed",
+        "policyArea": "non_lmr",
+        "modules": "F2/M1/M1/F2",
+        "lotWidth": 15.5,
+        "lotLength": 42.7,
+        "storeys": 2,
+        "maxHeight": 8.5,
+        "gfa": 270,
+        "dwellingYield": {
+          "oneBed": 2,
+          "twoBed": 2,
+          "threeBed": 0,
+          "total": 4
+        }
+      },
+      {
+        "id": "lmr_f2m2m2f2_8bed",
+        "policyArea": "lmr",
+        "modules": "F2/M2/M2/F2",
+        "lotWidth": 13.0,
+        "lotLength": 42.9,
+        "storeys": 2,
+        "maxHeight": 9.5,
+        "gfa": 334,
+        "dwellingYield": {
+          "oneBed": 0,
+          "twoBed": 4,
+          "threeBed": 0,
+          "total": 4
+        }
+      },
+      {
+        "id": "non_lmr_f2m2m2f2_8bed",
+        "policyArea": "non_lmr",
+        "modules": "F2/M2/M2/F2",
+        "lotWidth": 15.5,
+        "lotLength": 47.5,
+        "storeys": 2,
+        "maxHeight": 8.5,
+        "gfa": 334,
+        "dwellingYield": {
+          "oneBed": 0,
+          "twoBed": 4,
+          "threeBed": 0,
+          "total": 4
+        }
+      },
+      {
+        "id": "lmr_f2m2m2f3_9bed",
+        "policyArea": "lmr",
+        "modules": "F2/M2/M2/F3",
+        "lotWidth": 13.0,
+        "lotLength": 45.2,
+        "storeys": 2,
+        "maxHeight": 9.5,
+        "gfa": 359,
+        "dwellingYield": {
+          "oneBed": 0,
+          "twoBed": 3,
+          "threeBed": 1,
+          "total": 4
+        }
+      },
+      {
+        "id": "non_lmr_f2m2m2f3_9bed",
+        "policyArea": "non_lmr",
+        "modules": "F2/M2/M2/F3",
+        "lotWidth": 15.5,
+        "lotLength": 49.8,
+        "storeys": 2,
+        "maxHeight": 8.5,
+        "gfa": 359,
+        "dwellingYield": {
+          "oneBed": 0,
+          "twoBed": 3,
+          "threeBed": 1,
+          "total": 4
+        }
+      },
+      {
+        "id": "lmr_f3m2m2f3_10bed",
+        "policyArea": "lmr",
+        "modules": "F3/M2/M2/F3",
+        "lotWidth": 13.0,
+        "lotLength": 47.6,
+        "storeys": 2,
+        "maxHeight": 9.5,
+        "gfa": 384,
+        "dwellingYield": {
+          "oneBed": 0,
+          "twoBed": 2,
+          "threeBed": 2,
+          "total": 4
+        }
+      },
+      {
+        "id": "non_lmr_f3m2m2f3_10bed",
+        "policyArea": "non_lmr",
+        "modules": "F3/M2/M2/F3",
+        "lotWidth": 15.5,
+        "lotLength": 52.2,
+        "storeys": 2,
+        "maxHeight": 8.5,
+        "gfa": 384,
+        "dwellingYield": {
+          "oneBed": 0,
+          "twoBed": 2,
+          "threeBed": 2,
+          "total": 4
+        }
+      },
+      {
+        "id": "lmr_f3m3m3f3_12bed",
+        "policyArea": "lmr",
+        "modules": "F3/M3/M3/F3",
+        "lotWidth": 13.0,
+        "lotLength": 52.4,
+        "storeys": 2,
+        "maxHeight": 9.5,
+        "gfa": 434,
+        "dwellingYield": {
+          "oneBed": 0,
+          "twoBed": 0,
+          "threeBed": 4,
+          "total": 4
+        }
+      },
+      {
+        "id": "non_lmr_f3m3m3f3_12bed",
+        "policyArea": "non_lmr",
+        "modules": "F3/M3/M3/F3",
+        "lotWidth": 15.5,
+        "lotLength": 57.0,
+        "storeys": 2,
+        "maxHeight": 8.5,
+        "gfa": 434,
+        "dwellingYield": {
+          "oneBed": 0,
+          "twoBed": 0,
+          "threeBed": 4,
+          "total": 4
+        }
+      }
+    ],
+
+    "moduleTypes": [
+      {
+        "id": "F1",
+        "name": "End Module 1-Bed",
+        "position": "end",
+        "bedrooms": 1,
+        "bathrooms": 1.5,
+        "hasBalconyWrap": true
+      },
+      {
+        "id": "F2",
+        "name": "End Module 2-Bed",
+        "position": "end",
+        "bedrooms": 2,
+        "bathrooms": 1.5,
+        "hasBalconyWrap": true
+      },
+      {
+        "id": "F3",
+        "name": "End Module 3-Bed",
+        "position": "end",
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "hasBalconyWrap": true
+      },
+      {
+        "id": "M1",
+        "name": "Middle Module 1-Bed",
+        "position": "middle",
+        "bedrooms": 1,
+        "bathrooms": 1.5
+      },
+      {
+        "id": "M2",
+        "name": "Middle Module 2-Bed",
+        "position": "middle",
+        "bedrooms": 2,
+        "bathrooms": 1.5
+      },
+      {
+        "id": "M3",
+        "name": "Middle Module 3-Bed",
+        "position": "middle",
+        "bedrooms": 3,
+        "bathrooms": 2
+      }
+    ],
+
+    "moduleCombinations4Unit": [
+      {
+        "id": "4_bed_total",
+        "modules": "F1/M1/M1/F1",
+        "totalBedrooms": 4,
+        "description": "4 x 1-bed units"
+      },
+      {
+        "id": "6_bed_total",
+        "modules": "F2/M1/M1/F2",
+        "totalBedrooms": 6,
+        "description": "2 x 2-bed end units, 2 x 1-bed middle units"
+      },
+      {
+        "id": "8_bed_total",
+        "modules": "F2/M2/M2/F2",
+        "totalBedrooms": 8,
+        "description": "4 x 2-bed units"
+      },
+      {
+        "id": "9_bed_total",
+        "modules": "F2/M2/M2/F3",
+        "totalBedrooms": 9,
+        "description": "1 x 3-bed, 3 x 2-bed units"
+      },
+      {
+        "id": "10_bed_total",
+        "modules": "F3/M2/M2/F3",
+        "totalBedrooms": 10,
+        "description": "2 x 3-bed end units, 2 x 2-bed middle units"
+      },
+      {
+        "id": "12_bed_total",
+        "modules": "F3/M3/M3/F3",
+        "totalBedrooms": 12,
+        "description": "4 x 3-bed units"
+      }
+    ],
+
+    "moduleCombinations3Unit": [
+      {
+        "id": "3_bed_total_3unit",
+        "modules": "F1/M1/F1",
+        "totalBedrooms": 3,
+        "description": "3 x 1-bed units"
+      },
+      {
+        "id": "5_bed_total_3unit",
+        "modules": "F2/M1/F2",
+        "totalBedrooms": 5,
+        "description": "2 x 2-bed, 1 x 1-bed units"
+      },
+      {
+        "id": "6_bed_total_3unit",
+        "modules": "F2/M2/F2",
+        "totalBedrooms": 6,
+        "description": "3 x 2-bed units"
+      },
+      {
+        "id": "7_bed_total_3unit",
+        "modules": "F2/M2/F3",
+        "totalBedrooms": 7,
+        "description": "1 x 3-bed, 2 x 2-bed units"
+      },
+      {
+        "id": "8_bed_total_3unit",
+        "modules": "F3/M2/F3",
+        "totalBedrooms": 8,
+        "description": "2 x 3-bed, 1 x 2-bed units"
+      },
+      {
+        "id": "9_bed_total_3unit",
+        "modules": "F3/M3/F3",
+        "totalBedrooms": 9,
+        "description": "3 x 3-bed units"
+      }
+    ],
+
+    "materialPalettes": [
+      {
+        "id": "palette_01",
+        "name": "Materials Palette 01",
+        "materials": {
+          "roofing": {
+            "type": "Metal roof (R.01)",
+            "includingGutters": true
+          },
+          "brick": {
+            "type": "Brick (B.01)",
+            "usage": "Party walls, side fences, landscape walls"
+          },
+          "exteriorPaint": {
+            "entry": "Exterior paint finishes C.02",
+            "general": "Exterior paint finishes C.01"
+          }
+        }
+      },
+      {
+        "id": "palette_02",
+        "name": "Materials Palette 02"
+      },
+      {
+        "id": "palette_03",
+        "name": "Materials Palette 03"
+      },
+      {
+        "id": "palette_04",
+        "name": "Materials Palette 04"
+      }
+    ],
+
+    "slopeVariants": [
+      {
+        "id": "flat",
+        "name": "Flat Site",
+        "slopeFrontToBack": 0,
+        "slopeSideToSide": 0
+      },
+      {
+        "id": "slope_4x2bed",
+        "name": "Slope for 4 x 2-bed Base Pattern",
+        "slopeFrontToBack": 2.7,
+        "slopeSideToSide": 1.1,
+        "notes": "Typical for 4 x 2-bed base pattern"
+      },
+      {
+        "id": "slope_other",
+        "name": "Other Dwelling Mix",
+        "slopeFrontToBack": 3.6,
+        "slopeSideToSide": 1.1,
+        "notes": "Other dwelling mixes need customisation per slope guidance"
+      }
+    ]
+  },
+
+  "dwellingTypes": [
+    {
+      "id": "ROW_HOME_1BED",
+      "category": "1bed",
+      "name": "1 Bedroom Row Home",
+      "rooms": {
+        "bedrooms": 1,
+        "bathrooms": 1.5,
+        "livingAreas": 1,
+        "hasStudy": true
+      },
+      "features": [
+        "private_courtyard_garden",
+        "work_from_home_space",
+        "separate_entrance"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver",
+        "canAdaptToBeyondMinimum": true
+      }
+    },
+    {
+      "id": "ROW_HOME_2BED",
+      "category": "2bed",
+      "name": "2 Bedroom Row Home",
+      "rooms": {
+        "bedrooms": 2,
+        "bathrooms": 1.5,
+        "livingAreas": 1,
+        "hasStudy": true
+      },
+      "features": [
+        "private_courtyard_garden",
+        "wrap_around_balcony",
+        "work_from_home_space"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver",
+        "canAdaptToBeyondMinimum": true
+      }
+    },
+    {
+      "id": "ROW_HOME_3BED",
+      "category": "3bed",
+      "name": "3 Bedroom Row Home",
+      "rooms": {
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "livingAreas": 1,
+        "hasStudy": true
+      },
+      "features": [
+        "private_courtyard_garden",
+        "wrap_around_balcony",
+        "two_bathrooms",
+        "work_from_home_space"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver",
+        "canAdaptToBeyondMinimum": true
+      }
+    }
+  ],
+
+  "designFeatures": {
+    "fixed": [
+      {
+        "id": "modular_system",
+        "category": "structure",
+        "name": "Modular Design System",
+        "description": "End and middle modules that can be combined"
+      },
+      {
+        "id": "individual_entries",
+        "category": "access",
+        "name": "Individual Entry Alcoves",
+        "description": "Accessed from shared zone with landscaped pathway"
+      },
+      {
+        "id": "extended_eaves",
+        "category": "appearance",
+        "name": "Extended Eaves",
+        "description": "Regular column spacing provides shade and visual rhythm"
+      }
+    ],
+    "flexible": [
+      {
+        "id": "module_mix",
+        "category": "internal_planning",
+        "name": "Module Mix",
+        "description": "Various 1-bed, 2-bed and 3-bed combinations depending on site"
+      },
+      {
+        "id": "parking_location",
+        "category": "parking",
+        "name": "Parking Location",
+        "description": "Front or rear depending on site depth and location"
+      },
+      {
+        "id": "material_palette",
+        "category": "appearance",
+        "name": "Material Palette",
+        "description": "Choice of four material palette options"
+      },
+      {
+        "id": "bathroom_layouts",
+        "category": "internal_planning",
+        "name": "Bathroom Layouts",
+        "description": "1.5 bathrooms for 1-2 bed, 2 bathrooms for 3 bed"
+      }
+    ]
+  },
+
+  "services": {
+    "waste": {
+      "collectionMethod": "kerbside",
+      "binsPerDwelling": {
+        "general": 1,
+        "recycling": 1,
+        "organics": 1
+      }
+    },
+
+    "electrical": {
+      "supplyType": "fully_electric",
+      "photovoltaics": {
+        "roofAreaAvailable": true,
+        "notes": "Large roof area can support solar panels"
+      }
+    },
+
+    "hydraulic": {
+      "rainwaterTanks": {
+        "included": true
+      },
+      "hotWater": {
+        "options": ["heat_pump"]
+      }
+    }
+  },
+
+  "householdSuitability": [
+    {
+      "type": "Young families",
+      "description": "Private garden visible from downstairs living; home office supports flexible working"
+    },
+    {
+      "type": "Single parent families",
+      "description": "Spacious living areas and 1.5-2 bathrooms suitable for teen and adult children"
+    },
+    {
+      "type": "Ageing in place",
+      "description": "Designed to meet ABCB standard; can adapt to Beyond Minimum"
+    },
+    {
+      "type": "Co-living or share houses",
+      "description": "Separate living areas and multiple bathrooms suit share living"
+    }
+  ],
+
+  "nccCompliance": {
+    "buildingClass": "1a",
+    "nccVersion": "2022",
+    "constructionType": "simple_class_1",
+    "livableHousingStandard": {
+      "minimum": "silver",
+      "canAdaptTo": "gold"
+    }
+  }
+}

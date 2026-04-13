@@ -1,0 +1,590 @@
+{
+  "$schema": "./pattern-book-schema.json",
+  "metadata": {
+    "id": "TH03",
+    "name": "Terraces 03",
+    "architect": "Officer Woods Architects",
+    "version": "1.0",
+    "releaseDate": "2025-07-01",
+    "developmentType": "multi_dwelling_housing_terraces",
+    "buildingClass": "1a",
+    "description": "A respectful design nestled in a garden that chases the sun to create comfortable, light-filled interiors. North-facing living areas for all orientations with a familiar form to fit into residential neighbourhoods.",
+    "designConcepts": [
+      "North-facing living areas for all orientations",
+      "Familiar and respectful form to fit residential neighbourhoods",
+      "Double-height living space with sunlight and fresh air",
+      "Well-planned generous interiors for future adaptability",
+      "Private balcony for principal bedroom",
+      "Simple roof extending over front and rear for sun/rain protection",
+      "Masonry shared walls with lightweight framing"
+    ],
+    "ownershipTypes": ["torrens_title", "strata"],
+    "applicablePolicies": [
+      {
+        "name": "Pattern Book Development Code 2025",
+        "description": "Pattern book development under State Environmental Planning Policy (Exempt and Complying Development Codes) 2008"
+      },
+      {
+        "name": "Low and Mid-Rise Housing Areas",
+        "reference": "Section 163 Housing SEPP"
+      },
+      {
+        "name": "Non-LMR Housing Areas",
+        "reference": "Local Environmental Plan provisions"
+      }
+    ]
+  },
+
+  "siteEligibility": {
+    "siteTypes": {
+      "allowed": ["mid_block", "corner"],
+      "excluded": ["battle_axe", "irregular"]
+    },
+
+    "lotDimensions": {
+      "lmr": {
+        "absoluteMinimums": {
+          "width": 18.0,
+          "length": 27.8,
+          "area": 500
+        },
+        "absoluteMaximums": {
+          "width": null,
+          "length": null,
+          "area": null
+        }
+      },
+      "nonLmr": {
+        "absoluteMinimums": {
+          "width": 21.0,
+          "length": 28.6,
+          "area": 600
+        },
+        "absoluteMaximums": {
+          "width": null,
+          "length": null,
+          "area": null
+        }
+      }
+    },
+
+    "excludedLand": [
+      {
+        "type": "bushfire_prone",
+        "description": "Land identified as bushfire-prone"
+      },
+      {
+        "type": "flood_prone_high_risk",
+        "description": "Certain flood-prone land in high risk locations"
+      },
+      {
+        "type": "state_heritage_item",
+        "description": "State heritage items"
+      },
+      {
+        "type": "local_heritage_item",
+        "description": "Local heritage items"
+      },
+      {
+        "type": "heritage_conservation_area",
+        "description": "Heritage conservation areas"
+      }
+    ],
+
+    "slopeConstraints": {
+      "maxFrontToBackMetres": 2.3,
+      "maxSideToSideMetres": 1.2,
+      "allowedDirections": ["upslope_to_rear", "downslope_to_rear", "crossfall"],
+      "notes": "Pattern accommodates internal stairs and adjustments"
+    },
+
+    "solarOrientation": {
+      "allOrientationsSupported": true,
+      "designedForNorthFacing": true,
+      "orientationGuidance": [
+        {
+          "frontageDirection": "north",
+          "frontSetback": 8.0,
+          "notes": "North-facing lots have 8m front setback"
+        },
+        {
+          "frontageDirection": "south",
+          "frontSetback": 3.5,
+          "notes": "Living areas face north to rear"
+        },
+        {
+          "frontageDirection": "east",
+          "frontSetback": 3.5,
+          "notes": "Design configured for east orientation"
+        },
+        {
+          "frontageDirection": "west",
+          "frontSetback": 3.5,
+          "notes": "Design configured for west orientation"
+        }
+      ]
+    }
+  },
+
+  "developmentStandards": {
+    "height": {
+      "lmr": {
+        "maxMetres": 9.5,
+        "maxStoreys": 2,
+        "minStoreys": 2,
+        "basePatternHeight": 7.0
+      },
+      "nonLmr": {
+        "maxMetres": 9.0,
+        "maxStoreys": 2,
+        "minStoreys": 2,
+        "basePatternHeight": 7.0
+      },
+      "exclusionsFromMaxHeight": [
+        "chimneys",
+        "flues",
+        "domestic_aerials"
+      ],
+      "notes": "Maximum building height allows for adaptation to slope"
+    },
+
+    "setbacks": {
+      "front": {
+        "lmr": {
+          "standard": {
+            "min": 3.5,
+            "applicableTo": ["south", "east", "west"]
+          },
+          "northFacing": {
+            "min": 8.0,
+            "notes": "For north-facing lots"
+          }
+        },
+        "nonLmr": {
+          "standard": {
+            "min": 3.5,
+            "alternativeRule": "Not less than average setback from primary road of nearest 2 dwelling houses within 40m on same side, whichever is greater",
+            "applicableTo": ["south", "east", "west"]
+          },
+          "northFacing": {
+            "min": 8.0,
+            "notes": "For north-facing lots"
+          }
+        }
+      },
+      "rear": {
+        "lmr": {
+          "min": 3.0
+        },
+        "nonLmr": {
+          "min": 3.5
+        }
+      },
+      "side": {
+        "lmr": {
+          "min": 0.9,
+          "notes": "Side boundary setback in LMR areas"
+        },
+        "nonLmr": {
+          "min": 1.5,
+          "notes": "Side boundary setback in non-LMR areas"
+        }
+      },
+      "secondary": {
+        "min": 2.0,
+        "notes": "Secondary street setback for corner lots"
+      }
+    },
+
+    "fsr": {
+      "lmr": {
+        "max": 0.8,
+        "basePattern": 0.58,
+        "notes": "Maximum 0.8:1; base pattern is 0.58:1"
+      },
+      "nonLmr": {
+        "max": 0.75,
+        "basePattern": 0.59,
+        "notes": "Maximum 0.75:1; base pattern is 0.59:1"
+      }
+    },
+
+    "streetFrontage": {
+      "maxUnbroken": 45,
+      "unit": "metres"
+    },
+
+    "dwellings": {
+      "min": 3,
+      "max": 3,
+      "configuration": "terraces",
+      "bedroomOptions": [2, 3, 4]
+    },
+
+    "landscapeRequirements": {
+      "minPercentage": 20,
+      "guideReference": "NSW Housing Pattern Book Landscape design guide"
+    },
+
+    "parking": {
+      "lmr": {
+        "spacesPerDwelling": 0.5,
+        "notes": "Parking provided in front setback hardstand"
+      },
+      "nonLmr": {
+        "spacesPerDwelling": 1,
+        "notes": "Parking provided in front setback hardstand"
+      },
+      "carportOption": true,
+      "notes": "Carport allowed in front setback designated parking spaces"
+    }
+  },
+
+  "adaptations": {
+    "policyAreaVariants": [
+      {
+        "id": "lmr_base",
+        "policyArea": "lmr",
+        "lotWidth": 18.0,
+        "lotLength": 27.8,
+        "siteArea": 500,
+        "storeys": 2,
+        "maxHeight": 9.5,
+        "maxFsr": 0.58,
+        "gfa": 290,
+        "dwellingYield": {
+          "twoBed": 0,
+          "threeBed": 3,
+          "fourBed": 0,
+          "total": 3
+        },
+        "parking": {
+          "hardstand": 3,
+          "carportOption": true
+        },
+        "isBasePattern": true
+      },
+      {
+        "id": "non_lmr_base",
+        "policyArea": "non_lmr",
+        "lotWidth": 21.0,
+        "lotLength": 28.6,
+        "siteArea": 600,
+        "storeys": 2,
+        "maxHeight": 9.0,
+        "maxFsr": 0.59,
+        "gfa": 354,
+        "dwellingYield": {
+          "twoBed": 0,
+          "threeBed": 3,
+          "fourBed": 0,
+          "total": 3
+        },
+        "parking": {
+          "hardstand": 3,
+          "carportOption": true
+        },
+        "isBasePattern": true
+      }
+    ],
+
+    "terraceTypeVariants": [
+      {
+        "id": "small_terrace",
+        "name": "Small Terrace",
+        "livabilityStandard": "silver",
+        "options": [1, 2, 3, 4]
+      },
+      {
+        "id": "medium_terrace",
+        "name": "Medium Terrace",
+        "livabilityStandard": "silver",
+        "options": [5, 6, 7, 8, 9]
+      },
+      {
+        "id": "large_terrace",
+        "name": "Large Terrace",
+        "livabilityStandard": "gold",
+        "options": [10, 11, 12, 13, 14]
+      }
+    ],
+
+    "groundFloorVariants": [
+      {
+        "id": "entry_option_01",
+        "name": "Ground Floor Entry Option 01",
+        "terraceType": "small"
+      },
+      {
+        "id": "entry_option_02",
+        "name": "Ground Floor Entry Option 02",
+        "terraceType": "small"
+      },
+      {
+        "id": "large_flexible_room",
+        "name": "Ground Floor Large Flexible Room",
+        "terraceType": "medium"
+      },
+      {
+        "id": "private_flexible_room",
+        "name": "Ground Floor Private Flexible Room",
+        "terraceType": "medium"
+      },
+      {
+        "id": "flexible_room_ensuite",
+        "name": "Ground Floor Flexible Room with Ensuite",
+        "terraceType": "large"
+      },
+      {
+        "id": "larger_laundry",
+        "name": "Ground Floor Larger Laundry",
+        "terraceType": "large"
+      }
+    ],
+
+    "firstFloorVariants": [
+      {
+        "id": "bath_and_study",
+        "name": "First Floor Bath and Study",
+        "terraceType": "small"
+      },
+      {
+        "id": "2_bath",
+        "name": "First Floor 2 Bath",
+        "terraceType": "small"
+      },
+      {
+        "id": "bathroom_study_void",
+        "name": "First Floor Bathroom Study with Void",
+        "terraceType": "medium"
+      },
+      {
+        "id": "3bed_2bath",
+        "name": "First Floor 3 Bed 2 Bath",
+        "terraceType": ["medium", "large"]
+      },
+      {
+        "id": "4bed_2.5bath",
+        "name": "First Floor 4 Bed 2.5 Bath",
+        "terraceType": "large"
+      }
+    ],
+
+    "specialAdaptations": [
+      {
+        "id": "entry_relocation_south",
+        "name": "Entry Relocation for South-facing Terraces",
+        "description": "Entry repositioned for south-facing lots",
+        "terraceType": "large"
+      }
+    ],
+
+    "materialPalettes": [
+      {
+        "id": "palette_01",
+        "name": "Materials Palette 01",
+        "materials": {
+          "commonWall": {
+            "options": ["Red face brick masonry", "Rendered brick masonry", "Cream face brick masonry"]
+          },
+          "externalCladding": {
+            "options": ["Vertical timber v-groove", "Corrugated zincalume cladding", "Fibre cement large format sheeting"]
+          },
+          "internalLining": {
+            "type": "Internal wall and ceiling lining"
+          },
+          "cabinetry": {
+            "options": ["Painted door with laminate benchtop", "Timber veneer with stainless steel", "Laminate with porcelain"]
+          }
+        }
+      },
+      {
+        "id": "palette_02",
+        "name": "Materials Palette 02"
+      },
+      {
+        "id": "palette_03",
+        "name": "Materials Palette 03"
+      }
+    ],
+
+    "slopeVariants": [
+      {
+        "id": "flat",
+        "name": "Flat Site",
+        "slopeFrontToBack": 0,
+        "slopeSideToSide": 0
+      },
+      {
+        "id": "slope_front_back",
+        "name": "Slope Front to Back",
+        "slopeFrontToBack": 2.3,
+        "slopeSideToSide": 0
+      },
+      {
+        "id": "crossfall",
+        "name": "Crossfall Site",
+        "slopeFrontToBack": 0,
+        "slopeSideToSide": 1.2
+      }
+    ]
+  },
+
+  "dwellingTypes": [
+    {
+      "id": "SMALL_TERRACE",
+      "category": "2bed",
+      "name": "Small Terrace",
+      "rooms": {
+        "bedrooms": 2,
+        "bathrooms": 1.5,
+        "livingAreas": 1
+      },
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver"
+      }
+    },
+    {
+      "id": "MEDIUM_TERRACE",
+      "category": "3bed",
+      "name": "Medium Terrace",
+      "rooms": {
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "livingAreas": 1
+      },
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver"
+      }
+    },
+    {
+      "id": "LARGE_TERRACE",
+      "category": "4bed",
+      "name": "Large Terrace",
+      "rooms": {
+        "bedrooms": 4,
+        "bathrooms": 2.5,
+        "livingAreas": 1
+      },
+      "accessibility": {
+        "abcbLivableHousingStandard": "gold"
+      }
+    }
+  ],
+
+  "designFeatures": {
+    "fixed": [
+      {
+        "id": "party_walls",
+        "category": "structure",
+        "name": "Party Wall Locations",
+        "description": "Masonry shared walls between terraces"
+      },
+      {
+        "id": "north_facing_living",
+        "category": "planning",
+        "name": "North-facing Living Areas",
+        "description": "Living areas always face north"
+      },
+      {
+        "id": "roof_form",
+        "category": "appearance",
+        "name": "Simple Sloping Roof",
+        "description": "Roof extends over front and rear for protection"
+      }
+    ],
+    "flexible": [
+      {
+        "id": "terrace_size",
+        "category": "internal_planning",
+        "name": "Terrace Size",
+        "description": "Choice of small, medium or large terrace modules"
+      },
+      {
+        "id": "material_palette",
+        "category": "appearance",
+        "name": "Material Palette",
+        "description": "Choice of three material palette options"
+      },
+      {
+        "id": "ground_floor_layout",
+        "category": "internal_planning",
+        "name": "Ground Floor Layout",
+        "description": "Multiple entry and flexible room options"
+      },
+      {
+        "id": "first_floor_layout",
+        "category": "internal_planning",
+        "name": "First Floor Layout",
+        "description": "Multiple bedroom and bathroom configurations"
+      },
+      {
+        "id": "carport_option",
+        "category": "parking",
+        "name": "Carport",
+        "description": "Optional carport in front setback"
+      }
+    ]
+  },
+
+  "services": {
+    "waste": {
+      "collectionMethod": "kerbside",
+      "binsPerDwelling": {
+        "general": 1,
+        "recycling": 1,
+        "organics": 1
+      }
+    },
+
+    "electrical": {
+      "supplyType": "fully_electric",
+      "photovoltaics": {
+        "roofAreaAvailable": true,
+        "northFacingRoof": true,
+        "optionalInstallation": true
+      }
+    },
+
+    "hydraulic": {
+      "rainwaterTanks": {
+        "included": true
+      },
+      "hotWater": {
+        "options": ["heat_pump"]
+      }
+    }
+  },
+
+  "householdSuitability": [
+    {
+      "type": "Young families",
+      "description": "Private garden visible from living area"
+    },
+    {
+      "type": "Grown-up families",
+      "description": "Living areas separated from bedrooms with space for teen retreat or home office"
+    },
+    {
+      "type": "Extended families",
+      "description": "Flexible room on ground floor can become guest bedroom or granny flat"
+    },
+    {
+      "type": "Ageing in place",
+      "description": "Designed to meet ABCB standard; can adapt to Beyond Minimum"
+    },
+    {
+      "type": "Co-living or share houses",
+      "description": "Separation between bedrooms and living areas suits shared living"
+    }
+  ],
+
+  "nccCompliance": {
+    "buildingClass": "1a",
+    "nccVersion": "2022",
+    "livableHousingStandard": {
+      "minimum": "silver",
+      "goldOptionAvailable": true
+    }
+  }
+}

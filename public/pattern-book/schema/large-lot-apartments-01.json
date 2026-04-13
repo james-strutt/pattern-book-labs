@@ -1,0 +1,277 @@
+{
+  "$schema": "./pattern-book-schema.json",
+  "metadata": {
+    "id": "LLA01",
+    "name": "Large Lot Apartments 01",
+    "architect": "Silvester Fuller",
+    "version": "1.0",
+    "releaseDate": "2025-11-01",
+    "developmentType": "residential_flat_building",
+    "description": "A bold and sculptural apartment building with generous light-filled apartments and sweeping curved balconies that dissolve the threshold between inside and outside.",
+    "designConcepts": [
+      "Expressive curved building with generously sized apartments as house alternative",
+      "Wide balconies suitable for indoor-outdoor living and passive climate control",
+      "Dedicated communal spaces on each floor level for social gathering",
+      "Integrated arrival space and open circulation stair for intuitive wayfinding",
+      "Adaptable floorplates including dual-key apartments for multigenerational living",
+      "Integrated sustainability features including solar access and cross-ventilation"
+    ],
+    "ownershipTypes": ["strata", "company_title", "build_to_rent"],
+    "applicablePolicies": [
+      {
+        "name": "Housing SEPP Chapter 7",
+        "description": "Pattern book development under State Environmental Planning Policy (Housing) 2021"
+      },
+      {
+        "name": "Low and Mid-Rise Housing Areas",
+        "reference": "Section 163 Housing SEPP"
+      },
+      {
+        "name": "Transport Oriented Development Areas",
+        "reference": "Chapter 5 Housing SEPP"
+      }
+    ]
+  },
+
+  "siteEligibility": {
+    "siteTypes": {
+      "allowed": ["mid_block", "corner", "end_lot"],
+      "excluded": ["battle_axe"]
+    },
+
+    "lotDimensions": {
+      "absoluteMinimums": {
+        "width": 49.1,
+        "length": 32.8,
+        "area": 1610
+      },
+      "absoluteMaximums": {
+        "width": 65.1,
+        "length": 35.9,
+        "area": 2338
+      }
+    },
+
+    "excludedLand": [
+      {
+        "type": "bushfire_prone",
+        "description": "Land identified as bushfire-prone"
+      },
+      {
+        "type": "flood_prone_high_risk",
+        "description": "Certain flood-prone land in high risk locations"
+      },
+      {
+        "type": "state_heritage_item",
+        "description": "State heritage items"
+      },
+      {
+        "type": "local_heritage_item",
+        "description": "Local heritage items"
+      },
+      {
+        "type": "heritage_conservation_area",
+        "description": "Heritage conservation areas"
+      }
+    ],
+
+    "slopeConstraints": {
+      "maxCrossfallMetres": 4.0,
+      "notes": "Ground-level design can accommodate slopes of 0-4m"
+    }
+  },
+
+  "developmentStandards": {
+    "height": {
+      "maxMetres": 22.0,
+      "maxStoreys": 6,
+      "minStoreys": 4,
+      "exclusionsFromMaxHeight": [
+        "lift_overruns",
+        "plant_and_services_equipment"
+      ]
+    },
+
+    "setbacks": {
+      "front": {
+        "primary": {
+          "min": 6.0
+        }
+      },
+      "rear": {
+        "standard": {
+          "min": 6.0
+        }
+      },
+      "side": {
+        "rules": [
+          {
+            "id": "6m_setback",
+            "conditions": {
+              "lotWidthMin": 49.1,
+              "lotWidthMax": null
+            },
+            "setback": 6.0,
+            "maxStoreys": 6
+          }
+        ]
+      }
+    },
+
+    "dwellings": {
+      "max": 40,
+      "min": 20,
+      "maxSingleTypePercentage": 75,
+      "mixRequirement": "No more than 75% of dwellings to be a single type"
+    },
+
+    "floorToCeiling": {
+      "habitable": {
+        "min": 2.7,
+        "unit": "metres"
+      },
+      "nonHabitable": {
+        "min": 2.4,
+        "unit": "metres"
+      }
+    },
+
+    "deepSoil": {
+      "rules": [
+        {
+          "siteAreaMax": 650,
+          "percentage": 7
+        },
+        {
+          "siteAreaMin": 650,
+          "siteAreaMax": 1500,
+          "percentage": 10
+        },
+        {
+          "siteAreaMin": 1500,
+          "percentage": 15
+        }
+      ],
+      "unit": "percentage_of_site_area"
+    }
+  },
+
+  "adaptations": {
+    "lotSizeVariants": [
+      {
+        "id": "curved_49.1x32.8",
+        "category": "curved_facade",
+        "lotWidth": 49.1,
+        "lotLength": 32.8,
+        "siteArea": 1610,
+        "sideSetback": 6.0,
+        "storeys": 4,
+        "gfa": 2100,
+        "fsr": 1.30,
+        "dwellingYield": {
+          "studio": 0,
+          "oneBed": 6,
+          "twoBed": 8,
+          "threeBed": 6,
+          "fourBed": 0,
+          "total": 20
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 12,
+          "accessible": 2,
+          "bikes": 24
+        }
+      },
+      {
+        "id": "curved_55.9x33.5",
+        "category": "curved_facade",
+        "lotWidth": 55.9,
+        "lotLength": 33.5,
+        "siteArea": 1873,
+        "sideSetback": 6.0,
+        "storeys": 5,
+        "gfa": 2600,
+        "fsr": 1.39,
+        "dwellingYield": {
+          "studio": 0,
+          "oneBed": 8,
+          "twoBed": 9,
+          "threeBed": 6,
+          "fourBed": 0,
+          "total": 23
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 14,
+          "accessible": 2,
+          "bikes": 28
+        },
+        "isBasePattern": true
+      },
+      {
+        "id": "curved_65.1x35.9",
+        "category": "curved_facade",
+        "lotWidth": 65.1,
+        "lotLength": 35.9,
+        "siteArea": 2338,
+        "sideSetback": 6.0,
+        "storeys": 6,
+        "gfa": 3500,
+        "fsr": 1.50,
+        "dwellingYield": {
+          "studio": 0,
+          "oneBed": 12,
+          "twoBed": 14,
+          "threeBed": 10,
+          "fourBed": 4,
+          "total": 40
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 24,
+          "accessible": 3,
+          "bikes": 44
+        }
+      }
+    ],
+
+    "parkingVariants": [
+      {
+        "id": "basement",
+        "name": "Basement Parking",
+        "description": "Parking located in basement level",
+        "preferred": true
+      },
+      {
+        "id": "on_grade",
+        "name": "On-Grade Parking",
+        "description": "Parking at ground level",
+        "preferred": false
+      }
+    ],
+
+    "materialPalettes": [
+      {
+        "id": "coast",
+        "name": "Warm White Masonry - Coast",
+        "characterContext": "Coastal areas"
+      },
+      {
+        "id": "bush",
+        "name": "Dark Grey Masonry - Bush",
+        "characterContext": "Bushland settings"
+      },
+      {
+        "id": "village",
+        "name": "Light Terracotta Masonry - Village",
+        "characterContext": "Village or town centres"
+      },
+      {
+        "id": "field",
+        "name": "Light Sage Green Masonry - Field",
+        "characterContext": "Rural or greenfield areas"
+      }
+    ]
+  }
+}

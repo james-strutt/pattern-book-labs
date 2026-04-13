@@ -1,0 +1,299 @@
+{
+  "$schema": "./pattern-book-schema.json",
+  "metadata": {
+    "id": "SLA03",
+    "name": "Small Lot Apartments 03",
+    "architect": "MHN Design Union",
+    "version": "1.0",
+    "releaseDate": "2025-11-01",
+    "developmentType": "residential_flat_building",
+    "description": "A sophisticated apartment building with a dynamic facade, modular layout and a range of one and two storey house-like dwellings.",
+    "designConcepts": [
+      "Contemporary take on a modernist apartment building with rational layouts",
+      "Spacious and light-filled dwellings including 1-storey and 2-storey homes",
+      "Diverse mix of studio to 4-bedroom dwellings",
+      "Ample private balconies or courtyards on each floor level",
+      "Flexible communal spaces on alternate floors including rooftop",
+      "Integrated sustainable performance including solar access and cross-ventilation"
+    ],
+    "ownershipTypes": ["strata", "company_title", "build_to_rent"],
+    "applicablePolicies": [
+      {
+        "name": "Housing SEPP Chapter 7",
+        "description": "Pattern book development under State Environmental Planning Policy (Housing) 2021"
+      },
+      {
+        "name": "Low and Mid-Rise Housing Areas",
+        "reference": "Section 163 Housing SEPP"
+      },
+      {
+        "name": "Transport Oriented Development Areas",
+        "reference": "Chapter 5 Housing SEPP"
+      }
+    ]
+  },
+
+  "siteEligibility": {
+    "siteTypes": {
+      "allowed": ["mid_block", "mid_block_laneway"],
+      "excluded": ["corner", "battle_axe"]
+    },
+
+    "lotDimensions": {
+      "absoluteMinimums": {
+        "width": 16.0,
+        "length": 40.0,
+        "area": 640
+      },
+      "absoluteMaximums": {
+        "width": 19.8,
+        "length": 65.0,
+        "area": 1287
+      }
+    },
+
+    "excludedLand": [
+      {
+        "type": "bushfire_prone",
+        "description": "Land identified as bushfire-prone"
+      },
+      {
+        "type": "flood_prone_high_risk",
+        "description": "Certain flood-prone land in high risk locations"
+      },
+      {
+        "type": "state_heritage_item",
+        "description": "State heritage items"
+      },
+      {
+        "type": "local_heritage_item",
+        "description": "Local heritage items"
+      },
+      {
+        "type": "heritage_conservation_area",
+        "description": "Heritage conservation areas"
+      }
+    ],
+
+    "slopeConstraints": {
+      "maxCrossfallMetres": 2.25,
+      "allowedDirections": ["upslope_to_rear", "downslope_to_rear"],
+      "notes": "Can adapt to sloping sites with a level change of up to 2.25m upslope and 0.65m downslope"
+    }
+  },
+
+  "developmentStandards": {
+    "height": {
+      "maxMetres": 22.0,
+      "maxStoreys": 6,
+      "minStoreys": 4,
+      "exclusionsFromMaxHeight": [
+        "lift_overruns",
+        "plant_and_services_equipment",
+        "shade_structures"
+      ]
+    },
+
+    "setbacks": {
+      "front": {
+        "primary": {
+          "min": 4.0
+        }
+      },
+      "rear": {
+        "standard": {
+          "min": 6.0
+        }
+      },
+      "side": {
+        "rules": [
+          {
+            "id": "3m_setback",
+            "conditions": {
+              "lotWidthMin": 16.0,
+              "lotWidthMax": null
+            },
+            "setback": 3.0,
+            "maxStoreys": 6
+          }
+        ]
+      }
+    },
+
+    "dwellings": {
+      "max": 24,
+      "min": 9,
+      "maxSingleTypePercentage": 75,
+      "mixRequirement": "No more than 75% of dwellings to be a single type"
+    },
+
+    "floorToCeiling": {
+      "habitable": {
+        "min": 2.7,
+        "unit": "metres"
+      },
+      "nonHabitable": {
+        "min": 2.4,
+        "unit": "metres"
+      }
+    },
+
+    "deepSoil": {
+      "rules": [
+        {
+          "siteAreaMax": 650,
+          "percentage": 7
+        },
+        {
+          "siteAreaMin": 650,
+          "siteAreaMax": 1500,
+          "percentage": 10
+        },
+        {
+          "siteAreaMin": 1500,
+          "percentage": 15
+        }
+      ],
+      "unit": "percentage_of_site_area"
+    }
+  },
+
+  "adaptations": {
+    "lotSizeVariants": [
+      {
+        "id": "3m_16x40",
+        "category": "3m_setback",
+        "lotWidth": 16.0,
+        "lotLength": 40.0,
+        "siteArea": 640,
+        "sideSetback": 3.0,
+        "storeys": 4,
+        "gfa": 850,
+        "fsr": 1.33,
+        "dwellingYield": {
+          "studio": 2,
+          "oneBed": 3,
+          "twoBed": 2,
+          "threeBed": 2,
+          "fourBed": 0,
+          "total": 9
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 4,
+          "accessible": 1,
+          "bikes": 12
+        }
+      },
+      {
+        "id": "3m_18x50",
+        "category": "3m_setback",
+        "lotWidth": 18.0,
+        "lotLength": 50.0,
+        "siteArea": 900,
+        "sideSetback": 3.0,
+        "storeys": 5,
+        "gfa": 1250,
+        "fsr": 1.39,
+        "dwellingYield": {
+          "studio": 3,
+          "oneBed": 4,
+          "twoBed": 3,
+          "threeBed": 4,
+          "fourBed": 1,
+          "total": 15
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 6,
+          "accessible": 1,
+          "bikes": 18
+        }
+      },
+      {
+        "id": "3m_19.8x55",
+        "category": "3m_setback",
+        "lotWidth": 19.8,
+        "lotLength": 55.0,
+        "siteArea": 1089,
+        "sideSetback": 3.0,
+        "storeys": 6,
+        "gfa": 1600,
+        "fsr": 1.47,
+        "dwellingYield": {
+          "studio": 3,
+          "oneBed": 4,
+          "twoBed": 4,
+          "threeBed": 5,
+          "fourBed": 1,
+          "total": 17
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 7,
+          "accessible": 1,
+          "bikes": 20
+        },
+        "isBasePattern": true
+      },
+      {
+        "id": "3m_19.8x65",
+        "category": "3m_setback",
+        "lotWidth": 19.8,
+        "lotLength": 65.0,
+        "siteArea": 1287,
+        "sideSetback": 3.0,
+        "storeys": 6,
+        "gfa": 1900,
+        "fsr": 1.48,
+        "dwellingYield": {
+          "studio": 4,
+          "oneBed": 5,
+          "twoBed": 6,
+          "threeBed": 7,
+          "fourBed": 2,
+          "total": 24
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 9,
+          "accessible": 2,
+          "bikes": 24
+        }
+      }
+    ],
+
+    "parkingVariants": [
+      {
+        "id": "basement",
+        "name": "Basement Parking",
+        "description": "Parking located in basement level",
+        "preferred": true
+      },
+      {
+        "id": "on_grade",
+        "name": "On-Grade Parking",
+        "description": "Parking at ground level",
+        "preferred": false
+      }
+    ],
+
+    "materialPalettes": [
+      {
+        "id": "aluminium",
+        "name": "Naturally Finished Aluminium",
+        "characterContext": "Contemporary settings"
+      },
+      {
+        "id": "concrete",
+        "name": "Naturally Finished Concrete",
+        "characterContext": "Urban settings"
+      },
+      {
+        "id": "red_brick",
+        "name": "Red Brick",
+        "characterContext": "Heritage or traditional settings"
+      }
+    ]
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "version": "1.0",
+  "patterns": [
+    {
+      "id": "SLA01",
+      "name": "Small Lot Apartments 01",
+      "architect": "Collins and Turner",
+      "schemaPath": "/pattern-book/schema/small-lot-apartments-01.json",
+      "enabled": true,
+      "developmentType": "residential_flat_building",
+      "policyAreas": ["lmr", "tod"],
+      "category": "small_lot"
+    },
+    {
+      "id": "SLA02",
+      "name": "Small Lot Apartments 02",
+      "architect": "Nguluway DesignInc",
+      "schemaPath": "/pattern-book/schema/small-lot-apartments-02.json",
+      "enabled": true,
+      "developmentType": "residential_flat_building",
+      "policyAreas": ["lmr", "tod"],
+      "category": "small_lot"
+    },
+    {
+      "id": "SLA03",
+      "name": "Small Lot Apartments 03",
+      "architect": "MHN Design Union",
+      "schemaPath": "/pattern-book/schema/small-lot-apartments-03.json",
+      "enabled": true,
+      "developmentType": "residential_flat_building",
+      "policyAreas": ["lmr", "tod"],
+      "category": "small_lot"
+    },
+    {
+      "id": "SLA04",
+      "name": "Small Lot Apartments 04",
+      "architect": "Neeson Murcutt Neille",
+      "schemaPath": "/pattern-book/schema/small-lot-apartments-04.json",
+      "enabled": true,
+      "developmentType": "residential_flat_building",
+      "policyAreas": ["lmr", "tod"],
+      "category": "small_lot"
+    },
+    {
+      "id": "LLA01",
+      "name": "Large Lot Apartments 01",
+      "architect": "Silvester Fuller",
+      "schemaPath": "/pattern-book/schema/large-lot-apartments-01.json",
+      "enabled": true,
+      "developmentType": "residential_flat_building",
+      "policyAreas": ["lmr", "tod"],
+      "category": "large_lot"
+    },
+    {
+      "id": "LLA02",
+      "name": "Large Lot Apartments 02",
+      "architect": "Bennett and Trimble",
+      "schemaPath": "/pattern-book/schema/large-lot-apartments-02.json",
+      "enabled": true,
+      "developmentType": "residential_flat_building",
+      "policyAreas": ["lmr", "tod"],
+      "category": "large_lot"
+    },
+    {
+      "id": "LLA03",
+      "name": "Large Lot Apartments 03",
+      "architect": "Andrew Burges Architects",
+      "schemaPath": "/pattern-book/schema/large-lot-apartments-03.json",
+      "enabled": true,
+      "developmentType": "residential_flat_building",
+      "policyAreas": ["lmr", "tod"],
+      "category": "large_lot"
+    },
+    {
+      "id": "SD01",
+      "name": "Semis 01",
+      "architect": "Anthony Gill Architects",
+      "schemaPath": "/pattern-book/schema/semis-01.json",
+      "enabled": true,
+      "developmentType": "dual_occupancy",
+      "policyAreas": ["lmr", "non_lmr"],
+      "category": "semis"
+    },
+    {
+      "id": "SD02",
+      "name": "Semis 02",
+      "architect": "Sibling Architecture",
+      "schemaPath": "/pattern-book/schema/semis-02.json",
+      "enabled": true,
+      "developmentType": "dual_occupancy",
+      "policyAreas": ["lmr", "non_lmr"],
+      "category": "semis"
+    },
+    {
+      "id": "TH01",
+      "name": "Terraces 01",
+      "architect": "Carter Williamson",
+      "schemaPath": "/pattern-book/schema/terraces-01.json",
+      "enabled": true,
+      "developmentType": "multi_dwelling_housing_terraces",
+      "policyAreas": ["lmr", "non_lmr"],
+      "category": "terraces"
+    },
+    {
+      "id": "TH02",
+      "name": "Terraces 02",
+      "architect": "Sam Crawford Architects",
+      "schemaPath": "/pattern-book/schema/terraces-02.json",
+      "enabled": true,
+      "developmentType": "multi_dwelling_housing_terraces",
+      "policyAreas": ["lmr", "non_lmr"],
+      "category": "terraces"
+    },
+    {
+      "id": "TH03",
+      "name": "Terraces 03",
+      "architect": "Officer Woods Architects",
+      "schemaPath": "/pattern-book/schema/terraces-03.json",
+      "enabled": true,
+      "developmentType": "multi_dwelling_housing_terraces",
+      "policyAreas": ["lmr", "non_lmr"],
+      "category": "terraces"
+    },
+    {
+      "id": "TH04",
+      "name": "Terraces 04",
+      "architect": "Other Architects x NMBW",
+      "schemaPath": "/pattern-book/schema/terraces-04.json",
+      "enabled": true,
+      "developmentType": "multi_dwelling_housing_terraces",
+      "policyAreas": ["lmr", "non_lmr"],
+      "category": "terraces"
+    },
+    {
+      "id": "MH01",
+      "name": "Row Homes 01",
+      "architect": "SAHA",
+      "schemaPath": "/pattern-book/schema/row-homes-01.json",
+      "enabled": true,
+      "developmentType": "multi_dwelling_housing",
+      "policyAreas": ["lmr", "non_lmr"],
+      "category": "row_homes"
+    },
+    {
+      "id": "MN01",
+      "name": "Manor Homes 01",
+      "architect": "Studio Johnston",
+      "schemaPath": "/pattern-book/schema/manor-homes-01.json",
+      "enabled": true,
+      "developmentType": "manor_house",
+      "policyAreas": ["lmr", "non_lmr"],
+      "category": "manor_homes"
+    }
+  ]
+}

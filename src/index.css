@@ -1,7 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;700&display=swap");
 @import "tailwindcss";
 
+@theme {
+  --font-sans: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Land iQ Brand */
+  --color-brand-dark: #002664;
+  --color-brand-light: #CBEDFD;
+  --color-brand-supplementary: #146CFD;
+  --color-brand-purple: #9747FF;
+
+  /* Secondary */
+  --color-secondary-waratah-red: #D7153A;
+
+  /* Status */
+  --color-status-danger: #B81237;
+  --color-status-success: #008A07;
+  --color-status-error-red: #B81237;
+  --color-status-error-red-bg: #F7E7EB;
+  --color-status-success-green: #008A07;
+  --color-status-success-green-bg: #E5F6E6;
+  --color-status-warning-orange: #C95000;
+  --color-status-warning-orange-bg: #FBEEE5;
+
+  /* Info */
+  --color-info-blue: #2E5299;
+  --color-info-blue-bg: #EAEDF4;
+
+  /* Greys */
+  --color-greys-dark: #22272B;
+  --color-greys-grey01: #22272B;
+  --color-greys-grey02: #495054;
+  --color-greys-grey03: #CDD3D6;
+  --color-greys-mid: #DCD3D6;
+  --color-greys-grey04: #EBEBEB;
+  --color-greys-off-white: #F2F2F2;
+  --color-greys-offWhite: #F2F2F2;
+  --color-greys-white: #FFFFFF;
+
+  /* Navy scale */
+  --color-navy-50: #f0f3ff;
+  --color-navy-100: #e0e7ff;
+  --color-navy-200: #c7d2fe;
+  --color-navy-300: #a5b4fc;
+  --color-navy-400: #818cf8;
+  --color-navy-500: #6366f1;
+  --color-navy-600: #002664;
+  --color-navy-700: #002664;
+  --color-navy-800: #001e4d;
+  --color-navy-900: #001633;
+  --color-navy-950: #000d1a;
+
+  /* Semantic: primary */
+  --color-primary: #002664;
+  --color-primary-foreground: #FFFFFF;
+
+  /* Semantic: destructive */
+  --color-destructive: #B81237;
+  --color-destructive-foreground: #FFFFFF;
+  --color-destructive-active: #9A0F2E;
+
+  /* Semantic: success */
+  --color-success: #008A07;
+  --color-success-foreground: #FFFFFF;
+
+  /* Semantic: warning */
+  --color-warning: #C95000;
+  --color-warning-foreground: #FFFFFF;
+
+  /* Semantic: muted */
+  --color-muted: #F2F2F2;
+  --color-muted-foreground: #22272B;
+
+  /* Semantic: accent */
+  --color-accent: #146CFD;
+  --color-accent-foreground: #FFFFFF;
+
+  /* Semantic: card */
+  --color-card: #FFFFFF;
+  --color-card-foreground: #22272B;
+
+  /* Semantic: popover */
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #22272B;
+
+  /* Borders / input / ring */
+  --color-border: #CDD3D6;
+  --color-input: #CDD3D6;
+  --color-ring: #002664;
+  --color-background: #FFFFFF;
+  --color-foreground: #22272B;
+
+  /* Semantic: secondary (colour) */
+  --color-secondary: #F2F2F2;
+  --color-secondary-foreground: #22272B;
+
+  /* Semantic: info */
+  --color-info: #2E5299;
+  --color-info-foreground: #FFFFFF;
+
+  /* Border radius */
+  --radius: 0.25rem;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-collapsible-down: collapsible-down 0.2s ease-in-out;
+  --animate-collapsible-up: collapsible-up 0.2s ease-in-out;
+  --animate-gradient-x: gradient-x 10s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow: glow 3s ease-in-out infinite;
+  --animate-rise: rise 3s ease-in-out infinite;
+  --animate-liquid-pulse: liquid-pulse 3s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s ease-in-out infinite;
+  --animate-glass-glow: glass-glow 4s ease-in-out infinite;
+
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+  @keyframes collapsible-down {
+    from { height: 0; }
+    to { height: var(--radix-collapsible-content-height); }
+  }
+  @keyframes collapsible-up {
+    from { height: var(--radix-collapsible-content-height); }
+    to { height: 0; }
+  }
+  @keyframes gradient-x {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes glow {
+    0%, 100% { filter: drop-shadow(0 0 0 rgba(255,255,255,0)); }
+    50% { filter: drop-shadow(0 0 12px rgba(255,255,255,0.35)); }
+  }
+  @keyframes rise {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(-60px); opacity: 0; }
+  }
+  @keyframes liquid-pulse {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 1; }
+  }
+  @keyframes shimmer {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+  }
+  @keyframes glass-glow {
+    0%, 100% { filter: drop-shadow(0 0 5px rgba(20, 108, 253, 0.3)); }
+    50% { filter: drop-shadow(0 0 15px rgba(20, 108, 253, 0.5)); }
+  }
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow: hidden;
+}
+
+body {
+  overflow-y: auto;
+  height: 100vh;
+}
+
 @layer base {
-  button {
-    @apply rounded-md border border-current px-3 py-1 text-sm;
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 13%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 13%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 13%;
+    --primary: 220 100% 20%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 95%;
+    --secondary-foreground: 0 0% 13%;
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 13%;
+    --accent: 217 98% 54%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 350 78% 38%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 122 100% 27%;
+    --success-foreground: 0 0% 100%;
+    --warning: 20 100% 39%;
+    --warning-foreground: 0 0% 100%;
+    --info: 220 50% 38%;
+    --info-foreground: 0 0% 100%;
+    --border: 0 0% 84%;
+    --input: 0 0% 84%;
+    --ring: 220 100% 20%;
+    --radius: 0.25rem;
+  }
+
+  .dark {
+    --background: 0 0% 13%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 13%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 13%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 220 100% 20%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 80%;
+    --accent: 217 98% 54%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 350 78% 38%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 122 100% 35%;
+    --success-foreground: 0 0% 100%;
+    --warning: 20 100% 45%;
+    --warning-foreground: 0 0% 100%;
+    --info: 220 50% 50%;
+    --info-foreground: 0 0% 100%;
+    --border: 0 0% 30%;
+    --input: 0 0% 30%;
+    --ring: 220 100% 20%;
   }
 }

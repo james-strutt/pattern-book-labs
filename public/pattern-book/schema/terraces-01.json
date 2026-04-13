@@ -1,0 +1,883 @@
+{
+  "$schema": "./pattern-book-schema.json",
+  "metadata": {
+    "id": "TH01",
+    "name": "Terraces 01",
+    "architect": "Carter Williamson",
+    "version": "1.0",
+    "releaseDate": "2025-07-01",
+    "developmentType": "multi_dwelling_housing_terraces",
+    "buildingClass": "1a",
+    "description": "Reimagined Victorian terraces made for contemporary living with generous spaces and a private courtyard in the centre of each home. The design provides light, air and greenery through internal courtyards while maintaining durable brick streetscapes.",
+    "designConcepts": [
+      "Internal courtyard brings light into living space, stairwell and kitchen",
+      "Living areas directly connected to private rear garden",
+      "Private balcony for principal bedroom",
+      "Spacious family bathroom on first floor",
+      "Brick detailing for refined street presentation",
+      "Skylights and courtyard allow natural light and ventilation",
+      "Provision for solar panels with large roof area"
+    ],
+    "ownershipTypes": ["torrens_title"],
+    "applicablePolicies": [
+      {
+        "name": "Pattern Book Development Code 2025",
+        "description": "Pattern book development under State Environmental Planning Policy (Exempt and Complying Development Codes) 2008"
+      },
+      {
+        "name": "Low and Mid-Rise Housing Areas",
+        "reference": "Section 163 Housing SEPP"
+      },
+      {
+        "name": "Non-LMR Housing Areas",
+        "reference": "Local Environmental Plan provisions"
+      }
+    ]
+  },
+
+  "siteEligibility": {
+    "siteTypes": {
+      "allowed": ["mid_block", "corner", "rear_laneway"],
+      "excluded": ["battle_axe", "irregular"]
+    },
+
+    "lotDimensions": {
+      "lmr": {
+        "absoluteMinimums": {
+          "width": 15.0,
+          "length": 33.3,
+          "area": 500
+        },
+        "absoluteMaximums": {
+          "width": null,
+          "length": null,
+          "area": null
+        }
+      },
+      "nonLmr": {
+        "absoluteMinimums": {
+          "width": 18.0,
+          "length": 33.3,
+          "area": 600
+        },
+        "absoluteMaximums": {
+          "width": null,
+          "length": null,
+          "area": null
+        }
+      }
+    },
+
+    "excludedLand": [
+      {
+        "type": "bushfire_prone",
+        "description": "Land identified as bushfire-prone"
+      },
+      {
+        "type": "flood_prone_high_risk",
+        "description": "Certain flood-prone land in high risk locations"
+      },
+      {
+        "type": "state_heritage_item",
+        "description": "State heritage items"
+      },
+      {
+        "type": "local_heritage_item",
+        "description": "Local heritage items"
+      },
+      {
+        "type": "heritage_conservation_area",
+        "description": "Heritage conservation areas"
+      }
+    ],
+
+    "slopeConstraints": {
+      "maxFrontToBackMetres": 2.0,
+      "maxSideToSideMetres": 1.5,
+      "allowedDirections": ["upslope_to_rear", "downslope_to_rear", "crossfall"],
+      "notes": "Pattern provides adaptations for sites with slopes up to 2.0m front-to-back and 1.5m side-to-side"
+    },
+
+    "solarOrientation": {
+      "allOrientationsSupported": true,
+      "bestSuited": "north_facing_rear_yards",
+      "orientationGuidance": [
+        {
+          "frontageDirection": "north",
+          "notes": "Courtyards, skylights and flexible street-facing living spaces optimise solar access"
+        },
+        {
+          "frontageDirection": "south",
+          "notes": "North-facing rear yards provide optimal solar access"
+        },
+        {
+          "frontageDirection": "east",
+          "notes": "Optional retractable solar blinds can shade east orientation"
+        },
+        {
+          "frontageDirection": "west",
+          "notes": "Optional retractable solar blinds can shade west orientation"
+        }
+      ]
+    }
+  },
+
+  "developmentStandards": {
+    "height": {
+      "lmr": {
+        "maxMetres": 9.5,
+        "maxStoreys": 3,
+        "minStoreys": 2,
+        "basePatternHeight": 8.8,
+        "notes": "Third storey (attic/roof terrace) available in LMR areas only"
+      },
+      "nonLmr": {
+        "maxMetres": 9.0,
+        "maxStoreys": 2,
+        "minStoreys": 2,
+        "basePatternHeight": 8.8
+      },
+      "exclusionsFromMaxHeight": [
+        "chimneys",
+        "flues",
+        "domestic_aerials"
+      ],
+      "notes": "Maximum building height allows for adaptation to slope on subject site"
+    },
+
+    "setbacks": {
+      "front": {
+        "lmr": {
+          "min": 4.0,
+          "notes": "Primary street frontage setback in LMR areas"
+        },
+        "nonLmr": {
+          "min": 5.5,
+          "alternativeRule": "Not less than average setback from primary road of nearest 2 dwelling houses within 40m on same side, whichever is greater",
+          "notes": "Primary street frontage setback in non-LMR areas"
+        }
+      },
+      "rear": {
+        "lmr": {
+          "min": 7.0,
+          "lanewayException": 0,
+          "notes": "0m where laneway garages exist"
+        },
+        "nonLmr": {
+          "min": 5.5,
+          "lanewayException": 0,
+          "notes": "0m where laneway garages exist"
+        }
+      },
+      "side": {
+        "lmr": {
+          "partialSetback": {
+            "min": 0,
+            "depth": 8.1,
+            "notes": "0m min partial side setback for front 8.1m of building"
+          },
+          "remainderSetback": {
+            "min": 0.9,
+            "notes": "0.9m min side setback for remainder"
+          }
+        },
+        "nonLmr": {
+          "min": 1.5,
+          "notes": "Side boundary setback in non-LMR areas"
+        }
+      },
+      "secondary": {
+        "min": 2.0,
+        "notes": "Secondary street setback for corner lots"
+      }
+    },
+
+    "fsr": {
+      "lmr": {
+        "max": 0.9,
+        "basePattern": 0.8,
+        "notes": "Maximum 0.9:1 when selecting all adaptations and options; base pattern is 0.8:1"
+      },
+      "nonLmr": {
+        "max": 0.8,
+        "basePattern": 0.79,
+        "notes": "Maximum 0.8:1 when selecting all adaptations and options; base pattern is 0.79:1"
+      }
+    },
+
+    "streetFrontage": {
+      "maxUnbroken": 45,
+      "unit": "metres",
+      "notes": "Maximum unbroken street frontage"
+    },
+
+    "dwellings": {
+      "min": 3,
+      "max": 3,
+      "configuration": "terraces",
+      "bedroomOptions": [3, 4, 5]
+    },
+
+    "floorToCeiling": {
+      "habitable": {
+        "min": 2.7,
+        "unit": "metres"
+      },
+      "nonHabitable": {
+        "min": 2.4,
+        "unit": "metres"
+      }
+    },
+
+    "landscapeRequirements": {
+      "minPercentage": 20,
+      "guideReference": "NSW Housing Pattern Book Landscape design guide",
+      "treeCanopyGuide": "NSW Government Tree Canopy Guide for Low and Mid Rise Housing",
+      "frontGardenPlanting": true,
+      "rearGardenPlanting": true,
+      "notes": "Landscaping to complement streetscape character"
+    },
+
+    "solarAccess": {
+      "livingRooms": {
+        "minHours": 3,
+        "timeWindow": {
+          "start": "09:00",
+          "end": "15:00"
+        },
+        "referenceDate": "21 June",
+        "windowDistance": 3,
+        "notes": "Window more than 3m from boundary to living room must receive more than 3 hours direct sunlight"
+      }
+    },
+
+    "overshadowing": {
+      "neighbouringProperties": {
+        "minSunlightHours": 3,
+        "timeWindow": {
+          "start": "09:00",
+          "end": "15:00"
+        },
+        "referenceDate": "21 June",
+        "notes": "If window currently receives less than 3 hours, direct sunlight is not reduced"
+      }
+    },
+
+    "privacyRequirements": {
+      "addressedInPattern": true,
+      "solutions": [
+        "fixed_screening",
+        "optional_screening",
+        "window_placement"
+      ]
+    },
+
+    "parking": {
+      "lmr": {
+        "spacesPerDwelling": 0.5,
+        "notes": "As defined by LMR reforms"
+      },
+      "nonLmr": {
+        "spacesPerDwelling": 1,
+        "notes": "Minimum 1 car parking space per dwelling"
+      },
+      "maxGaragesPerPattern": 2,
+      "notes": "Max 2 out of 3 dwellings may incorporate a garage for terrace patterns. Parking alternatively provided as hardstand in non-LMR areas."
+    }
+  },
+
+  "adaptations": {
+    "policyAreaVariants": [
+      {
+        "id": "lmr_base",
+        "policyArea": "lmr",
+        "lotWidth": 15.0,
+        "lotLength": 33.3,
+        "siteArea": 500,
+        "storeys": 2,
+        "maxHeight": 9.5,
+        "maxFsr": 0.8,
+        "gfa": 400,
+        "dwellingYield": {
+          "threeBed": 3,
+          "fourBed": 0,
+          "fiveBed": 0,
+          "total": 3
+        },
+        "parking": {
+          "garages": 2,
+          "hardstand": 0,
+          "onStreet": 1
+        },
+        "isBasePattern": true
+      },
+      {
+        "id": "lmr_attic",
+        "policyArea": "lmr",
+        "lotWidth": 15.0,
+        "lotLength": 33.3,
+        "siteArea": 500,
+        "storeys": 3,
+        "maxHeight": 9.5,
+        "maxFsr": 0.9,
+        "gfa": 450,
+        "dwellingYield": {
+          "threeBed": 0,
+          "fourBed": 3,
+          "fiveBed": 0,
+          "total": 3
+        },
+        "parking": {
+          "garages": 2,
+          "hardstand": 0,
+          "onStreet": 1
+        },
+        "notes": "Includes attic adaptation with extra bedroom or roof terrace"
+      },
+      {
+        "id": "non_lmr_base",
+        "policyArea": "non_lmr",
+        "lotWidth": 18.0,
+        "lotLength": 33.3,
+        "siteArea": 600,
+        "storeys": 2,
+        "maxHeight": 9.0,
+        "maxFsr": 0.79,
+        "gfa": 474,
+        "dwellingYield": {
+          "threeBed": 3,
+          "fourBed": 0,
+          "fiveBed": 0,
+          "total": 3
+        },
+        "parking": {
+          "garages": 2,
+          "hardstand": 1
+        },
+        "isBasePattern": true
+      }
+    ],
+
+    "parkingVariants": [
+      {
+        "id": "garage_front",
+        "name": "Front Garage",
+        "description": "Integrated garage at front of dwelling",
+        "applicableSites": ["mid_block", "corner"],
+        "specifications": {
+          "carsPerGarage": 1,
+          "maxGaragesPerPattern": 2
+        },
+        "notes": "End terraces can include garage; middle terrace uses on-street parking in LMR"
+      },
+      {
+        "id": "garage_rear",
+        "name": "Rear Laneway Garage",
+        "description": "Garage accessed from rear laneway",
+        "applicableSites": ["rear_laneway"],
+        "specifications": {
+          "carsPerGarage": 1,
+          "minClearanceToTerrace": 5.0
+        },
+        "notes": "5m minimum clearance must be maintained between terraces and outbuildings"
+      },
+      {
+        "id": "hardstand",
+        "name": "Hardstand Space",
+        "description": "Car space provided as hardstand in front setback",
+        "applicableSites": ["mid_block", "corner"],
+        "notes": "Parking provided as hardstand in non-LMR housing areas"
+      }
+    ],
+
+    "groundFloorVariants": [
+      {
+        "id": "garage",
+        "name": "Garage Option",
+        "description": "Enclosed garage at ground floor front",
+        "notes": "Available for end terraces only"
+      },
+      {
+        "id": "flexible_room",
+        "name": "Flexible Room Option",
+        "description": "Flexible room and bathroom in lieu of garage",
+        "notes": "Can be converted to guest room or granny flat"
+      },
+      {
+        "id": "bedroom",
+        "name": "Ground Floor Bedroom",
+        "description": "Bedroom at ground floor front",
+        "notes": "Supports ageing in place requirements"
+      }
+    ],
+
+    "firstFloorVariants": [
+      {
+        "id": "large_bedroom",
+        "name": "Large Bedroom",
+        "description": "Larger bedroom configuration on first floor"
+      },
+      {
+        "id": "bedroom_study_split",
+        "name": "Bedroom and Study Split",
+        "description": "Separate bedroom and study on first floor"
+      }
+    ],
+
+    "thirdFloorVariants": [
+      {
+        "id": "roof_terrace",
+        "name": "Roof Terrace",
+        "description": "Private roof terrace in attic space",
+        "applicablePolicyAreas": ["lmr"],
+        "notes": "Available only in LMR housing areas"
+      },
+      {
+        "id": "additional_living",
+        "name": "Additional Living Room",
+        "description": "Extra living space in attic",
+        "applicablePolicyAreas": ["lmr"],
+        "notes": "Available only in LMR housing areas"
+      },
+      {
+        "id": "additional_bedroom",
+        "name": "Additional Bedroom",
+        "description": "Extra bedroom in attic space",
+        "applicablePolicyAreas": ["lmr"],
+        "notes": "Available only in LMR housing areas"
+      }
+    ],
+
+    "kitchenVariants": [
+      {
+        "id": "layout_01",
+        "name": "Kitchen Layout 01",
+        "description": "Primary kitchen configuration"
+      },
+      {
+        "id": "layout_02",
+        "name": "Kitchen Layout 02",
+        "description": "Alternative kitchen configuration"
+      }
+    ],
+
+    "slopeVariants": [
+      {
+        "id": "flat",
+        "name": "Flat Site",
+        "slopeFrontToBack": 0,
+        "slopeSideToSide": 0,
+        "foundationType": "slab_on_ground"
+      },
+      {
+        "id": "slope_front_back",
+        "name": "Slope Front to Back",
+        "slopeFrontToBack": 2.0,
+        "slopeSideToSide": 0,
+        "foundationType": "stepped_slab",
+        "notes": "Internal stairs and adjustments accommodate up to 2.0m front to back"
+      },
+      {
+        "id": "slope_side_side",
+        "name": "Crossfall Site",
+        "slopeFrontToBack": 0,
+        "slopeSideToSide": 1.5,
+        "foundationType": "stepped_slab",
+        "notes": "Dwellings at different levels to accommodate up to 1.5m side to side"
+      }
+    ],
+
+    "materialPalettes": [
+      {
+        "id": "palette_01",
+        "name": "Material Palette 1",
+        "characterContext": "Contemporary streetscapes",
+        "materials": {
+          "primaryCladding": {
+            "type": "Face brick",
+            "detailing": "Brick detailing for refined street presentation"
+          },
+          "roofing": {
+            "type": "Metal roofing"
+          },
+          "secondaryCladding": {
+            "type": "Lightweight cladding"
+          },
+          "awning": {
+            "type": "Awning fabric"
+          },
+          "fittings": {
+            "type": "Metal cladding and fittings"
+          }
+        }
+      },
+      {
+        "id": "palette_02",
+        "name": "Material Palette 2",
+        "characterContext": "Established suburban areas"
+      },
+      {
+        "id": "palette_03",
+        "name": "Material Palette 3",
+        "characterContext": "Heritage-adjacent areas"
+      },
+      {
+        "id": "palette_04",
+        "name": "Material Palette 4",
+        "characterContext": "Contemporary areas"
+      }
+    ],
+
+    "additionalFeatures": [
+      {
+        "id": "window_shading",
+        "name": "Window Shading Device",
+        "description": "External retractable blind for west/east facing windows",
+        "optional": true,
+        "notes": "Can mitigate heat loads when facades face east or west"
+      },
+      {
+        "id": "rear_studio",
+        "name": "Rear Studio",
+        "description": "Detached studio or garage at rear of site",
+        "requirements": {
+          "minClearanceToTerrace": 5.0,
+          "applicableSites": ["rear_laneway", "mid_block"]
+        },
+        "notes": "When site length or access conditions permit"
+      }
+    ]
+  },
+
+  "dwellingTypes": [
+    {
+      "id": "TERRACE_END_GARAGE",
+      "category": "3bed",
+      "name": "End Terrace with Garage",
+      "position": "end",
+      "rooms": {
+        "bedrooms": 3,
+        "bathrooms": 2.5,
+        "livingAreas": 1
+      },
+      "parking": {
+        "type": "garage",
+        "spaces": 1
+      },
+      "features": [
+        "private_rear_garden",
+        "internal_courtyard",
+        "principal_bedroom_balcony"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver",
+        "stepFreeEntry": true
+      }
+    },
+    {
+      "id": "TERRACE_MIDDLE_FLEXIBLE",
+      "category": "3bed",
+      "name": "Middle Terrace with Flexible Room",
+      "position": "middle",
+      "rooms": {
+        "bedrooms": 3,
+        "bathrooms": 2.5,
+        "livingAreas": 1,
+        "hasFlexibleRoom": true
+      },
+      "parking": {
+        "type": "on_street",
+        "spaces": 1
+      },
+      "features": [
+        "flexible_front_room",
+        "private_rear_garden",
+        "internal_courtyard",
+        "principal_bedroom_balcony"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver",
+        "stepFreeEntry": true
+      }
+    },
+    {
+      "id": "TERRACE_4BED_ATTIC",
+      "category": "4bed",
+      "name": "Terrace with Attic Bedroom",
+      "applicablePolicyAreas": ["lmr"],
+      "rooms": {
+        "bedrooms": 4,
+        "bathrooms": 2.5,
+        "livingAreas": 1
+      },
+      "features": [
+        "attic_bedroom",
+        "private_rear_garden",
+        "internal_courtyard",
+        "principal_bedroom_balcony"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver"
+      }
+    },
+    {
+      "id": "TERRACE_ROOF_TERRACE",
+      "category": "3bed",
+      "name": "Terrace with Roof Terrace",
+      "applicablePolicyAreas": ["lmr"],
+      "rooms": {
+        "bedrooms": 3,
+        "bathrooms": 2.5,
+        "livingAreas": 1,
+        "hasRoofTerrace": true
+      },
+      "features": [
+        "roof_terrace",
+        "private_rear_garden",
+        "internal_courtyard",
+        "principal_bedroom_balcony"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver"
+      }
+    }
+  ],
+
+  "designFeatures": {
+    "fixed": [
+      {
+        "id": "party_walls",
+        "category": "structure",
+        "name": "Party Wall Locations",
+        "description": "Party walls between terraces are fixed",
+        "reason": "Structural efficiency and acoustic separation"
+      },
+      {
+        "id": "building_footprint",
+        "category": "planning",
+        "name": "Building Footprint",
+        "description": "Overall building footprint and setbacks are fixed",
+        "reason": "Compliance with development standards"
+      },
+      {
+        "id": "internal_courtyard",
+        "category": "internal_planning",
+        "name": "Internal Courtyard",
+        "description": "Central courtyard location is fixed",
+        "reason": "Light and ventilation to central rooms"
+      },
+      {
+        "id": "stair_location",
+        "category": "circulation",
+        "name": "Internal Stair Location",
+        "description": "Position of internal staircase is fixed",
+        "reason": "Structural efficiency and circulation"
+      },
+      {
+        "id": "wet_area_locations",
+        "category": "internal_planning",
+        "name": "Wet Area Locations",
+        "description": "Kitchen and bathroom locations are fixed",
+        "reason": "Plumbing efficiency and stacking"
+      }
+    ],
+    "flexible": [
+      {
+        "id": "material_palette",
+        "category": "appearance",
+        "name": "Material Palette",
+        "description": "Choice of four material palette options",
+        "options": ["palette_01", "palette_02", "palette_03", "palette_04"],
+        "constraints": ["Must select complete palette, not mix materials"]
+      },
+      {
+        "id": "ground_floor_config",
+        "category": "internal_planning",
+        "name": "Ground Floor Configuration",
+        "description": "Choice between garage, flexible room or bedroom",
+        "options": ["garage", "flexible_room", "bedroom"],
+        "constraints": ["End terraces only for garage option"]
+      },
+      {
+        "id": "first_floor_bedrooms",
+        "category": "internal_planning",
+        "name": "First Floor Bedroom Layout",
+        "description": "Choice between large bedroom or bedroom/study split",
+        "options": ["large_bedroom", "bedroom_study_split"]
+      },
+      {
+        "id": "attic_option",
+        "category": "internal_planning",
+        "name": "Attic Adaptation",
+        "description": "Choice of roof terrace, additional living or additional bedroom",
+        "options": ["roof_terrace", "additional_living", "additional_bedroom"],
+        "constraints": ["LMR housing areas only"]
+      },
+      {
+        "id": "kitchen_layout",
+        "category": "internal_planning",
+        "name": "Kitchen Layout",
+        "description": "Choice of two kitchen configurations",
+        "options": ["layout_01", "layout_02"]
+      },
+      {
+        "id": "window_shading",
+        "category": "appearance",
+        "name": "Window Shading",
+        "description": "Optional retractable solar blinds for east/west orientations"
+      },
+      {
+        "id": "rear_garage",
+        "category": "parking",
+        "name": "Rear Laneway Garage",
+        "description": "Optional rear garage for laneway sites",
+        "constraints": ["Rear laneway sites only", "5m minimum clearance to terrace"]
+      }
+    ]
+  },
+
+  "services": {
+    "waste": {
+      "collectionMethod": "kerbside",
+      "binsPerDwelling": {
+        "general": 1,
+        "recycling": 1,
+        "organics": 1
+      },
+      "binSize": 240,
+      "unit": "litres",
+      "alternativeBinSize": 120,
+      "notes": "Some councils may allow smaller 120L bins; needs to be confirmed for local area"
+    },
+
+    "parking": {
+      "residentialClass": "1A",
+      "drivewayRequirements": {
+        "minDistanceFromIntersection": 6.0,
+        "notes": "Driveways located min 6m from intersections; confirm with local authorities if additional rules apply"
+      },
+      "pedestrianSightLines": {
+        "standard": "AS 2890.1:2004",
+        "maxObstructionHeight": 0.8,
+        "notes": "Sight line must fit wholly on site or fencing kept below 800mm"
+      }
+    },
+
+    "electrical": {
+      "supplyType": "fully_electric",
+      "photovoltaics": {
+        "roofAreaAvailable": true,
+        "optionalInstallation": true,
+        "notes": "Large roof area provision for solar panels"
+      },
+      "evCharging": {
+        "provisionRequired": true,
+        "type": "15A_outlet_in_garage",
+        "notes": "15A outlet required in garage for potential EV charging"
+      },
+      "meterBoards": {
+        "accessFromOutside": true,
+        "notes": "Side gates should be located so meter panels can be accessed from outside"
+      }
+    },
+
+    "hydraulic": {
+      "rainwaterTanks": {
+        "included": true,
+        "usage": ["landscape_watering", "toilets", "washing_machines"],
+        "notes": "Captures roof water for reuse"
+      },
+      "waterMeters": {
+        "type": "individual_metered",
+        "notes": "Per dwelling in accordance with water authority requirements"
+      },
+      "stormwater": {
+        "onSiteDetention": "site_specific",
+        "notes": "Design is site specific; suitably qualified engineer required"
+      },
+      "hotWater": {
+        "options": ["heat_pump"],
+        "notes": "All-electric homes with heat pump hot water units"
+      }
+    },
+
+    "nbn": {
+      "included": true,
+      "notes": "Subject to service provider availability"
+    },
+
+    "mechanical": {
+      "ceilingFans": {
+        "included": true,
+        "notes": "Improve air circulation, energy efficiency and thermal comfort"
+      },
+      "airConditioning": {
+        "optionAvailable": true,
+        "notes": "Pattern applicants will need to assess requirements"
+      }
+    }
+  },
+
+  "sustainabilityFeatures": {
+    "passiveDesign": [
+      "Passive solar design ensures comfortable living",
+      "Daylight and cross-ventilation to all spaces",
+      "Sun shading and rain protection to windows and doors",
+      "Careful control of extent of glass maximises light and thermal comfort"
+    ],
+    "constructionEfficiency": [
+      "Simple construction system suited to prefabrication",
+      "Standardised elements reduce cost and construction waste"
+    ],
+    "materialDurability": [
+      "External materials including brickwork have longevity",
+      "Low maintenance design"
+    ],
+    "energyEfficiency": [
+      "All-electric homes provide healthier indoor environment",
+      "Lower energy bills and reduced carbon footprint",
+      "Provision for solar panel installation"
+    ],
+    "basixCompliance": {
+      "required": true,
+      "guidanceProvided": true,
+      "notes": "Each pattern includes guidance on achieving BASIX requirements"
+    }
+  },
+
+  "householdSuitability": [
+    {
+      "type": "Young families",
+      "description": "Private garden visible from living area; spacious eat-in kitchen great for kids"
+    },
+    {
+      "type": "Grown-up families",
+      "description": "Living areas separated from bedrooms to provide teen retreat"
+    },
+    {
+      "type": "Extended families",
+      "description": "Flexible room on ground floor can be converted to guest room or granny flat"
+    },
+    {
+      "type": "Ageing in place",
+      "description": "Designed to meet ABCB Livable Housing Design Standard to support changing mobility needs"
+    },
+    {
+      "type": "Co-living or share houses",
+      "description": "Separation between bedrooms and living areas suits share housing arrangements"
+    }
+  ],
+
+  "nccCompliance": {
+    "buildingClass": "1a",
+    "nccVersion": "2022",
+    "livableHousingStandard": {
+      "minimum": "silver",
+      "notes": "Complies with ABCB Livable Housing Design Standard adapted from LHA silver level"
+    },
+    "pathsOfTravel": {
+      "stepFreeEntry": true,
+      "notes": "Driveways must be step free per ABCB Livable Housing Design Standard"
+    }
+  }
+}

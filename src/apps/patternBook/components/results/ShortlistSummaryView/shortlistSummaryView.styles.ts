@@ -1,0 +1,197 @@
+import type { CSSProperties } from "react";
+import { LANDIQ_THEME } from "@/components/ui/landiq/theme";
+
+const statsGridResponsive = {
+  display: "grid" as const,
+  gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 142px), 1fr))" as const,
+  gap: LANDIQ_THEME.spacing.sm,
+  marginBottom: LANDIQ_THEME.spacing.lg,
+};
+
+const statsGridTwoResponsive = {
+  display: "grid" as const,
+  gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 180px), 1fr))" as const,
+  gap: LANDIQ_THEME.spacing.sm,
+  marginBottom: LANDIQ_THEME.spacing.lg,
+};
+
+export const shortlistSummaryStyles = {
+  container: {
+    padding: LANDIQ_THEME.spacing.md,
+    paddingTop: 0,
+  },
+  statsGrid: statsGridResponsive,
+  statsGridTwo: statsGridTwoResponsive,
+  statCard: (color: string): CSSProperties => ({
+    padding: LANDIQ_THEME.spacing.lg,
+    backgroundColor: LANDIQ_THEME.colors.greys.white,
+    border: `2px solid ${color}`,
+    borderRadius: LANDIQ_THEME.border.radius.md,
+    textAlign: "center",
+  }),
+  statValue: (color: string): CSSProperties => ({
+    fontFamily: LANDIQ_THEME.typography.fontFamily,
+    fontSize: "32px",
+    fontWeight: 700,
+    color,
+    lineHeight: 1.2,
+  }),
+  statLabel: {
+    fontFamily: LANDIQ_THEME.typography.fontFamily,
+    fontSize: LANDIQ_THEME.typography.fontSize.sm,
+    color: LANDIQ_THEME.colors.text.muted,
+    marginTop: LANDIQ_THEME.spacing.xs,
+  },
+  section: {
+    marginBottom: LANDIQ_THEME.spacing.lg,
+  },
+  sectionTitle: {
+    fontFamily: LANDIQ_THEME.typography.fontFamily,
+    fontSize: LANDIQ_THEME.typography.fontSize.sm,
+    fontWeight: 600,
+    color: LANDIQ_THEME.colors.text.dark,
+    marginBottom: LANDIQ_THEME.spacing.sm,
+    display: "flex",
+    alignItems: "center",
+    gap: LANDIQ_THEME.spacing.xs,
+  },
+  patternList: {
+    display: "flex",
+    flexDirection: "column" as const,
+    gap: LANDIQ_THEME.spacing.sm,
+  },
+  patternCardWrapper: {
+    cursor: "pointer",
+    transition: "transform 0.15s ease, box-shadow 0.15s ease",
+    borderRadius: LANDIQ_THEME.borders.buttonRadius,
+  },
+  patternCardContent: {
+    display: "flex",
+    alignItems: "center",
+    gap: LANDIQ_THEME.spacing.sm,
+    padding: LANDIQ_THEME.spacing.sm,
+  },
+  patternImage: {
+    width: "48px",
+    height: "48px",
+    borderRadius: LANDIQ_THEME.borders.buttonRadius,
+    objectFit: "cover" as const,
+    backgroundColor: LANDIQ_THEME.colors.greys.light,
+    flexShrink: 0,
+  },
+  patternInfo: {
+    flex: 1,
+    minWidth: 0,
+  },
+  patternName: {
+    fontFamily: LANDIQ_THEME.typography.fontFamily,
+    fontSize: LANDIQ_THEME.typography.fontSize.sm,
+    fontWeight: 600,
+    color: LANDIQ_THEME.colors.text.dark,
+    marginBottom: "2px",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  },
+  patternMeta: {
+    fontFamily: LANDIQ_THEME.typography.fontFamily,
+    fontSize: LANDIQ_THEME.typography.fontSize.xs,
+    color: LANDIQ_THEME.colors.text.muted,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  },
+  patternStats: {
+    display: "flex",
+    gap: LANDIQ_THEME.spacing.sm,
+    textAlign: "right" as const,
+    flexShrink: 0,
+  },
+  patternStatItem: {
+    display: "flex",
+    flexDirection: "column" as const,
+    alignItems: "flex-end",
+  },
+  patternStatLabel: {
+    fontFamily: LANDIQ_THEME.typography.fontFamily,
+    fontSize: "10px",
+    color: LANDIQ_THEME.colors.text.muted,
+  },
+  chartContainer: {
+    backgroundColor: LANDIQ_THEME.colors.greys.white,
+    border: `1px solid ${LANDIQ_THEME.colors.greys.light}`,
+    borderRadius: LANDIQ_THEME.border.radius.md,
+    padding: LANDIQ_THEME.spacing.md,
+    overflow: "hidden",
+  },
+  chartRow: {
+    display: "flex",
+    alignItems: "center",
+    marginBottom: LANDIQ_THEME.spacing.sm,
+    gap: LANDIQ_THEME.spacing.xs,
+    minWidth: 0,
+  },
+  chartLabel: {
+    width: "40px",
+    flexShrink: 0,
+    fontFamily: LANDIQ_THEME.typography.fontFamily,
+    fontSize: LANDIQ_THEME.typography.fontSize.sm,
+    fontWeight: 600,
+    color: LANDIQ_THEME.colors.text.dark,
+  },
+  chartBarContainer: {
+    flex: 1,
+    display: "flex",
+    alignItems: "center",
+    gap: LANDIQ_THEME.spacing.xs,
+    minWidth: 0,
+  },
+  chartBar: (width: number, color: string): CSSProperties => ({
+    height: "24px",
+    width: `${width}%`,
+    backgroundColor: color,
+    borderRadius: LANDIQ_THEME.border.radius.sm,
+    minWidth: width > 0 ? "4px" : "0",
+    transition: "width 0.3s ease",
+  }),
+  chartBarInner: {
+    position: "relative" as const,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  chartBarLabel: {
+    color: "white",
+    fontSize: "11px",
+    fontWeight: 600,
+    textShadow: "0 1px 2px rgba(0,0,0,0.3)",
+  },
+  chartLegend: {
+    display: "flex",
+    flexWrap: "wrap" as const,
+    justifyContent: "center",
+    gap: LANDIQ_THEME.spacing.lg,
+    marginTop: LANDIQ_THEME.spacing.sm,
+    paddingTop: LANDIQ_THEME.spacing.sm,
+    borderTop: `1px solid ${LANDIQ_THEME.colors.greys.light}`,
+  },
+  legendItem: {
+    display: "flex",
+    alignItems: "center",
+    gap: LANDIQ_THEME.spacing.xs,
+    fontFamily: LANDIQ_THEME.typography.fontFamily,
+    fontSize: LANDIQ_THEME.typography.fontSize.xs,
+    color: LANDIQ_THEME.colors.text.muted,
+  },
+  legendDot: (color: string): CSSProperties => ({
+    width: "12px",
+    height: "12px",
+    borderRadius: LANDIQ_THEME.border.radius.xs,
+    backgroundColor: color,
+    flexShrink: 0,
+  }),
+  tooltipLink: {
+    color: LANDIQ_THEME.colors.brand.lightBlue,
+    textDecoration: "underline",
+  },
+};

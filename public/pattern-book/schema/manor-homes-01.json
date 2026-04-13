@@ -1,0 +1,648 @@
+{
+  "$schema": "./pattern-book-schema.json",
+  "metadata": {
+    "id": "MN01",
+    "name": "Manor Homes 01",
+    "architect": "Studio Johnston",
+    "version": "1.0",
+    "releaseDate": "2025-07-01",
+    "developmentType": "manor_house",
+    "buildingClass": "2",
+    "description": "An elegant design with garden apartments on the ground floor and airy, raked ceilings and generous balconies on the first floor. A refined building that resembles a single elegant home containing 4 light and airy apartments.",
+    "designConcepts": [
+      "Refined building resembling single elegant home containing 4 apartments",
+      "Each apartment with outlook and landscaping on 3 sides",
+      "Ground floor units with generous corner gardens",
+      "First floor units with wide balconies and raked ceilings",
+      "Well-designed apartment plans efficiently maximising space",
+      "Stepped building form for gentle scale and visual interest",
+      "Brickwork and simple sloped roof domestic in scale"
+    ],
+    "ownershipTypes": ["strata"],
+    "applicablePolicies": [
+      {
+        "name": "Pattern Book Development Code 2025",
+        "description": "Pattern book development under State Environmental Planning Policy (Exempt and Complying Development Codes) 2008"
+      },
+      {
+        "name": "Low and Mid-Rise Housing Areas",
+        "reference": "Section 163 Housing SEPP"
+      },
+      {
+        "name": "Non-LMR Housing Areas",
+        "reference": "Local Environmental Plan provisions"
+      }
+    ]
+  },
+
+  "siteEligibility": {
+    "siteTypes": {
+      "allowed": ["mid_block", "corner", "rear_laneway"],
+      "excluded": ["battle_axe", "irregular"]
+    },
+
+    "lotDimensions": {
+      "lmr": {
+        "absoluteMinimums": {
+          "width": 15.0,
+          "length": 41.6,
+          "area": 625
+        },
+        "absoluteMaximums": {
+          "width": null,
+          "length": null,
+          "area": null
+        }
+      },
+      "nonLmr": {
+        "absoluteMinimums": {
+          "width": 18.0,
+          "length": 46.55,
+          "area": 840
+        },
+        "absoluteMaximums": {
+          "width": null,
+          "length": null,
+          "area": null
+        }
+      }
+    },
+
+    "excludedLand": [
+      {
+        "type": "bushfire_prone",
+        "description": "Land identified as bushfire-prone"
+      },
+      {
+        "type": "flood_prone_high_risk",
+        "description": "Certain flood-prone land in high risk locations"
+      },
+      {
+        "type": "state_heritage_item",
+        "description": "State heritage items"
+      },
+      {
+        "type": "local_heritage_item",
+        "description": "Local heritage items"
+      },
+      {
+        "type": "heritage_conservation_area",
+        "description": "Heritage conservation areas"
+      }
+    ],
+
+    "slopeConstraints": {
+      "maxFrontToBackMetres": 4.0,
+      "maxSideToSideMetres": 3.3,
+      "notes": "Slope tolerance varies by site width and depth"
+    },
+
+    "solarOrientation": {
+      "allOrientationsSupported": true,
+      "bestSuited": "north_facing_rear_yards",
+      "orientationGuidance": [
+        {
+          "frontageDirection": "north",
+          "notes": "Designs optimise solar access through courtyards and skylights"
+        },
+        {
+          "frontageDirection": "south",
+          "notes": "North-facing rear yards provide optimal solar access"
+        },
+        {
+          "frontageDirection": "east",
+          "notes": "Flexible street-facing living spaces"
+        },
+        {
+          "frontageDirection": "west",
+          "notes": "Flexible street-facing living spaces"
+        }
+      ]
+    }
+  },
+
+  "developmentStandards": {
+    "height": {
+      "lmr": {
+        "maxMetres": 9.5,
+        "maxStoreys": 2,
+        "minStoreys": 2,
+        "basePatternHeight": 7.6
+      },
+      "nonLmr": {
+        "maxMetres": 8.5,
+        "maxStoreys": 2,
+        "minStoreys": 2,
+        "basePatternHeight": 7.6
+      },
+      "exclusionsFromMaxHeight": [
+        "chimneys",
+        "flues",
+        "domestic_aerials"
+      ]
+    },
+
+    "setbacks": {
+      "front": {
+        "lmr": {
+          "min": 9.5,
+          "notes": "Primary street frontage setback in LMR areas"
+        },
+        "nonLmr": {
+          "min": 5.0,
+          "alternativeRule": "Not less than average setback from primary road of nearest 2 dwelling houses within 40m on same side, whichever is greater"
+        }
+      },
+      "rear": {
+        "lmr": {
+          "min": 6.0
+        },
+        "nonLmr": {
+          "min": 15.4
+        }
+      },
+      "side": {
+        "lmr": {
+          "min": 1.5
+        },
+        "nonLmr": {
+          "min": 1.5
+        }
+      },
+      "secondary": {
+        "min": 3.0,
+        "notes": "Secondary street setback for corner lots"
+      },
+      "articulationZone": {
+        "extension": 1.95,
+        "notes": "Pattern includes articulation zone extending 1.95m into front and rear setbacks"
+      }
+    },
+
+    "fsr": {
+      "lmr": {
+        "max": 0.8,
+        "basePattern": 0.6,
+        "notes": "As defined by LMR reforms; base pattern is 0.6:1"
+      },
+      "nonLmr": {
+        "max": 0.5,
+        "basePattern": 0.5,
+        "notes": "Maximum 0.5:1; base pattern is 0.5:1"
+      }
+    },
+
+    "dwellings": {
+      "total": 4,
+      "configuration": "manor_house",
+      "bedroomOptions": [2, 3]
+    },
+
+    "landscapeRequirements": {
+      "minPercentage": 15,
+      "guideReference": "NSW Housing Pattern Book Landscape design guide"
+    },
+
+    "parking": {
+      "lmr": {
+        "spacesPerDwelling": 0.5,
+        "location": "front_hardstand",
+        "notes": "Parking at front for LMR areas"
+      },
+      "nonLmr": {
+        "spacesPerDwelling": 1,
+        "location": "rear_car_parks",
+        "notes": "1 car space per dwelling with parking to rear"
+      }
+    }
+  },
+
+  "adaptations": {
+    "policyAreaVariants": [
+      {
+        "id": "lmr_4x2bed",
+        "policyArea": "lmr",
+        "lotWidth": 15.0,
+        "lotLength": 41.6,
+        "siteArea": 625,
+        "storeys": 2,
+        "maxHeight": 9.5,
+        "maxFsr": 0.6,
+        "gfa": 375,
+        "dwellingYield": {
+          "twoBed": 4,
+          "threeBed": 0,
+          "total": 4
+        },
+        "parking": {
+          "location": "front_hardstand"
+        },
+        "isBasePattern": true
+      },
+      {
+        "id": "lmr_2x2bed_2x2bed_gold",
+        "policyArea": "lmr",
+        "lotWidth": 15.0,
+        "lotLength": 41.6,
+        "siteArea": 625,
+        "storeys": 2,
+        "maxHeight": 9.5,
+        "maxFsr": 0.6,
+        "gfa": 375,
+        "dwellingYield": {
+          "twoBed_silver": 2,
+          "twoBed_gold": 2,
+          "total": 4
+        },
+        "notes": "Ground floor units at gold livability standard"
+      },
+      {
+        "id": "lmr_2x2bed_2x3bed",
+        "policyArea": "lmr",
+        "lotWidth": 15.0,
+        "lotLength": 44.3,
+        "siteArea": 665,
+        "storeys": 2,
+        "maxHeight": 9.5,
+        "maxFsr": 0.6,
+        "gfa": 399,
+        "dwellingYield": {
+          "twoBed": 2,
+          "threeBed": 2,
+          "total": 4
+        }
+      },
+      {
+        "id": "lmr_2x2bed_gold_2x3bed",
+        "policyArea": "lmr",
+        "lotWidth": 15.0,
+        "lotLength": 44.3,
+        "siteArea": 665,
+        "storeys": 2,
+        "maxHeight": 9.5,
+        "maxFsr": 0.6,
+        "gfa": 399,
+        "dwellingYield": {
+          "twoBed_gold": 2,
+          "threeBed": 2,
+          "total": 4
+        }
+      },
+      {
+        "id": "lmr_4x3bed",
+        "policyArea": "lmr",
+        "lotWidth": 15.0,
+        "lotLength": 47.0,
+        "siteArea": 705,
+        "storeys": 2,
+        "maxHeight": 9.5,
+        "maxFsr": 0.6,
+        "gfa": 423,
+        "dwellingYield": {
+          "twoBed": 0,
+          "threeBed": 4,
+          "total": 4
+        }
+      },
+      {
+        "id": "non_lmr_4x2bed",
+        "policyArea": "non_lmr",
+        "lotWidth": 18.0,
+        "lotLength": 46.55,
+        "siteArea": 840,
+        "storeys": 2,
+        "maxHeight": 8.5,
+        "maxFsr": 0.5,
+        "gfa": 420,
+        "dwellingYield": {
+          "twoBed": 4,
+          "threeBed": 0,
+          "total": 4
+        },
+        "parking": {
+          "location": "rear_car_parks"
+        },
+        "isBasePattern": true
+      },
+      {
+        "id": "non_lmr_2x2bed_2x3bed",
+        "policyArea": "non_lmr",
+        "lotWidth": 18.0,
+        "lotLength": 49.25,
+        "siteArea": 887,
+        "storeys": 2,
+        "maxHeight": 8.5,
+        "maxFsr": 0.5,
+        "gfa": 444,
+        "dwellingYield": {
+          "twoBed": 2,
+          "threeBed": 2,
+          "total": 4
+        }
+      },
+      {
+        "id": "non_lmr_4x3bed",
+        "policyArea": "non_lmr",
+        "lotWidth": 18.0,
+        "lotLength": 51.95,
+        "siteArea": 935,
+        "storeys": 2,
+        "maxHeight": 8.5,
+        "maxFsr": 0.5,
+        "gfa": 468,
+        "dwellingYield": {
+          "twoBed": 0,
+          "threeBed": 4,
+          "total": 4
+        }
+      }
+    ],
+
+    "dwellingMixOptions": [
+      {
+        "id": "mix_1",
+        "description": "4 x 2-bed unit",
+        "lmrDimensions": "15m x 41.6m",
+        "nonLmrDimensions": "18m x 46.55m"
+      },
+      {
+        "id": "mix_2",
+        "description": "2 x 2-bed unit, 2 x 2-bed gold livability standard",
+        "lmrDimensions": "15m x 41.6m",
+        "nonLmrDimensions": "18m x 46.55m"
+      },
+      {
+        "id": "mix_3",
+        "description": "2 x 2-bed unit, 2 x 3-bed unit",
+        "lmrDimensions": "15m x 44.3m",
+        "nonLmrDimensions": "18m x 49.25m"
+      },
+      {
+        "id": "mix_4",
+        "description": "2 x 2-bed gold livability standard, 2 x 3-bed unit",
+        "lmrDimensions": "15m x 44.3m",
+        "nonLmrDimensions": "18m x 49.25m"
+      },
+      {
+        "id": "mix_5",
+        "description": "4 x 3-bed unit",
+        "lmrDimensions": "15m x 47m",
+        "nonLmrDimensions": "18m x 51.95m"
+      }
+    ],
+
+    "materialPalettes": [
+      {
+        "id": "palette_01",
+        "name": "Material Palette 1",
+        "materials": {
+          "concrete": {
+            "type": "Off-form or skim-coat concrete",
+            "usage": "Balcony profiles"
+          },
+          "metalRoof": {
+            "type": "Corrugated steel metal deck roof"
+          },
+          "brick": {
+            "type": "Dry-pressed clay brick",
+            "notes": "Colour to complement surrounding neighbourhood"
+          },
+          "cladding": {
+            "type": "Fibre-cement board",
+            "finish": "Paint finish, large-format to complement window hoods"
+          },
+          "paintFinish": {
+            "type": "Paint and powdercoat finish",
+            "usage": "Doors and windows"
+          }
+        }
+      }
+    ],
+
+    "slopeVariants": [
+      {
+        "id": "flat",
+        "name": "Flat Site",
+        "slopeFrontToBack": 0,
+        "slopeSideToSide": 0
+      },
+      {
+        "id": "slope_front_back",
+        "name": "Slope Front to Back",
+        "slopeFrontToBack": 4.0,
+        "slopeSideToSide": 0,
+        "notes": "Site can slope up to 4m front to back"
+      },
+      {
+        "id": "crossfall",
+        "name": "Crossfall Site",
+        "slopeFrontToBack": 0,
+        "slopeSideToSide": 3.3,
+        "notes": "Site can slope up to 3.3m side to side depending on width and depth"
+      }
+    ]
+  },
+
+  "apartmentTypes": [
+    {
+      "id": "2BED_SILVER_GROUND",
+      "category": "2bed",
+      "name": "2 Bedroom Ground Floor Apartment",
+      "level": "ground",
+      "rooms": {
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "livingAreas": 1,
+        "hasLaundry": true
+      },
+      "features": [
+        "corner_garden",
+        "windows_on_3_sides",
+        "natural_light_ventilation"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver",
+        "canAdaptToBeyondMinimum": true,
+        "fullyGroundFloor": true
+      }
+    },
+    {
+      "id": "2BED_GOLD_GROUND",
+      "category": "2bed",
+      "name": "2 Bedroom Ground Floor Apartment (Gold)",
+      "level": "ground",
+      "rooms": {
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "livingAreas": 1,
+        "hasLaundry": true
+      },
+      "features": [
+        "corner_garden",
+        "windows_on_3_sides",
+        "enhanced_accessibility"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "gold",
+        "fullyGroundFloor": true
+      }
+    },
+    {
+      "id": "2BED_SILVER_UPPER",
+      "category": "2bed",
+      "name": "2 Bedroom First Floor Apartment",
+      "level": "first",
+      "rooms": {
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "livingAreas": 1,
+        "hasLaundry": true
+      },
+      "features": [
+        "wide_balcony",
+        "raked_ceilings",
+        "windows_on_3_sides"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver"
+      }
+    },
+    {
+      "id": "3BED_SILVER",
+      "category": "3bed",
+      "name": "3 Bedroom Apartment",
+      "rooms": {
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "livingAreas": 1,
+        "hasLaundry": true,
+        "hasStudy": true
+      },
+      "features": [
+        "home_office",
+        "windows_on_3_sides",
+        "generous_balcony_or_garden"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "silver"
+      }
+    }
+  ],
+
+  "designFeatures": {
+    "fixed": [
+      {
+        "id": "stepped_form",
+        "category": "appearance",
+        "name": "Stepped Building Form",
+        "description": "Provides gentle scale and visual interest to street"
+      },
+      {
+        "id": "windows_3_sides",
+        "category": "internal_planning",
+        "name": "Windows on Three Sides",
+        "description": "Each apartment has outlook on 3 sides"
+      },
+      {
+        "id": "stacked_services",
+        "category": "structure",
+        "name": "Stacked Services",
+        "description": "Efficient Class 2 construction with stacked services"
+      },
+      {
+        "id": "privacy_design",
+        "category": "internal_planning",
+        "name": "Privacy Design",
+        "description": "High window sills and vertical blade walls mitigate overlooking"
+      }
+    ],
+    "flexible": [
+      {
+        "id": "dwelling_mix",
+        "category": "internal_planning",
+        "name": "Dwelling Mix",
+        "description": "Options for 2-bed and 3-bed apartments depending on site length"
+      },
+      {
+        "id": "livability_standard",
+        "category": "accessibility",
+        "name": "Livability Standard",
+        "description": "Ground floor apartments can be adapted to Beyond Minimum"
+      },
+      {
+        "id": "parking_location",
+        "category": "parking",
+        "name": "Parking Location",
+        "description": "Front or rear depending on site depth"
+      },
+      {
+        "id": "material_colours",
+        "category": "appearance",
+        "name": "Material Colours",
+        "description": "Choice of external material colours"
+      }
+    ]
+  },
+
+  "services": {
+    "waste": {
+      "collectionMethod": "kerbside",
+      "binsPerDwelling": {
+        "general": 1,
+        "recycling": 1,
+        "organics": 1
+      }
+    },
+
+    "electrical": {
+      "supplyType": "fully_electric",
+      "photovoltaics": {
+        "roofAreaAvailable": true,
+        "notes": "Large roof area suitable for solar panels"
+      }
+    },
+
+    "hydraulic": {
+      "rainwaterTanks": {
+        "included": true
+      },
+      "hotWater": {
+        "options": ["heat_pump"]
+      }
+    }
+  },
+
+  "householdSuitability": [
+    {
+      "type": "Young families",
+      "description": "Private gardens and generous balconies visible from living areas; home office in 3-bed"
+    },
+    {
+      "type": "Single parent families",
+      "description": "Spacious living areas and 2 separate bathrooms suit teen and adult kids"
+    },
+    {
+      "type": "Ageing in place",
+      "description": "Fully ground floor apartments available; designed to ABCB standard with Beyond Minimum option"
+    },
+    {
+      "type": "Co-living or share houses",
+      "description": "2 bathrooms, separate laundry, good bedroom separation suits share housing"
+    }
+  ],
+
+  "nccCompliance": {
+    "buildingClass": "2",
+    "nccVersion": "2022",
+    "constructionType": "efficient_class_2",
+    "additionalRequirements": {
+      "dbpScheme": true,
+      "notes": "Additional compliance measures under Design and Building Practitioners Act 2020"
+    },
+    "livableHousingStandard": {
+      "minimum": "silver",
+      "goldOptionAvailable": true,
+      "notes": "Ground floor apartments can be adapted to Beyond Minimum (gold)"
+    }
+  }
+}

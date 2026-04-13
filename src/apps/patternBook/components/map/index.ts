@@ -1,0 +1,1 @@
+export { PatternBookMapLegend } from './PatternBookMapLegend';

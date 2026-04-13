@@ -1,0 +1,1276 @@
+{
+  "$schema": "./pattern-book-schema.json",
+  "metadata": {
+    "id": "SLA01",
+    "name": "Small Lot Apartments 01",
+    "architect": "Collins and Turner",
+    "version": "1.0",
+    "releaseDate": "2025-11-01",
+    "developmentType": "residential_flat_building",
+    "description": "A timeless, compact design that integrates Art Deco sensibilities with the conveniences of modern living. A contemporary take on the classic Art Deco walk-up, distinguished by its elegant brick facade.",
+    "designConcepts": [
+      "Efficient floor plate to maximise apartments on compact site",
+      "Mix of studio to 4-bedroom homes with flexible multipurpose rooms",
+      "Private balconies and courtyards with communal rooftop and rear garden",
+      "Integrated sustainability features including solar access, cross-ventilation, rainwater tanks and solar panels",
+      "Stacked and standardised wet areas for construction efficiency",
+      "Cost-balanced facades with brick at street edge, lightweight at boundaries"
+    ],
+    "ownershipTypes": ["strata", "company_title", "build_to_rent"],
+    "applicablePolicies": [
+      {
+        "name": "Housing SEPP Chapter 7",
+        "description": "Pattern book development under State Environmental Planning Policy (Housing) 2021"
+      },
+      {
+        "name": "Low and Mid-Rise Housing Areas",
+        "reference": "Section 163 Housing SEPP"
+      },
+      {
+        "name": "Transport Oriented Development Areas",
+        "reference": "Chapter 5 Housing SEPP"
+      }
+    ]
+  },
+
+  "siteEligibility": {
+    "siteTypes": {
+      "allowed": ["mid_block", "mid_block_laneway"],
+      "excluded": ["corner", "battle_axe"]
+    },
+
+    "lotDimensions": {
+      "absoluteMinimums": {
+        "width": 13.0,
+        "length": 40.0,
+        "area": 520
+      },
+      "absoluteMaximums": {
+        "width": null,
+        "length": 54.5,
+        "area": 904
+      }
+    },
+
+    "excludedLand": [
+      {
+        "type": "bushfire_prone",
+        "description": "Land identified as bushfire-prone"
+      },
+      {
+        "type": "flood_prone_high_risk",
+        "description": "Certain flood-prone land in high risk locations"
+      },
+      {
+        "type": "state_heritage_item",
+        "description": "State heritage items"
+      },
+      {
+        "type": "local_heritage_item",
+        "description": "Local heritage items"
+      },
+      {
+        "type": "heritage_conservation_area",
+        "description": "Heritage conservation areas"
+      }
+    ],
+
+    "slopeConstraints": {
+      "maxCrossfallMetres": 1.0,
+      "allowedDirections": ["upslope_to_rear", "downslope_to_rear"],
+      "notes": "Basement and ground floor layouts can adjust to site slopes of up to 1m"
+    },
+
+    "solarOrientation": {
+      "allOrientationsSupported": true,
+      "orientationGuidance": [
+        {
+          "frontageDirection": "north",
+          "mirroring": "vertical",
+          "parkingAccessOptions": ["rear_lane", "no_parking"],
+          "notes": "North frontage requires vertical mirroring, parking access from rear lane only"
+        },
+        {
+          "frontageDirection": "south",
+          "mirroring": "none",
+          "parkingAccessOptions": ["front_street", "rear_lane", "no_parking"],
+          "notes": "Base pattern orientation"
+        },
+        {
+          "frontageDirection": "east",
+          "mirroring": "none",
+          "parkingAccessOptions": ["front_street", "rear_lane", "no_parking"],
+          "notes": "Base pattern works directly"
+        },
+        {
+          "frontageDirection": "west",
+          "mirroring": "horizontal",
+          "parkingAccessOptions": ["front_street", "rear_lane", "no_parking"],
+          "notes": "West frontage requires horizontal mirroring"
+        }
+      ]
+    }
+  },
+
+  "developmentStandards": {
+    "height": {
+      "maxMetres": 17.5,
+      "maxStoreys": 4,
+      "minStoreys": 3,
+      "exclusionsFromMaxHeight": [
+        "lift_overruns",
+        "plant_and_services_equipment",
+        "shade_structures",
+        "common_floor_area",
+        "communal_open_space"
+      ],
+      "additionalHeightForExclusions": 1.45,
+      "notes": "Maximum building height for pattern includes allowance for adaptation to slope on subject site"
+    },
+
+    "setbacks": {
+      "front": {
+        "primary": {
+          "min": 4.0,
+          "notes": "Primary street frontage"
+        }
+      },
+      "rear": {
+        "standard": {
+          "min": 6.0
+        },
+        "parallelStreetOrLaneway": {
+          "min": 6.0
+        }
+      },
+      "side": {
+        "rules": [
+          {
+            "id": "0m_setback",
+            "conditions": {
+              "lotWidthMin": 13.0,
+              "lotWidthMax": 16.0,
+              "wallType": "blank_wall_portion"
+            },
+            "setback": 0,
+            "windowedPortionSetback": 3.0,
+            "maxStoreys": 4,
+            "notes": "0m setback where blank wall faces boundary, 3m where windows face side boundary"
+          },
+          {
+            "id": "1.5m_setback",
+            "conditions": {
+              "lotWidthMin": 13.6,
+              "lotWidthMax": 16.5
+            },
+            "setback": 1.5,
+            "maxStoreys": 3,
+            "notes": "Continuous side setback for 3-storey buildings"
+          },
+          {
+            "id": "2.0m_setback",
+            "conditions": {
+              "lotWidthMin": 14.6,
+              "lotWidthMax": 15.5
+            },
+            "setback": 2.0,
+            "maxStoreys": 3,
+            "notes": "Increased setback for wider lots"
+          },
+          {
+            "id": "2.5m_setback",
+            "conditions": {
+              "lotWidthMin": 15.6,
+              "lotWidthMax": 16.5
+            },
+            "setback": 2.5,
+            "maxStoreys": 3,
+            "notes": "Increased setback for wider lots"
+          },
+          {
+            "id": "3.0m_setback",
+            "conditions": {
+              "lotWidthMin": 16.6,
+              "lotWidthMax": null
+            },
+            "setback": 3.0,
+            "maxStoreys": 4,
+            "notes": "Full setback for 4-storey buildings"
+          }
+        ],
+        "allowableEncroachments": ["window_hoods"]
+      }
+    },
+
+    "dwellings": {
+      "max": 13,
+      "min": 7,
+      "maxSingleTypePercentage": 75,
+      "mixRequirement": "No more than 75% of dwellings to be a single type"
+    },
+
+    "floorToCeiling": {
+      "habitable": {
+        "min": 2.7,
+        "unit": "metres"
+      },
+      "nonHabitable": {
+        "min": 2.4,
+        "unit": "metres"
+      }
+    },
+
+    "deepSoil": {
+      "rules": [
+        {
+          "siteAreaMax": 650,
+          "percentage": 7
+        },
+        {
+          "siteAreaMin": 650,
+          "siteAreaMax": 1500,
+          "percentage": 10
+        },
+        {
+          "siteAreaMin": 1500,
+          "percentage": 15
+        }
+      ],
+      "unit": "percentage_of_site_area"
+    },
+
+    "solarAccess": {
+      "minPercentageOfDwellingsCompliant": 70,
+      "minDirectSunlightHours": 2,
+      "timeWindow": {
+        "start": "08:00",
+        "end": "16:00"
+      },
+      "targetArea": "living_spaces",
+      "notes": "Pattern achieves at least 70% solar access between 8am to 4pm under common conditions"
+    },
+
+    "overshadowing": {
+      "neighbouringProperties": {
+        "minSunlightHours": 3,
+        "minPrivateOpenSpacePercentage": 50,
+        "timeWindow": {
+          "start": "09:00",
+          "end": "15:00"
+        },
+        "referenceDate": "21 June"
+      },
+      "evidenceRequired": "sun_shadow_diagrams",
+      "notes": "Setbacks may need to be increased to maximise solar access and minimise overshadowing"
+    },
+
+    "crossVentilation": {
+      "required": true,
+      "standard": "ADG_compliant",
+      "notes": "All apartments achieve cross-ventilation in accordance with ADG guidance"
+    },
+
+    "communalOpenSpace": {
+      "minPercentageOfSiteArea": 28,
+      "locations": ["ground_floor_courtyard", "rooftop"],
+      "features": [
+        "outdoor_gym",
+        "outdoor_benches_with_shade",
+        "vegetable_garden_with_dining",
+        "playground_with_pergola",
+        "outdoor_kitchen"
+      ]
+    },
+
+    "landscapeRequirements": {
+      "guideReference": "NSW Housing Pattern Book Landscape design guide",
+      "treeCanopyRequired": true,
+      "significantTreesNote": "Sites requiring change, removal or pruning of significant trees must seek council approval"
+    },
+
+    "privacyRequirements": {
+      "addressedInPattern": true,
+      "solutions": [
+        "fixed_screening",
+        "optional_screening",
+        "required_setbacks_for_building_separation",
+        "reeded_or_translucent_glazing_at_boundaries",
+        "clear_sashless_windows_perpendicular_to_boundaries"
+      ]
+    }
+  },
+
+  "adaptations": {
+    "lotSizeVariants": [
+      {
+        "id": "0m_13x40",
+        "category": "0m_setback",
+        "lotWidth": 13.0,
+        "lotLength": 40.0,
+        "siteArea": 520,
+        "sideSetback": 0,
+        "storeys": 4,
+        "gfa": 715,
+        "fsr": 1.37,
+        "dwellingYield": {
+          "studio": 1,
+          "oneBed": 7,
+          "twoBed": 2,
+          "threeBed": 0,
+          "fourBed": 0,
+          "total": 10
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 4,
+          "accessible": 1,
+          "bikes": 14
+        }
+      },
+      {
+        "id": "0m_14x40",
+        "category": "0m_setback",
+        "lotWidth": 14.0,
+        "lotLength": 40.0,
+        "siteArea": 560,
+        "sideSetback": 0,
+        "storeys": 4,
+        "gfa": 812,
+        "fsr": 1.45,
+        "dwellingYield": {
+          "studio": 0,
+          "oneBed": 4,
+          "twoBed": 6,
+          "threeBed": 0,
+          "fourBed": 0,
+          "total": 10
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 4,
+          "accessible": 1,
+          "bikes": 14
+        }
+      },
+      {
+        "id": "0m_15x40",
+        "category": "0m_setback",
+        "lotWidth": 15.0,
+        "lotLength": 40.0,
+        "siteArea": 600,
+        "sideSetback": 0,
+        "storeys": 4,
+        "gfa": 895,
+        "fsr": 1.49,
+        "dwellingYield": {
+          "studio": 0,
+          "oneBed": 4,
+          "twoBed": 3,
+          "threeBed": 3,
+          "fourBed": 0,
+          "total": 10
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 5,
+          "accessible": 1,
+          "bikes": 14
+        }
+      },
+      {
+        "id": "0m_16x40",
+        "category": "0m_setback",
+        "lotWidth": 16.0,
+        "lotLength": 40.0,
+        "siteArea": 640,
+        "sideSetback": 0,
+        "storeys": 4,
+        "gfa": 929,
+        "fsr": 1.45,
+        "dwellingYield": {
+          "studio": 0,
+          "oneBed": 4,
+          "twoBed": 3,
+          "threeBed": 3,
+          "fourBed": 0,
+          "total": 10
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 5,
+          "accessible": 1,
+          "bikes": 14
+        }
+      },
+      {
+        "id": "1.5m_13.6x40",
+        "category": "1.5m_setback",
+        "lotWidth": 13.6,
+        "lotLength": 40.0,
+        "siteArea": 544,
+        "sideSetback": 1.5,
+        "storeys": 3,
+        "gfa": 598,
+        "fsr": 1.09,
+        "dwellingYield": {
+          "studio": 3,
+          "oneBed": 6,
+          "twoBed": 1,
+          "threeBed": 0,
+          "fourBed": 0,
+          "total": 10
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 4,
+          "accessible": 1,
+          "bikes": 13
+        }
+      },
+      {
+        "id": "1.5m_13.6x49.5",
+        "category": "1.5m_setback",
+        "lotWidth": 13.6,
+        "lotLength": 49.5,
+        "siteArea": 673.2,
+        "sideSetback": 1.5,
+        "storeys": 3,
+        "gfa": 861,
+        "fsr": 1.3,
+        "dwellingYield": {
+          "studio": 0,
+          "oneBed": 4,
+          "twoBed": 3,
+          "threeBed": 3,
+          "fourBed": 0,
+          "total": 10
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 6,
+          "accessible": 1,
+          "bikes": 14
+        }
+      },
+      {
+        "id": "1.5m_13.6x54.5",
+        "category": "1.5m_setback",
+        "lotWidth": 13.6,
+        "lotLength": 54.5,
+        "siteArea": 741.2,
+        "sideSetback": 1.5,
+        "storeys": 3,
+        "gfa": 1011,
+        "fsr": 1.36,
+        "dwellingYield": {
+          "studio": 0,
+          "oneBed": 4,
+          "twoBed": 0,
+          "threeBed": 5,
+          "fourBed": 1,
+          "total": 10
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 8,
+          "accessible": 1,
+          "bikes": 14
+        }
+      },
+      {
+        "id": "3m_16.6x40",
+        "category": "3m_setback",
+        "lotWidth": 16.6,
+        "lotLength": 40.0,
+        "siteArea": 664,
+        "sideSetback": 3.0,
+        "storeys": 4,
+        "gfa": 815,
+        "fsr": 1.2,
+        "dwellingYield": {
+          "studio": 3,
+          "oneBed": 8,
+          "twoBed": 2,
+          "threeBed": 0,
+          "fourBed": 0,
+          "total": 13
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 4,
+          "accessible": 1,
+          "bikes": 13
+        },
+        "isBasePattern": true
+      },
+      {
+        "id": "3m_16.6x49.5",
+        "category": "3m_setback",
+        "lotWidth": 16.6,
+        "lotLength": 49.5,
+        "siteArea": 821.7,
+        "sideSetback": 3.0,
+        "storeys": 4,
+        "gfa": 1157,
+        "fsr": 1.4,
+        "dwellingYield": {
+          "studio": 0,
+          "oneBed": 4,
+          "twoBed": 3,
+          "threeBed": 6,
+          "fourBed": 0,
+          "total": 13
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 6,
+          "accessible": 1,
+          "bikes": 14
+        }
+      },
+      {
+        "id": "3m_16.6x54.5",
+        "category": "3m_setback",
+        "lotWidth": 16.6,
+        "lotLength": 54.5,
+        "siteArea": 904.7,
+        "sideSetback": 3.0,
+        "storeys": 4,
+        "gfa": 1350,
+        "fsr": 1.49,
+        "dwellingYield": {
+          "studio": 0,
+          "oneBed": 4,
+          "twoBed": 0,
+          "threeBed": 5,
+          "fourBed": 4,
+          "total": 13
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 8,
+          "accessible": 1,
+          "bikes": 14
+        }
+      }
+    ],
+
+    "parkingVariants": [
+      {
+        "id": "basement",
+        "name": "Basement Parking",
+        "description": "Parking located in basement level with ramp access from street",
+        "preferred": true,
+        "specifications": {
+          "carSpaces": 4,
+          "accessibleSpaces": 1,
+          "bikeSpaces": 13,
+          "evChargingStations": 2
+        },
+        "rampSpecifications": {
+          "grades": [
+            { "section": "entry", "length": 2.0, "grade": "12.5%" },
+            { "section": "main", "length": 11.0, "grade": "25%" },
+            { "section": "transition", "length": 2.0, "grade": "12.5%" }
+          ],
+          "width": "single"
+        },
+        "dwellingYieldImpact": 0,
+        "notes": "Preferred option. Includes fire pump room, main switch room, comms plant room, storage"
+      },
+      {
+        "id": "on_grade",
+        "name": "On-Grade Parking",
+        "description": "Parking at ground level with services in basement",
+        "preferred": false,
+        "specifications": {
+          "carSpaces": 4,
+          "accessibleSpaces": 1,
+          "bikeSpaces": 15,
+          "evChargingStations": 2
+        },
+        "dwellingYieldImpact": -3,
+        "applicableStoreys": [3, 4],
+        "notes": "Reduces dwelling yield. Basement still required for services."
+      },
+      {
+        "id": "no_parking",
+        "name": "No Parking",
+        "description": "No on-site vehicle parking provided",
+        "preferred": false,
+        "specifications": {
+          "carSpaces": 0,
+          "accessibleSpaces": 0,
+          "bikeSpaces": 16,
+          "evChargingStations": 0
+        },
+        "dwellingYieldImpact": 1,
+        "applicableStoreys": [4],
+        "notes": "May be suitable for sites with excellent public transport access"
+      }
+    ],
+
+    "facadeVariants": [
+      {
+        "id": "curved",
+        "name": "Curved Balconies",
+        "description": "Curved front facade with Art Deco inspired curved balconies and balustrades",
+        "characterDetails": "Custom curved brick at balustrades",
+        "applicableMaterialPalettes": ["coastal_light", "new_build_mid", "heritage_dark"]
+      },
+      {
+        "id": "rectilinear",
+        "name": "Rectilinear Balconies",
+        "description": "Rectilinear front facade with straight-edged balconies",
+        "characterDetails": "Custom shaped brick at balustrades",
+        "applicableMaterialPalettes": ["coastal_light", "new_build_mid", "heritage_dark"]
+      }
+    ],
+
+    "materialPalettes": [
+      {
+        "id": "coastal_light",
+        "name": "Blonde Brick - Coastal",
+        "characterContext": "Coastal areas",
+        "materials": {
+          "primaryBrick": {
+            "type": "Dry pressed white brick",
+            "product": "Bowral Chillingham White or equivalent",
+            "mortar": "Colour matched to brick"
+          },
+          "accentBrick": {
+            "type": "Shaped glazed brick at accents",
+            "colour": "Pale blue"
+          },
+          "sideCladding": {
+            "type": "Fibre cement cladding",
+            "finish": "Natural finish",
+            "colour": "White tone",
+            "product": "Equitone Natura N359 or equivalent"
+          },
+          "balustrade": {
+            "material": "Aluminium",
+            "finish": "Powder-coated",
+            "colour": "White"
+          },
+          "privacyScreen": {
+            "material": "Metal",
+            "finish": "Powder-coated",
+            "colour": "White"
+          },
+          "windows": {
+            "system": "Alspec ProTilt Awning / Casement",
+            "sash": "50mm",
+            "finish": "Powder-coated silver flat satin charcoal"
+          }
+        }
+      },
+      {
+        "id": "new_build_mid",
+        "name": "Light Brown Brick - New Build",
+        "characterContext": "New build areas",
+        "materials": {
+          "primaryBrick": {
+            "type": "Pressed brick",
+            "colour": "Pale terracotta tone",
+            "mortar": "Colour matched to brick"
+          },
+          "accentBrick": {
+            "type": "Shaped glazed brick at accents",
+            "colour": "Plum"
+          },
+          "sideCladding": {
+            "type": "Fibre cement cladding",
+            "finish": "Natural finish",
+            "colour": "Pale terracotta tone"
+          },
+          "balustrade": {
+            "material": "Aluminium",
+            "finish": "Powder-coated",
+            "colour": "Faded eucalypt green"
+          },
+          "windows": {
+            "system": "Alspec ProGlide Ultraflat",
+            "finish": "Duratech White"
+          }
+        }
+      },
+      {
+        "id": "heritage_dark",
+        "name": "Dark Brown Brick - Heritage",
+        "characterContext": "Heritage areas",
+        "materials": {
+          "primaryBrick": {
+            "type": "Pressed brick",
+            "colour": "Manor red brick tone",
+            "mortar": "Colour matched to brick"
+          },
+          "sideCladding": {
+            "type": "Fibre cement cladding",
+            "finish": "Natural finish",
+            "colour": "Manor red tone"
+          },
+          "balustrade": {
+            "material": "Aluminium",
+            "finish": "Steel grey paint"
+          },
+          "privacyScreen": {
+            "material": "Aluminium",
+            "finish": "Steel grey paint"
+          },
+          "windows": {
+            "system": "Alspec ProGlide Ultraflat",
+            "finish": "Universal Anodisers"
+          }
+        }
+      }
+    ],
+
+    "orientationVariants": [
+      {
+        "id": "south_base",
+        "frontageDirection": "south",
+        "mirroring": "none",
+        "solarCompliance": {
+          "basementParking": { "compliantUnits": 11, "totalUnits": 13, "percentage": 84 },
+          "onGradeParking": { "compliantUnits": 9, "totalUnits": 10, "percentage": 90 },
+          "noParking": { "compliantUnits": 11, "totalUnits": 13, "percentage": 84 }
+        }
+      },
+      {
+        "id": "north_mirrored",
+        "frontageDirection": "north",
+        "mirroring": "vertical",
+        "parkingRestriction": ["rear_lane", "no_parking"],
+        "solarCompliance": {
+          "basementParking": { "compliantUnits": 11, "totalUnits": 13, "percentage": 84 },
+          "onGradeParking": { "compliantUnits": 9, "totalUnits": 10, "percentage": 90 },
+          "noParking": { "compliantUnits": 11, "totalUnits": 13, "percentage": 84 }
+        }
+      },
+      {
+        "id": "east_base",
+        "frontageDirection": "east",
+        "mirroring": "none",
+        "solarCompliance": {
+          "basementParking": { "compliantUnits": 11, "totalUnits": 13, "percentage": 84 },
+          "onGradeParking": { "compliantUnits": 9, "totalUnits": 10, "percentage": 90 },
+          "noParking": { "compliantUnits": 11, "totalUnits": 13, "percentage": 84 }
+        }
+      },
+      {
+        "id": "west_mirrored",
+        "frontageDirection": "west",
+        "mirroring": "horizontal",
+        "solarCompliance": {
+          "basementParking": { "compliantUnits": 11, "totalUnits": 13, "percentage": 84 },
+          "onGradeParking": { "compliantUnits": 9, "totalUnits": 10, "percentage": 90 },
+          "noParking": { "compliantUnits": 11, "totalUnits": 13, "percentage": 84 }
+        }
+      }
+    ],
+
+    "additionalFeatures": {
+      "windowHoods": {
+        "options": ["required", "not_required"],
+        "notes": "Window hoods are allowable encroachments within side setbacks"
+      }
+    }
+  },
+
+  "apartmentTypes": [
+    {
+      "id": "ST_1",
+      "category": "studio",
+      "name": "Studio Type 1",
+      "setbackCategory": "standard",
+      "areas": {
+        "internal": 33,
+        "terrace": 54
+      },
+      "storage": {
+        "internalVolume": 4.14,
+        "externalVolume": 0
+      },
+      "rooms": {
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "hasStudy": false
+      },
+      "features": ["full_width_terrace", "combined_living_sleeping"],
+      "accessibility": {
+        "abcbLivableHousingStandard": "standard",
+        "as4299Adaptable": false
+      },
+      "kitchenType": "K_1",
+      "typicalLocations": ["ground_floor"]
+    },
+    {
+      "id": "ST_2",
+      "category": "studio",
+      "name": "Studio Type 2",
+      "setbackCategory": "standard",
+      "areas": {
+        "internal": 33,
+        "balcony": 10
+      },
+      "storage": {
+        "internalVolume": 5.0,
+        "externalVolume": 4.0
+      },
+      "rooms": {
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "hasStudy": false
+      },
+      "features": ["skylight", "corner_balcony"],
+      "accessibility": {
+        "abcbLivableHousingStandard": "standard",
+        "as4299Adaptable": false
+      },
+      "kitchenType": "K_1",
+      "typicalLocations": ["ground_floor", "upper_floor"]
+    },
+    {
+      "id": "1B_1",
+      "category": "1bed",
+      "name": "1 Bedroom Type 1",
+      "setbackCategory": "standard",
+      "areas": {
+        "internal": 50,
+        "balcony": 9
+      },
+      "storage": {
+        "internalVolume": 9.71,
+        "externalVolume": 0
+      },
+      "rooms": {
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "hasStudy": false
+      },
+      "features": ["separate_bedroom", "wardrobe"],
+      "accessibility": {
+        "abcbLivableHousingStandard": "standard",
+        "as4299Adaptable": false
+      },
+      "kitchenType": "K_2",
+      "typicalLocations": ["upper_floor"]
+    },
+    {
+      "id": "1B_2",
+      "category": "1bed",
+      "name": "1 Bedroom Type 2",
+      "setbackCategory": "standard",
+      "areas": {
+        "internal": 50,
+        "balcony": 9
+      },
+      "storage": {
+        "internalVolume": 1.95,
+        "externalVolume": 4.0
+      },
+      "rooms": {
+        "bedrooms": 1,
+        "bathrooms": 1.5,
+        "hasStudy": false
+      },
+      "features": ["corner_position", "dual_aspect"],
+      "accessibility": {
+        "abcbLivableHousingStandard": "beyond_minimum_voluntary",
+        "as4299Adaptable": false
+      },
+      "kitchenType": "K_2",
+      "typicalLocations": ["all_floors"]
+    },
+    {
+      "id": "1B_3",
+      "category": "1bed",
+      "name": "1 Bedroom + Study",
+      "setbackCategory": "standard",
+      "areas": {
+        "internal": 65,
+        "balcony": 9
+      },
+      "storage": {
+        "internalVolume": 14.54,
+        "externalVolume": 0
+      },
+      "rooms": {
+        "bedrooms": 1,
+        "bathrooms": 1.5,
+        "hasStudy": true
+      },
+      "features": ["dedicated_study", "generous_storage", "work_from_home_suitable"],
+      "accessibility": {
+        "abcbLivableHousingStandard": "standard",
+        "as4299Adaptable": false
+      },
+      "kitchenType": "K_2",
+      "typicalLocations": ["all_floors"]
+    },
+    {
+      "id": "2B_1",
+      "category": "2bed",
+      "name": "2 Bedroom + Study (Adaptable)",
+      "setbackCategory": "standard",
+      "areas": {
+        "internal": 84,
+        "balcony": 20
+      },
+      "storage": {
+        "internalVolume": 11.26,
+        "externalVolume": 4.0
+      },
+      "rooms": {
+        "bedrooms": 2,
+        "bathrooms": 1.5,
+        "hasStudy": true
+      },
+      "features": [
+        "dual_aspect",
+        "generous_balcony",
+        "adaptable_layout",
+        "step_free_thresholds",
+        "reinforced_walls_for_grab_rails"
+      ],
+      "accessibility": {
+        "abcbLivableHousingStandard": "standard",
+        "as4299Adaptable": true,
+        "adaptableVariant": "2B_1_adapted"
+      },
+      "kitchenType": "K_3",
+      "typicalLocations": ["first_floor", "second_floor"],
+      "adaptedVersion": {
+        "id": "2B_1_adapted",
+        "name": "2 Bedroom (Post-Adaptation)",
+        "areas": {
+          "internal": 84,
+          "balcony": 20
+        },
+        "storage": {
+          "internalVolume": 7.08,
+          "externalVolume": 4.0
+        },
+        "rooms": {
+          "bedrooms": 2,
+          "bathrooms": 1.5,
+          "hasStudy": false
+        },
+        "adaptations": [
+          "Study converted to accessible bathroom space",
+          "Level shower installed",
+          "Grab rails fitted",
+          "1000mm clear circulation spaces"
+        ]
+      }
+    },
+    {
+      "id": "0m_ST_1",
+      "category": "studio",
+      "name": "Studio Type 1 (0m Setback)",
+      "setbackCategory": "0m_setback",
+      "areas": {
+        "internal": 46,
+        "balcony": 9
+      },
+      "storage": {
+        "internalVolume": 6.01,
+        "externalVolume": 0
+      },
+      "rooms": {
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "hasStudy": false
+      },
+      "accessibility": {
+        "abcbLivableHousingStandard": "standard",
+        "as4299Adaptable": false
+      },
+      "kitchenType": "K_1"
+    },
+    {
+      "id": "0m_1B_1",
+      "category": "1bed",
+      "name": "1 Bedroom Type 1 (0m Setback)",
+      "setbackCategory": "0m_setback",
+      "areas": {
+        "internal": 67,
+        "balcony": 14
+      },
+      "storage": {
+        "internalVolume": 6.11,
+        "externalVolume": 0
+      },
+      "rooms": {
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "hasStudy": true
+      },
+      "accessibility": {
+        "abcbLivableHousingStandard": "standard",
+        "as4299Adaptable": false
+      },
+      "kitchenType": "K_2"
+    },
+    {
+      "id": "0m_1B_2",
+      "category": "1bed",
+      "name": "1 Bedroom Type 2 (0m Setback Adaptable)",
+      "setbackCategory": "0m_setback",
+      "areas": {
+        "internal": 60,
+        "balcony": 8
+      },
+      "storage": {
+        "internalVolume": 7.12,
+        "externalVolume": 3.0
+      },
+      "rooms": {
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "hasStudy": false
+      },
+      "accessibility": {
+        "abcbLivableHousingStandard": "beyond_minimum_voluntary",
+        "as4299Adaptable": true
+      },
+      "kitchenType": "K_2"
+    },
+    {
+      "id": "0m_2B_1",
+      "category": "2bed",
+      "name": "2 Bedroom (0m Setback)",
+      "setbackCategory": "0m_setback",
+      "areas": {
+        "internal": 70,
+        "balcony": 15
+      },
+      "storage": {
+        "internalVolume": 8.12,
+        "externalVolume": 4.0
+      },
+      "rooms": {
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "hasStudy": false
+      },
+      "accessibility": {
+        "abcbLivableHousingStandard": "beyond_minimum_voluntary",
+        "as4299Adaptable": false
+      },
+      "kitchenType": "K_2"
+    }
+  ],
+
+  "designFeatures": {
+    "fixed": [
+      {
+        "id": "apartment_layout",
+        "category": "internal_planning",
+        "name": "General Apartment Arrangement",
+        "description": "Position of all rooms must be in accordance with the apartment layouts provided",
+        "reason": "Optimises efficiency, stacked wet areas, and cross-ventilation"
+      },
+      {
+        "id": "circulation",
+        "category": "circulation",
+        "name": "Circulation and Core Layout",
+        "description": "Central stair and lift positions are fixed",
+        "reason": "Fire egress compliance and structural efficiency"
+      },
+      {
+        "id": "dwelling_configuration",
+        "category": "planning",
+        "name": "Dwelling Configuration",
+        "description": "Number and type of dwellings per floor is fixed for each variant",
+        "reason": "Solar access and cross-ventilation compliance"
+      },
+      {
+        "id": "entry_locations",
+        "category": "access",
+        "name": "Entry Locations",
+        "description": "Location of entries into building, apartments, balconies and roof terraces",
+        "reason": "Accessibility compliance and fire egress"
+      },
+      {
+        "id": "bathroom_dimensions",
+        "category": "internal_planning",
+        "name": "Bathroom Dimensions and Clearances",
+        "description": "Bathroom dimensions and clearances are set by the pattern",
+        "reason": "Liveability and adaptable apartment compliance"
+      },
+      {
+        "id": "storage_sizes",
+        "category": "internal_planning",
+        "name": "Robes and Storage Sizes",
+        "description": "Robe and storage sizes are set by the pattern",
+        "reason": "ADG storage requirements compliance"
+      }
+    ],
+    "flexible": [
+      {
+        "id": "material_palette",
+        "category": "appearance",
+        "name": "Material Palette",
+        "description": "Choice of three material palette options",
+        "options": ["coastal_light", "new_build_mid", "heritage_dark"],
+        "constraints": ["Must select complete palette, not mix materials"]
+      },
+      {
+        "id": "facade_style",
+        "category": "appearance",
+        "name": "Facade Style",
+        "description": "Choice between curved or rectilinear balconies",
+        "options": ["curved", "rectilinear"],
+        "constraints": ["Must be consistent across entire building"]
+      },
+      {
+        "id": "parking_type",
+        "category": "services",
+        "name": "Parking Configuration",
+        "description": "Choice of basement, on-grade, or no parking",
+        "options": ["basement", "on_grade", "no_parking"],
+        "constraints": ["Selection affects dwelling yield", "Some options require rear lane access"]
+      },
+      {
+        "id": "setback_variant",
+        "category": "siting",
+        "name": "Side Setback Configuration",
+        "description": "Choice of setback based on lot width",
+        "options": ["0m", "1.5m", "2.0m", "2.5m", "3.0m"],
+        "constraints": ["Determined by lot width and local permissibility"]
+      },
+      {
+        "id": "fixture_fittings",
+        "category": "internal_planning",
+        "name": "Fixture and Fittings",
+        "description": "Selection and positioning of fixtures within rooms",
+        "constraints": [
+          "No reduction in clearances",
+          "Must maintain liveability requirements",
+          "Must maintain adaptable apartment requirements where applicable"
+        ]
+      },
+      {
+        "id": "mirrored_layouts",
+        "category": "internal_planning",
+        "name": "Mirrored Apartment Layouts",
+        "description": "Apartments can be mirrored where pattern provides for this",
+        "constraints": ["Only where explicitly shown in pattern drawings"]
+      }
+    ]
+  },
+
+  "services": {
+    "waste": {
+      "collectionMethod": "kerbside",
+      "frequency": "weekly",
+      "managementResponsibility": "building_management_wheel_out_wheel_in",
+      "generationRates": [
+        {
+          "dwellingType": "studio_or_1bed",
+          "general": 80,
+          "recycling": 80,
+          "organics": 25,
+          "unit": "litres_per_week"
+        },
+        {
+          "dwellingType": "2bed",
+          "general": 100,
+          "recycling": 100,
+          "organics": 25,
+          "unit": "litres_per_week"
+        },
+        {
+          "dwellingType": "3bed",
+          "general": 120,
+          "recycling": 120,
+          "organics": 50,
+          "unit": "litres_per_week"
+        }
+      ],
+      "basePatternTotals": {
+        "dwellings": 11,
+        "general": 1020,
+        "recycling": 1020,
+        "organics": 325,
+        "unit": "litres_per_week"
+      },
+      "binRoomSizing": {
+        "nominal": 24,
+        "unit": "m2"
+      },
+      "bulkyWasteStorage": {
+        "upTo40Dwellings": 10,
+        "perAdditional10Dwellings": 2,
+        "unit": "m2"
+      },
+      "problemTextileWaste": {
+        "optional": true,
+        "area": 1,
+        "unit": "m2"
+      },
+      "kerbsidePresentation": {
+        "maxBinsPerWeek": 5,
+        "binSize": 240,
+        "unit": "litres"
+      }
+    },
+
+    "parking": {
+      "residentialClass": "1A",
+      "spaceDimensions": {
+        "angled90": {
+          "width": 2.4,
+          "length": 5.4,
+          "aisleWidth": 5.8,
+          "aisleWidthWithObstruction": 6.1
+        },
+        "parallel": {
+          "width": 2.1,
+          "widthWithObstruction": 2.4,
+          "lengthMin": 5.9,
+          "lengthMax": 6.3
+        }
+      },
+      "rampGrades": [
+        { "section": "entry_transition", "length": 2, "grade": 12.5 },
+        { "section": "main_ramp", "length": 11, "grade": 25 },
+        { "section": "exit_transition", "length": 2, "grade": 12.5 }
+      ],
+      "drivewayAccess": {
+        "waitingSection": {
+          "length": 6,
+          "slope": "1:20"
+        }
+      },
+      "accessRampWidth": "single",
+      "vehiclePrioritySystems": {
+        "recommended": true,
+        "options": ["traffic_lights", "convex_mirror"]
+      },
+      "heavyVehicleAccess": "forward_in_forward_out"
+    },
+
+    "electrical": {
+      "maxLoad": 1000,
+      "maxLoadUnit": "kVA",
+      "substationType": "external_kiosk",
+      "photovoltaics": {
+        "roofAllocationMin": 20,
+        "roofAllocationMax": 100,
+        "unit": "percentage"
+      },
+      "switchroomArea": 20,
+      "switchroomUnit": "m2"
+    },
+
+    "hydraulic": {
+      "greaseTraps": 2000,
+      "greaseTrapsUnit": "litres",
+      "pumpConfiguration": "dual_pump_sets",
+      "risersLocation": "central"
+    }
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "$schema": "./pattern-book-schema.json",
+  "metadata": {
+    "id": "PATTERN_ID",
+    "name": "Pattern Name",
+    "architect": "Architect Name",
+    "version": "1.0",
+    "releaseDate": "2025-01-01",
+    "developmentType": "residential_flat_building",
+    "description": "Brief description of the pattern design.",
+    "applicablePolicies": [
+      {
+        "name": "Low and Mid-Rise Housing Areas",
+        "reference": "Section 163 Housing SEPP"
+      },
+      {
+        "name": "Transport Oriented Development Areas",
+        "reference": "Chapter 5 Housing SEPP"
+      }
+    ]
+  },
+
+  "siteEligibility": {
+    "siteTypes": {
+      "allowed": ["mid_block", "mid_block_laneway"],
+      "excluded": ["corner", "battle_axe"]
+    },
+
+    "lotDimensions": {
+      "absoluteMinimums": {
+        "width": 13.0,
+        "length": 40.0,
+        "area": 520
+      },
+      "absoluteMaximums": {
+        "width": null,
+        "length": null,
+        "area": null
+      }
+    },
+
+    "excludedLand": [
+      {
+        "type": "bushfire_prone",
+        "description": "Land identified as bushfire-prone"
+      },
+      {
+        "type": "flood_prone_high_risk",
+        "description": "Certain flood-prone land in high risk locations"
+      },
+      {
+        "type": "state_heritage_item",
+        "description": "State heritage items"
+      },
+      {
+        "type": "local_heritage_item",
+        "description": "Local heritage items"
+      },
+      {
+        "type": "heritage_conservation_area",
+        "description": "Heritage conservation areas"
+      }
+    ]
+  },
+
+  "developmentStandards": {
+    "height": {
+      "maxMetres": 17.5,
+      "maxStoreys": 4,
+      "minStoreys": 3
+    },
+
+    "setbacks": {
+      "front": {
+        "primary": { "min": 4.0 }
+      },
+      "rear": {
+        "standard": { "min": 6.0 }
+      },
+      "side": {
+        "rules": [
+          {
+            "id": "0m_setback",
+            "conditions": { "lotWidthMin": 13.0, "lotWidthMax": 16.0 },
+            "setback": 0,
+            "maxStoreys": 4
+          },
+          {
+            "id": "3m_setback",
+            "conditions": { "lotWidthMin": 16.6, "lotWidthMax": null },
+            "setback": 3.0,
+            "maxStoreys": 4
+          }
+        ]
+      }
+    },
+
+    "dwellings": {
+      "max": 13,
+      "min": 7
+    }
+  },
+
+  "adaptations": {
+    "lotSizeVariants": [
+      {
+        "id": "variant_1",
+        "category": "0m_setback",
+        "lotWidth": 13.0,
+        "lotLength": 40.0,
+        "siteArea": 520,
+        "sideSetback": 0,
+        "storeys": 4,
+        "gfa": 715,
+        "fsr": 1.37,
+        "dwellingYield": {
+          "studio": 1,
+          "oneBed": 7,
+          "twoBed": 2,
+          "threeBed": 0,
+          "fourBed": 0,
+          "total": 10
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 4,
+          "accessible": 1,
+          "bikes": 14
+        }
+      },
+      {
+        "id": "variant_2",
+        "category": "3m_setback",
+        "lotWidth": 16.6,
+        "lotLength": 40.0,
+        "siteArea": 664,
+        "sideSetback": 3.0,
+        "storeys": 4,
+        "gfa": 815,
+        "fsr": 1.2,
+        "dwellingYield": {
+          "studio": 3,
+          "oneBed": 8,
+          "twoBed": 2,
+          "threeBed": 0,
+          "fourBed": 0,
+          "total": 13
+        },
+        "parking": {
+          "type": "basement",
+          "cars": 4,
+          "accessible": 1,
+          "bikes": 13
+        },
+        "isBasePattern": true
+      }
+    ]
+  }
+}
