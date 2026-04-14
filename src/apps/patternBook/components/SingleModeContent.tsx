@@ -8,6 +8,7 @@ import { FilterControls } from '@/apps/patternBook/components/FilterControls';
 import { PlacePatternButton, PlacementStatusBanner } from '@/apps/patternBook/components/placement';
 import { PatternBookHeader } from '@/apps/patternBook/components/PatternBookHeader';
 import { ContentSkeleton, ShimmerBar } from '@/components/shared/loading/skeletons';
+import { findFirstPlaceableVariant } from '@/apps/patternBook/utils/blockCatalogue';
 import { Filter } from 'lucide-react';
 import type { PropertyFeature, PropertyFeatureCollection } from '@/types/geometry';
 import type {
@@ -243,6 +244,13 @@ export const SingleModeContent: React.FC<SingleModeContentProps> = (props) => {
 
           {props.patternsWithFilteredVariants.map(({ pattern: result, filteredVariants }) => {
             const patternSchema = props.patterns.find(p => p.metadata.id === result.patternId);
+            const variantToPlace = patternSchema && props.patternBookBootstrap
+              ? findFirstPlaceableVariant(
+                  props.patternBookBootstrap.blockCatalogue,
+                  filteredVariants,
+                  patternSchema.metadata.id,
+                ) ?? filteredVariants[0]
+              : filteredVariants[0];
             return (
               <div key={result.patternId}>
                 <PatternCard
@@ -269,11 +277,11 @@ export const SingleModeContent: React.FC<SingleModeContentProps> = (props) => {
                 {props.expandedPatternId === result.patternId &&
                   filteredVariants.length > 0 &&
                   patternSchema &&
-                  filteredVariants[0] && (
+                  variantToPlace && (
                     <PlacePatternButton
                       property={props.selectedFeature}
                       pattern={patternSchema}
-                      variant={filteredVariants[0]}
+                      variant={variantToPlace}
                       bootstrap={props.patternBookBootstrap}
                       bootstrapStatus={props.bootstrapStatus}
                       instantPointId={props.patternBookInstantPointId}

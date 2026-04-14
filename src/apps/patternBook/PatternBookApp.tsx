@@ -117,6 +117,7 @@ export const PatternBookApp: React.FC<PatternBookAppProps> = ({ onBack: _onBack 
   } = usePatternPlacement();
 
   const batchPlacement = usePatternPlacementBatch();
+  const { clear: clearBatchPlacement } = batchPlacement;
 
   // Set right bar width on mount
   useEffect(() => {
@@ -213,8 +214,9 @@ export const PatternBookApp: React.FC<PatternBookAppProps> = ({ onBack: _onBack 
     if (mode === 'single') {
       shortlistAnalysis.clearResults();
       clearMapLayer().catch(() => undefined);
+      clearBatchPlacement().catch(() => undefined);
     }
-  }, [shortlistAnalysis, clearMapLayer]);
+  }, [shortlistAnalysis, clearMapLayer, clearBatchPlacement]);
 
   const handleToggleFilters = useCallback((): void => {
     setShowFilters(prev => {

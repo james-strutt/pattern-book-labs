@@ -167,6 +167,9 @@ export const ShortlistModeContent: React.FC<ShortlistModeContentProps> = ({
               }}
               isLotBased={shortlistAnalysis.analysisResults.isLotBased}
               placementTotals={batchPlacement.totals}
+              placementOutcomes={batchPlacement.outcomes}
+              propertyResults={shortlistAnalysis.analysisResults.propertyResults}
+              patternResults={shortlistAnalysis.analysisResults.patternResults}
             />
           </>
         )}

@@ -3,6 +3,7 @@ import type {
   PatternPropertyAnalysis,
   PropertyPatternAnalysis,
   PatternRanking,
+  PropertySummary,
   ReasonCount,
   ZoneDwellingStats,
 } from "@/apps/patternBook/types/shortlistAnalysis";
@@ -118,4 +119,57 @@ export function calculateSummary(
     topPatterns,
     commonIneligibilityReasons,
   };
+}
+
+function filterPropertyListByPlacement(
+  properties: PropertySummary[],
+  successfulFeatureIds: ReadonlySet<string>,
+): PropertySummary[] {
+  return properties.filter((p) => successfulFeatureIds.has(p.featureId));
+}
+
+export function calculatePlacedSummary(
+  propertyResults: Record<string, PropertyPatternAnalysis>,
+  patternResults: Record<string, PatternPropertyAnalysis>,
+  totalPatterns: number,
+  successfulFeatureIds: ReadonlySet<string>,
+): ShortlistSummary {
+  const filteredPropertyResults: Record<string, PropertyPatternAnalysis> = {};
+  for (const [key, analysis] of Object.entries(propertyResults)) {
+    if (successfulFeatureIds.has(analysis.featureId)) {
+      filteredPropertyResults[key] = analysis;
+    }
+  }
+
+  const filteredPatternResults: Record<string, PatternPropertyAnalysis> = {};
+  for (const [key, pattern] of Object.entries(patternResults)) {
+    const eligibleProperties = filterPropertyListByPlacement(
+      pattern.eligibleProperties,
+      successfulFeatureIds,
+    );
+    const ineligibleProperties = filterPropertyListByPlacement(
+      pattern.ineligibleProperties,
+      successfulFeatureIds,
+    );
+    const eligibleCount = eligibleProperties.length;
+    const totalFiltered = eligibleCount + ineligibleProperties.length;
+    filteredPatternResults[key] = {
+      ...pattern,
+      eligibleProperties,
+      ineligibleProperties,
+      coveragePercentage:
+        totalFiltered === 0 ? 0 : (eligibleCount / totalFiltered) * 100,
+      totalPotentialDwellings: eligibleProperties.reduce(
+        (sum, p) => sum + p.maxDwellings,
+        0,
+      ),
+    };
+  }
+
+  return calculateSummary(
+    filteredPropertyResults,
+    filteredPatternResults,
+    successfulFeatureIds.size,
+    totalPatterns,
+  );
 }

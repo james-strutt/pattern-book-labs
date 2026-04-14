@@ -48,10 +48,14 @@ const KNOWN_PATTERN_CODES = [
   "LLA03",
 ] as const;
 
-const PATTERN_TAG_REGEX = new RegExp(
-  `\\b(${KNOWN_PATTERN_CODES.join("|")})\\b`,
-  "i",
-);
+const PATTERN_TAG_REGEX = new RegExp(String.raw`\b(${KNOWN_PATTERN_CODES.join("|")})\b`, "i");
+
+const DIMS_REGEX = /(\d+(?:\.\d+)?)\s*x\s*(\d+(?:\.\d+)?)/;
+const STOREY_WORD_REGEX = /(\d+)\s*storey/;
+const STOREY_SHORT_REGEX = /\b(\d+)s\b/;
+const EXPLICIT_SETBACK_REGEX = /(\d+(?:\.\d+)?)\s*m?\s*setback/;
+const IMPLICIT_SETBACK_REGEX = /storey\s*-\s*(\d+(?:\.\d+)?)\s*m?\s*-/;
+const LONG_SITE_REGEX = /(\d+(?:\.\d+)?)\s*m?\s*long\s+site/;
 
 export interface BlockCatalogueEntry {
   id: string;
@@ -95,38 +99,35 @@ export function resolveBlockSpec(rawName: string, props?: BlockProperties): Bloc
 function parseBlockName(rawName: string): BlockSpec {
   const name = rawName.toLowerCase();
 
-  const patternTagMatch = rawName.match(PATTERN_TAG_REGEX);
-  const patternId = patternTagMatch?.[1]
-    ? patternTagMatch[1].toUpperCase()
-    : null;
+  const patternTagMatch = PATTERN_TAG_REGEX.exec(rawName);
+  const patternId = patternTagMatch?.[1] ? patternTagMatch[1].toUpperCase() : null;
 
-  const dimsMatch = name.match(/(\d+(?:\.\d+)?)\s*x\s*(\d+(?:\.\d+)?)/);
+  const dimsMatch = DIMS_REGEX.exec(name);
   const width = dimsMatch ? Number(dimsMatch[1]) : null;
   let depth = dimsMatch ? Number(dimsMatch[2]) : null;
 
-  const storeyWord = name.match(/(\d+)\s*storey/);
-  const storeyShort = name.match(/\b(\d+)s\b/);
-  const storeys = storeyWord
-    ? Number(storeyWord[1])
-    : storeyShort
-      ? Number(storeyShort[1])
-      : null;
+  const storeyWord = STOREY_WORD_REGEX.exec(name);
+  const storeyShort = STOREY_SHORT_REGEX.exec(name);
+  let storeys: number | null = null;
+  if (storeyWord) {
+    storeys = Number(storeyWord[1]);
+  } else if (storeyShort) {
+    storeys = Number(storeyShort[1]);
+  }
 
   let setback: number | null = null;
-  const explicitSetback = name.match(/(\d+(?:\.\d+)?)\s*m?\s*setback/);
-  if (explicitSetback?.[1] !== undefined) {
-    setback = Number(explicitSetback[1]);
-  } else {
-    const implicitSetback = name.match(
-      /storey\s*-\s*(\d+(?:\.\d+)?)\s*m?\s*-/,
-    );
+  const explicitSetback = EXPLICIT_SETBACK_REGEX.exec(name);
+  if (explicitSetback?.[1] === undefined) {
+    const implicitSetback = IMPLICIT_SETBACK_REGEX.exec(name);
     if (implicitSetback?.[1] !== undefined) {
       setback = Number(implicitSetback[1]);
     }
+  } else {
+    setback = Number(explicitSetback[1]);
   }
 
   if (depth === null) {
-    const longSite = name.match(/(\d+(?:\.\d+)?)\s*m?\s*long\s+site/);
+    const longSite = LONG_SITE_REGEX.exec(name);
     if (longSite?.[1] !== undefined) {
       depth = Number(longSite[1]);
     }
@@ -174,28 +175,15 @@ export interface BlockMatchScore {
  *   - Storey score is weighted 60% vs 40% for geometry because storey count
  *     directly determines dwelling yield.
  */
-export function scoreBlockForVariant(
-  spec: BlockSpec,
-  variant: VariantMatch,
-  parentPatternId?: string,
-): number {
-  if (
+function rejectsForPatternTag(spec: BlockSpec, parentPatternId: string | undefined): boolean {
+  return (
     spec.patternId !== null &&
     parentPatternId !== undefined &&
     spec.patternId.toUpperCase() !== parentPatternId.toUpperCase()
-  ) {
-    return -1;
-  }
+  );
+}
 
-  if (spec.storeys === null) return -1;
-  if (spec.storeys > variant.storeys) return -1;
-
-  if (spec.width !== null && spec.width < variant.lotWidth) return -1;
-  if (spec.depth !== null && spec.depth < variant.lotLength) return -1;
-
-  const storeyScore =
-    variant.storeys > 0 ? (spec.storeys / variant.storeys) * 100 : 100;
-
+function computeGeometryScore(spec: BlockSpec, variant: VariantMatch): number {
   let geometryRaw = 0;
   let geometryDivisor = 0;
   if (spec.width !== null) {
@@ -206,8 +194,28 @@ export function scoreBlockForVariant(
     geometryRaw += (variant.lotLength / spec.depth) * 100;
     geometryDivisor++;
   }
-  const geometryScore = geometryDivisor > 0 ? geometryRaw / geometryDivisor : 50;
+  return geometryDivisor > 0 ? geometryRaw / geometryDivisor : 50;
+}
 
+function computePatternTagBonus(spec: BlockSpec, parentPatternId: string | undefined): number {
+  const idsMatch = spec.patternId?.toUpperCase() === parentPatternId?.toUpperCase();
+  return idsMatch && spec.patternId !== null && parentPatternId !== undefined ? 20 : 0;
+}
+
+export function scoreBlockForVariant(spec: BlockSpec, variant: VariantMatch, parentPatternId?: string): number {
+  if (rejectsForPatternTag(spec, parentPatternId)) {
+    return -1;
+  }
+
+  if (spec.storeys === null) return -1;
+  if (spec.storeys > variant.storeys) return -1;
+
+  if (spec.width !== null && spec.width < variant.lotWidth) return -1;
+  if (spec.depth !== null && spec.depth < variant.lotLength) return -1;
+
+  const storeyScore = variant.storeys > 0 ? (spec.storeys / variant.storeys) * 100 : 100;
+
+  const geometryScore = computeGeometryScore(spec, variant);
   const combinedScore = storeyScore * 0.6 + geometryScore * 0.4;
 
   let setbackBonus = 0;
@@ -217,13 +225,7 @@ export function scoreBlockForVariant(
   }
 
   const colourPenalty = spec.colourVariant === "beige" ? 5 : 0;
-
-  const patternTagBonus =
-    spec.patternId !== null &&
-    parentPatternId !== undefined &&
-    spec.patternId.toUpperCase() === parentPatternId.toUpperCase()
-      ? 20
-      : 0;
+  const patternTagBonus = computePatternTagBonus(spec, parentPatternId);
 
   return combinedScore + setbackBonus - colourPenalty + patternTagBonus;
 }
@@ -241,11 +243,7 @@ export function findBlockForVariant(
 ): BlockCatalogueEntry | null {
   const scored: BlockMatchScore[] = catalogue
     .map((entry) => {
-      const score = scoreBlockForVariant(
-        entry.spec,
-        variant,
-        parentPatternId,
-      );
+      const score = scoreBlockForVariant(entry.spec, variant, parentPatternId);
       return {
         entry,
         score,
@@ -326,14 +324,10 @@ export function diagnoseVariantMatch(
   });
 
   const taggedForPattern = candidates.filter(
-    (candidate) =>
-      candidate.spec.patternId !== null &&
-      candidate.spec.patternId.toUpperCase() === targetPattern,
+    (candidate) => candidate.spec.patternId !== null && candidate.spec.patternId.toUpperCase() === targetPattern,
   );
   const taggedWithinStoreyCap = taggedForPattern.filter(
-    (candidate) =>
-      candidate.spec.storeys !== null &&
-      candidate.spec.storeys <= variant.storeys,
+    (candidate) => candidate.spec.storeys !== null && candidate.spec.storeys <= variant.storeys,
   );
 
   const summary = buildDiagnosisSummary({
@@ -367,16 +361,13 @@ interface DiagnosisSummaryArgs {
 }
 
 function buildDiagnosisSummary(args: DiagnosisSummaryArgs): string {
-  const { targetPattern, variant, taggedForPattern, taggedWithinStoreyCap } =
-    args;
+  const { targetPattern, variant, taggedForPattern, taggedWithinStoreyCap } = args;
 
   if (taggedForPattern.length === 0) {
     return `No blocks tagged "${targetPattern}" exist in the Giraffe project yet.`;
   }
 
-  const parseableStoreys = taggedForPattern
-    .map((c) => c.spec.storeys)
-    .filter((s): s is number => s !== null);
+  const parseableStoreys = taggedForPattern.map((c) => c.spec.storeys).filter((s): s is number => s !== null);
 
   if (parseableStoreys.length === 0) {
     return `${targetPattern} has ${taggedForPattern.length} block(s) but none have a parseable storey count. Set the "storeys" property on each block.`;
@@ -387,20 +378,11 @@ function buildDiagnosisSummary(args: DiagnosisSummaryArgs): string {
     return `${targetPattern} smallest block is ${minAvailableStoreys} storeys but variant caps at ${variant.storeys}. All blocks exceed the planning-allowed height.`;
   }
 
-  const maxWidth = Math.max(
-    ...taggedWithinStoreyCap
-      .map((c) => c.spec.width)
-      .filter((w): w is number => w !== null),
-  );
-  const maxDepth = Math.max(
-    ...taggedWithinStoreyCap
-      .map((c) => c.spec.depth)
-      .filter((d): d is number => d !== null),
-  );
+  const maxWidth = Math.max(...taggedWithinStoreyCap.map((c) => c.spec.width).filter((w): w is number => w !== null));
+  const maxDepth = Math.max(...taggedWithinStoreyCap.map((c) => c.spec.depth).filter((d): d is number => d !== null));
 
   const widthProblem = Number.isFinite(maxWidth) && variant.lotWidth > maxWidth;
-  const depthProblem =
-    Number.isFinite(maxDepth) && variant.lotLength > maxDepth;
+  const depthProblem = Number.isFinite(maxDepth) && variant.lotLength > maxDepth;
 
   if (widthProblem && depthProblem) {
     return `${targetPattern} blocks within ${variant.storeys}-storey cap max out at ${maxWidth}×${maxDepth}m but variant needs ${variant.lotWidth}×${variant.lotLength}m.`;
@@ -465,6 +447,24 @@ export function buildBlockCatalogue(
       spec: resolveBlockSpec(block.name ?? "", merged),
     };
   });
+}
+
+/**
+ * Walks `variants` in order and returns the first one whose dimensional spec
+ * has a matching block in the catalogue under `parentPatternId`. Returns null
+ * if none of the supplied variants can be placed.
+ */
+export function findFirstPlaceableVariant(
+  catalogue: BlockCatalogueEntry[],
+  variants: readonly VariantMatch[],
+  parentPatternId: string,
+): VariantMatch | null {
+  for (const variant of variants) {
+    if (findBlockForVariant(catalogue, variant, parentPatternId) !== null) {
+      return variant;
+    }
+  }
+  return null;
 }
 
 /**

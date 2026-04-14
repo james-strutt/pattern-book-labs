@@ -1,13 +1,19 @@
-import { useState, type FC } from 'react';
+import { useMemo, useState, type FC } from 'react';
 import { LANDIQ_THEME } from '@/components/ui/landiq/theme';
 import { Badge, Card, Tooltip } from '@/components/ui/landiq';
 import { ToggleLeft, ToggleRight } from 'lucide-react';
 import type {
   ShortlistSummary,
   PatternRanking,
+  PatternPropertyAnalysis,
+  PropertyPatternAnalysis,
   ZoneDwellingStats,
 } from '@/apps/patternBook/types/shortlistAnalysis';
-import type { BatchPlacementTotals } from '@/apps/patternBook/hooks/usePatternPlacementBatch';
+import type {
+  BatchPlacementOutcome,
+  BatchPlacementTotals,
+} from '@/apps/patternBook/hooks/usePatternPlacementBatch';
+import { calculatePlacedSummary } from '@/apps/patternBook/services/batchAnalysisSummary';
 import { getPatternImagePath } from '@/apps/patternBook/services/patternBookService';
 import landZoningColors from '@/constants/zoneColors';
 import { shortlistSummaryStyles as styles } from './shortlistSummaryView.styles';
@@ -17,6 +23,9 @@ interface ShortlistSummaryViewProps {
   onPatternClick?: (patternId: string) => void;
   isLotBased?: boolean;
   placementTotals?: BatchPlacementTotals | null;
+  placementOutcomes?: readonly BatchPlacementOutcome[];
+  propertyResults?: Record<string, PropertyPatternAnalysis>;
+  patternResults?: Record<string, PatternPropertyAnalysis>;
 }
 
 interface PatternCardItemProps {
@@ -138,10 +147,33 @@ export const ShortlistSummaryView: FC<ShortlistSummaryViewProps> = ({
   onPatternClick,
   isLotBased = false,
   placementTotals,
+  placementOutcomes,
+  propertyResults,
+  patternResults,
 }) => {
   const hasPlacement = placementTotals !== null && placementTotals !== undefined;
   const [showPlaced, setShowPlaced] = useState(true);
   const viewingPlaced = hasPlacement && showPlaced;
+
+  const placedSummary = useMemo<ShortlistSummary | null>(() => {
+    if (!viewingPlaced || !placementOutcomes || !propertyResults || !patternResults) {
+      return null;
+    }
+    const successfulFeatureIds = new Set(
+      placementOutcomes.filter((o) => o.success).map((o) => o.featureId),
+    );
+    if (successfulFeatureIds.size === 0) {
+      return null;
+    }
+    return calculatePlacedSummary(
+      propertyResults,
+      patternResults,
+      summary.topPatterns.length > 0 ? Object.keys(patternResults).length : 0,
+      successfulFeatureIds,
+    );
+  }, [viewingPlaced, placementOutcomes, propertyResults, patternResults, summary.topPatterns.length]);
+
+  const activeSummary = placedSummary ?? summary;
 
   return (
     <div style={styles.container}>
@@ -186,7 +218,7 @@ export const ShortlistSummaryView: FC<ShortlistSummaryViewProps> = ({
           <div style={styles.statsGrid}>
             <div style={styles.statCard(LANDIQ_THEME.colors.text.muted)}>
               <div style={styles.statValue(LANDIQ_THEME.colors.text.muted)}>
-                {summary.totalCurrentDwellings.toLocaleString()}
+                {activeSummary.totalCurrentDwellings.toLocaleString()}
               </div>
               <div style={styles.statLabel}>Current Dwellings</div>
             </div>
@@ -198,7 +230,7 @@ export const ShortlistSummaryView: FC<ShortlistSummaryViewProps> = ({
             </div>
             <div style={styles.statCard(LANDIQ_THEME.colors.status.success)}>
               <div style={styles.statValue(LANDIQ_THEME.colors.status.success)}>
-                +{(placementTotals.totalDwellings - summary.totalCurrentDwellings).toLocaleString()}
+                +{Math.max(0, placementTotals.totalDwellings - activeSummary.totalCurrentDwellings).toLocaleString()}
               </div>
               <div style={styles.statLabel}>Dwelling Uplift</div>
             </div>
@@ -228,20 +260,20 @@ export const ShortlistSummaryView: FC<ShortlistSummaryViewProps> = ({
             >
               <div style={styles.statCard(LANDIQ_THEME.colors.text.muted)}>
                 <div style={styles.statValue(LANDIQ_THEME.colors.text.muted)}>
-                  {summary.totalCurrentDwellings.toLocaleString()}
+                  {activeSummary.totalCurrentDwellings.toLocaleString()}
                 </div>
                 <div style={styles.statLabel}>Current Dwellings</div>
               </div>
             </Tooltip>
             <div style={styles.statCard(LANDIQ_THEME.colors.brand.navy)}>
               <div style={styles.statValue(LANDIQ_THEME.colors.brand.navy)}>
-                {summary.totalPotentialDwellings.toLocaleString()}
+                {activeSummary.totalPotentialDwellings.toLocaleString()}
               </div>
               <div style={styles.statLabel}>Potential Dwellings</div>
             </div>
             <div style={styles.statCard(LANDIQ_THEME.colors.status.success)}>
               <div style={styles.statValue(LANDIQ_THEME.colors.status.success)}>
-                +{summary.totalDwellingUplift.toLocaleString()}
+                +{activeSummary.totalDwellingUplift.toLocaleString()}
               </div>
               <div style={styles.statLabel}>Dwelling Uplift</div>
             </div>
@@ -253,7 +285,7 @@ export const ShortlistSummaryView: FC<ShortlistSummaryViewProps> = ({
           <div style={styles.statValue(LANDIQ_THEME.colors.brand.navy)}>
             {viewingPlaced && placementTotals
               ? `${Math.round(placementTotals.totalNetArea).toLocaleString()}m²`
-              : `${Math.round(summary.totalPotentialGfa).toLocaleString()}m²`
+              : `${Math.round(activeSummary.totalPotentialGfa).toLocaleString()}m²`
             }
           </div>
           <div style={styles.statLabel}>
@@ -264,7 +296,7 @@ export const ShortlistSummaryView: FC<ShortlistSummaryViewProps> = ({
           <div style={styles.statValue(LANDIQ_THEME.colors.info.blue)}>
             {viewingPlaced && placementTotals
               ? `${placementTotals.successCount} / ${placementTotals.successCount + placementTotals.failureCount}`
-              : (summary.eligiblePropertyCount + summary.partiallyEligibleCount)
+              : (activeSummary.eligiblePropertyCount + activeSummary.partiallyEligibleCount)
             }
           </div>
           <div style={styles.statLabel}>
@@ -273,18 +305,18 @@ export const ShortlistSummaryView: FC<ShortlistSummaryViewProps> = ({
         </div>
       </div>
 
-      {!isLotBased && summary.dwellingsByZone.length > 0 && (
+      {!isLotBased && activeSummary.dwellingsByZone.length > 0 && (
         <div style={styles.section}>
           <div style={styles.sectionTitle}>Dwelling Uplift by Zone</div>
-          <ZoneUpliftChart data={summary.dwellingsByZone} />
+          <ZoneUpliftChart data={activeSummary.dwellingsByZone} />
         </div>
       )}
 
-      {summary.topPatterns.length > 0 && (
+      {activeSummary.topPatterns.length > 0 && (
         <div style={styles.section}>
           <div style={styles.sectionTitle}>Top Patterns by Coverage</div>
           <div style={styles.patternList}>
-            {summary.topPatterns.map((pattern, index) => (
+            {activeSummary.topPatterns.map((pattern, index) => (
               <PatternCardItem
                 key={pattern.patternId}
                 pattern={pattern}
